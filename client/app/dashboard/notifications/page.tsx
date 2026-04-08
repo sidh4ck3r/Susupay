@@ -1,6 +1,5 @@
 "use client";
 import { LucideBell, LucideCheckCircle, LucideClock, LucideInfo } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function NotificationsPage() {
@@ -21,7 +20,7 @@ export default function NotificationsPage() {
       time: "2 hours ago",
       link: "/dashboard"
     }
-  ] as const;
+  ];
 
   const router = useRouter();
 
