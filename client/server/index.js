@@ -29,25 +29,30 @@ app.use(cors({
 app.use(express.json());
 app.use(morgan('dev'));
 
-async function startServer() {
+// Database Initialization Logic
+async function initializeDatabase() {
   try {
     const dialect = sequelize.getDialect() === 'postgres' ? 'PostgreSQL (Cloud)' : 'MySQL/MariaDB (Local)';
-    
-    // Verify connection before logging success and syncing
     await sequelize.authenticate();
     console.log(`✅ ${dialect} connection established.`);
-    
-    // Sync Database
     await sequelize.sync();
     console.log('✅ Database models synchronized.');
+  } catch (error) {
+    console.error('❌ Database initialization failed:', error.message);
+  }
+}
 
+async function startServer() {
+  try {
     const server = app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 SusuPay API running on port ${PORT} (Network Shared)`);
+      // Initialize database in the background after port is bound
+      initializeDatabase();
     });
 
     server.on('error', (err) => {
       if (err.code === 'EADDRINUSE') {
-        console.error(`❌ Port ${PORT} is already in use. Please kill the process using it.`);
+        console.error(`❌ Port ${PORT} is already in use.`);
       } else {
         console.error('❌ Server error:', err);
       }
