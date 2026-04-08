@@ -132,7 +132,7 @@ export default function AdminPerformanceHub() {
                 <span className="flex items-center gap-1 text-[9px] font-black text-emerald-500"><LucideArrowUpRight size={10} /> +12%</span>
              </div>
              <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Protocol Volume</p>
-             <h3 className="text-2xl font-bold font-mono text-white">₵ {chartData.reduce((acc: any, curr: any) => acc + curr.Inflow, 0).toFixed(2)}</h3>
+             <h3 className="text-2xl font-bold font-mono text-white">₵ {chartData.reduce((acc: number, curr: any) => acc + (curr.Inflow || 0), 0).toFixed(2)}</h3>
           </div>
           <div className="glass-card p-6 border-white/5 bg-gradient-to-br from-yellow-500/[0.02] to-transparent shadow-xl">
              <div className="flex justify-between items-start mb-4">
