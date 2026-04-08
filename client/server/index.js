@@ -31,8 +31,8 @@ app.use(morgan('dev'));
 
 async function startServer() {
   try {
-    await sequelize.authenticate();
-    console.log('✅ MariaDB connection established.');
+    const dialect = sequelize.getDialect() === 'postgres' ? 'PostgreSQL (Cloud)' : 'MySQL/MariaDB (Local)';
+    console.log(`✅ ${dialect} connection established.`);
     
     // Sync Database
     await sequelize.sync();

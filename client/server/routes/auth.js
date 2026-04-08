@@ -166,24 +166,29 @@ router.post('/supabase', async (req, res) => {
     // 1. Try to find user by Supabase ID (mapped as googleId)
     let user = await User.findOne({ where: { googleId } });
 
-    // 2. If not found, try to find by email
+    // 2. If not found by ID, try to find by email (to link an existing account created by registration)
     if (!user) {
+      console.log(`🔍 Supabase Sync: No user found with ID ${googleId}, checking email ${email}...`);
       user = await User.findOne({ where: { email } });
       if (user) {
+        console.log(`🔗 Supabase Sync: Linking existing user ${user.id} (${user.role}) to Supabase identity.`);
         await user.update({ googleId });
       }
     }
 
     // 3. Create new user if still not found
     if (!user) {
+      console.log(`🆕 Supabase Sync: Creating new account for ${email} (${name}).`);
       user = await User.create({
-        fullName: name,
+        fullName: name || 'Susu User',
         email: email,
         googleId,
         role: 'CUSTOMER',
         kycStatus: 'UNVERIFIED',
         balance: 0.00
       });
+    } else {
+       console.log(`✅ Supabase Sync: Logged in as ${user.fullName} [${user.role}]`);
     }
 
     // Mint our own system JWT (so the rest of the backend middleware still works)
