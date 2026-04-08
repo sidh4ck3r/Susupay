@@ -6,6 +6,7 @@ server/node_modules/
 # Environment variables
 .env
 server/.env
+client/.env.local
 
 # IDE / Editor files
 .idea/

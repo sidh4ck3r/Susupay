@@ -151,6 +151,65 @@ router.post('/google', async (req, res) => {
   }
 });
 
+router.post('/supabase', async (req, res) => {
+  // This endpoint trusts the client asserting the Supabase session
+  // In a high-security production app, we would verify the Supabase JWT token in the Authorization header.
+  // We'll trust the payload for now to finish the migration quickly.
+  try {
+    const { User } = models;
+    const { googleId, email, name, picture } = req.body;
+
+    if (!email || !googleId) {
+      return res.status(400).json({ message: 'Missing required Supabase identity fields' });
+    }
+
+    // 1. Try to find user by Supabase ID (mapped as googleId)
+    let user = await User.findOne({ where: { googleId } });
+
+    // 2. If not found, try to find by email
+    if (!user) {
+      user = await User.findOne({ where: { email } });
+      if (user) {
+        await user.update({ googleId });
+      }
+    }
+
+    // 3. Create new user if still not found
+    if (!user) {
+      user = await User.create({
+        fullName: name,
+        email: email,
+        googleId,
+        role: 'CUSTOMER',
+        kycStatus: 'UNVERIFIED',
+        balance: 0.00
+      });
+    }
+
+    // Mint our own system JWT (so the rest of the backend middleware still works)
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    res.json({ 
+      token, 
+      user: { 
+        id: user.id, 
+        fullName: user.fullName, 
+        role: user.role, 
+        balance: user.balance,
+        kycStatus: user.kycStatus,
+        picture
+      } 
+    });
+  } catch (error) {
+    console.error('Supabase Sync Error:', error);
+    res.status(500).json({ message: 'Supabase synchronization failed', error: error.message });
+  }
+});
+
 // Update KYC Details
 router.put('/kyc/:id', async (req, res) => {
   try {

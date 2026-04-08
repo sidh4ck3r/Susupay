@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { API_BASE_URL } from "@/app/constants";
 import { LucideShieldCheck, LucideArrowRight, LucideMail, LucideLock, LucideAlertCircle, LucideX, LucideEye, LucideEyeOff } from "lucide-react";
-import { useGoogleLogin } from "@react-oauth/google";
+import { supabase } from "@/utils/supabase/client";
 
 export default function Login() {
   const router = useRouter();
@@ -24,37 +24,24 @@ export default function Login() {
     }
   }, [router]);
 
-  const handleGoogleSuccess = async (tokenResponse: any) => {
+  const handleGoogleLogin = async () => {
     setIsLoading(true);
     setError("");
     try {
-      // useGoogleLogin returns an access_token, not a credential/id_token.
-      // We need to get the user's info and then send the access_token to our backend.
-      // However, our backend expects an id_token (credential).
-      // For now, we use the implicit flow which gives an access_token.
-      // We fetch userinfo from Google and send it to our backend.
-      const userInfoRes = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-        headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
+      const { data, error: signInError } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`
+        }
       });
-
-      const response = await axios.post(`${API_BASE_URL}/api/auth/google`, {
-        accessToken: tokenResponse.access_token,
-        userInfo: userInfoRes.data
-      });
-      localStorage.setItem("susupay_token", response.data.token);
-      localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
-      router.push("/dashboard");
+      
+      if (signInError) throw signInError;
+      // Supabase automatically redirects to Google here
     } catch (err: any) {
-      setError(err.response?.data?.message || "Google Login failed.");
-    } finally {
+      setError(err.message || "Supabase Google Login initialization failed.");
       setIsLoading(false);
     }
   };
-
-  const googleLogin = useGoogleLogin({
-    onSuccess: handleGoogleSuccess,
-    onError: () => setError("Google Login failed. Please try again."),
-  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -167,7 +154,7 @@ export default function Login() {
         <button
           id="google-login-btn"
           type="button"
-          onClick={() => googleLogin()}
+          onClick={handleGoogleLogin}
           disabled={isLoading}
           className="w-full flex items-center justify-center gap-3 py-3.5 px-6 bg-white hover:bg-slate-100 text-slate-800 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] disabled:opacity-50 border border-white/80"
         >
