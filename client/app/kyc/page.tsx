@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { API_BASE_URL } from "@/app/constants";
-import { LucideShieldCheck, LucideUser, LucideMapPin, LucideCreditCard, LucideArrowRight, LucideCheckCircle, LucideLoader, LucideLogOut } from "lucide-react";
+import { LucideShieldCheck, LucideUser, LucideMapPin, LucideCreditCard, LucideArrowRight, LucideCheckCircle, LucideLoader, LucideLogOut, LucideClock } from "lucide-react";
 
 export default function KYCPage() {
   const router = useRouter();
