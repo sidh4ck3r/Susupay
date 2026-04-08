@@ -49,16 +49,38 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, formData);
+      // 1. Authenticate with Supabase
+      const { data: { session }, error: signInError } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password
+      });
+
+      if (signInError) throw signInError;
+      if (!session) throw new Error("No active session found.");
+
+      // 2. Sync with Backend
+      const user = session.user;
+      const fullName = user.user_metadata?.full_name || user.user_metadata?.name || "User";
+      
+      const response = await axios.post(`${API_BASE_URL}/api/auth/supabase`, {
+        googleId: user.id, // Supabase UUID
+        email: user.email,
+        name: fullName
+      });
+
       localStorage.setItem("susupay_token", response.data.token);
       localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
-      router.push("/dashboard");
-    } catch (err: any) {
-      if (!err.response) {
-        setError("Network Connection Error. Ensure your device is on the same network as the host and that the firewall allows connections on port 5050.");
+      
+      const userData = response.data.user;
+      if (userData.role === 'ADMIN' || userData.role === 'AUDITOR') {
+        router.push("/admin");
+      } else if (userData.role === 'COLLECTOR') {
+        router.push("/collector");
       } else {
-        setError(err.response?.data?.message || "Login failed. Please check your credentials.");
+        router.push("/dashboard");
       }
+    } catch (err: any) {
+      setError(err.message || "Login failed. Please check your credentials.");
     } finally {
       setIsLoading(false);
     }

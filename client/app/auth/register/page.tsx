@@ -19,15 +19,33 @@ export default function Register() {
     setError("");
 
     try {
-      await axios.post(`${API_BASE_URL}/api/auth/register`, formData);
+      // 1. Register with Supabase
+      const { data: { user: supabaseUser }, error: signUpError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName
+          }
+        }
+      });
+
+      if (signUpError) throw signUpError;
+      if (!supabaseUser) throw new Error("Registration failed in Supabase.");
+
+      // 2. Sync with Backend (and pass extra MoMo data)
+      await axios.post(`${API_BASE_URL}/api/auth/supabase`, {
+        googleId: supabaseUser.id,
+        email: formData.email,
+        name: formData.fullName,
+        momoNumber: formData.momoNumber,
+        momoProvider: formData.momoProvider
+      });
+
       setSuccess(true);
       setTimeout(() => router.push("/auth?registered=true"), 2000);
     } catch (err: any) {
-      if (!err.response) {
-        setError("Network Connection Error. Ensure your device is on the same network as the host and that the firewall allows connections on port 5050.");
-      } else {
-        setError(err.response?.data?.message || "Registration failed. Please try again.");
-      }
+      setError(err.message || "Registration failed. Please try again.");
     } finally {
       setIsLoading(false);
     }

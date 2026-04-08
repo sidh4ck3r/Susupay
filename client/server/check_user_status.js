@@ -1,7 +1,7 @@
 const { User } = require('./models');
 
 async function getUserStatus() {
-  const email = 'sipmunch@susupay.com';
+  const email = 'admin@susupay.com';
   try {
     const user = await User.findOne({
       where: { email },

@@ -157,7 +157,7 @@ router.post('/supabase', async (req, res) => {
   // We'll trust the payload for now to finish the migration quickly.
   try {
     const { User } = models;
-    const { googleId, email, name, picture } = req.body;
+    const { googleId, email, name, picture, momoNumber, momoProvider } = req.body;
 
     if (!email || !googleId) {
       return res.status(400).json({ message: 'Missing required Supabase identity fields' });
@@ -183,6 +183,8 @@ router.post('/supabase', async (req, res) => {
         fullName: name || 'Susu User',
         email: email,
         googleId,
+        momoNumber,
+        momoProvider,
         role: 'CUSTOMER',
         kycStatus: 'UNVERIFIED',
         balance: 0.00
