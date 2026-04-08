@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin Chat Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "sapphire": "#0f4c81",
+                        "emerald": "#10b77f"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 34, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(16, 183, 127, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="relative flex flex-col h-screen w-full">
+<!-- Top Navigation -->
+<header class="flex h-16 items-center justify-between border-b border-white/10 bg-background-dark/80 px-6 backdrop-blur-md">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-white">SusuPay Admin</h2>
+</div>
+<div class="hidden md:flex items-center gap-1 bg-white/5 rounded-xl px-2 py-1">
+<span class="material-symbols-outlined text-primary text-sm pl-2">search</span>
+<input class="bg-transparent border-none text-sm focus:ring-0 text-white placeholder-white/40 w-64" placeholder="Search accounts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden lg:flex items-center gap-6 mr-6">
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">Agents</a>
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">Treasury</a>
+<a class="text-sm font-medium text-white/60 hover:text-white transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full bg-gradient-to-tr from-emerald to-sapphire p-0.5">
+<div class="h-full w-full rounded-full bg-background-dark overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Admin user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUkYWadDo3Obf8UlsVMCnzBYhvbRTXvoYV7iCF0T_ls77Ug9gnR3G4wQvoFqRYcpctrwXs9Dfp8PodXsk2dnXF2E9SkX_wdgUeSJ9Iwd1kFjM2sgF3-4NtLEZeNKqjfVoWq6Bsu8ezdcPwMgwR5XV3YyEGPRrzjN_4iFs_xp7HHWOiXRYNSfltGOiywXjTLJ0ImZb3s1W0Y7TCDMDA3GYL0tDWOeCHKkoYZ_4zOmtWUgxMa4jTWoVaHRHFVijHNGPhZ1tgToLPfXU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Layout -->
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Chat List -->
+<aside class="w-80 border-r border-white/10 flex flex-col bg-background-dark/40">
+<div class="p-4 border-b border-white/10 flex justify-between items-center">
+<h3 class="font-semibold text-lg">Active Sessions</h3>
+<span class="px-2 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold tracking-wider uppercase">14 Online</span>
+</div>
+<div class="p-3">
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-medium">All</button>
+<button class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-white/5 text-white/60 text-xs font-medium hover:bg-white/10">Priority</button>
+<button class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-white/5 text-white/60 text-xs font-medium hover:bg-white/10">Unassigned</button>
+</div>
+</div><div class="px-3 pb-3">
+<div class="relative flex items-center bg-white/5 rounded-xl border border-white/10 px-3 py-2 group focus-within:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-white/40 text-lg group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-transparent border-none text-xs w-full focus:ring-0 text-white placeholder-white/30 ml-2" placeholder="Filter sessions..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto chat-scroll">
+<!-- Chat Item Active -->
+<div class="p-4 border-l-4 border-primary bg-primary/10 flex gap-3 cursor-pointer">
+<div class="relative flex-shrink-0">
+<img class="h-12 w-12 rounded-full border-2 border-primary/30" data-alt="Customer Kwame Mensah portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwZWQUtP2haX06Fc2k0SwlB7Sq63YXv0Fny1QiIRegP6SSpfWzKQZQ5VHsce7_438-FodaQ9Uiiqfedcm4Tp9_kSKmEvrj18kCZd9fE1S2KBwGA_0WydV51KWMqpt4IhI7u2YDNOf_TE7EBdIvRg0-tz9gexXF8xZPeU-mB4D43CgTBddBLrgdWZ4hJwYH8BZhusKblI0SeAvelcdDGHEvqarrRtDdIvFwlIl4SYIi1rFbU9koUM-xMifCHSkzc5yh_XXZni4kE3Q"/>
+<div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald border-2 border-background-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<h4 class="text-sm font-semibold truncate">Kwame Mensah</h4>
+<span class="text-[10px] text-white/40">2m ago</span>
+</div>
+<p class="text-xs text-primary font-medium truncate">Typing...</p>
+</div>
+</div>
+<!-- Chat Item -->
+<div class="p-4 flex gap-3 cursor-pointer hover:bg-white/5 border-l-4 border-transparent transition-colors">
+<div class="relative flex-shrink-0">
+<img class="h-12 w-12 rounded-full border-2 border-white/10" data-alt="Customer Abena Appiah portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZfZErqgq9j-3eiN5F5kml6nspbqJP3oTvKqohj7VPfvFey6oJ6vi3TEMRoGGESoObYLmstbmfpXd9ccbNn9d6sJYGeolKYCuKFtf6p5lMWdOZ0tLncQw70dEr6MCwj2JLKy7Ae76PRundWE3cIgeFJGNh32KeX-Nlc9j4TNUJHpcqQNwEOGpW_Pc2TTqFSCdu13PWuiFQd9KO8yy60YLDrHZyVO2qLA_xzyxWxELt3Py3rDChSK75lKx-ctlTZ25cpbG6HrQ0X2g"/>
+<div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-slate-500 border-2 border-background-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<h4 class="text-sm font-semibold truncate text-white/90">Abena Appiah</h4>
+<span class="text-[10px] text-white/40">15m ago</span>
+</div>
+<p class="text-xs text-white/40 truncate">Thanks for the help!</p>
+</div>
+</div>
+<!-- Chat Item -->
+<div class="p-4 flex gap-3 cursor-pointer hover:bg-white/5 border-l-4 border-transparent transition-colors">
+<div class="relative flex-shrink-0">
+<img class="h-12 w-12 rounded-full border-2 border-white/10" data-alt="Customer Kofi Boateng portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC52IGirtLLWuiOXaT0I1cu2h4-6nKD8bgyR-78mdOUZJalr7kH1djV_g83_VHga_94BswYke7QItgWg0SNl5TDz66fDvTkVfPHF4ohxAXhlxsEA2v_BbAFJxKepWlpZGghkE0VY0fjmzWGXS_moZrxP0epvpQAtzKu47XlEhdkn-6m-c20DE2Wd3wcDg56ziqqsT39yURkXLDbQVbbLpocu7S2f9L90ODUQY6jt4c_X_HfkrU2hqmMRulBwx-TwT6uV2wjHGhASs8"/>
+<div class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald border-2 border-background-dark"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<h4 class="text-sm font-semibold truncate text-white/90">Kofi Boateng</h4>
+<span class="text-[10px] text-white/40">1h ago</span>
+</div>
+<p class="text-xs text-white/40 truncate">I can't access my savings goal...</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center: Main Chat Window -->
+<section class="flex-1 flex flex-col bg-background-dark">
+<!-- Chat Header -->
+<div class="h-16 border-b border-white/10 flex items-center justify-between px-6 bg-background-dark/60 backdrop-blur-sm z-10">
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<h3 class="font-bold text-base">Kwame Mensah</h3>
+<div class="flex items-center gap-1.5">
+<div class="h-1.5 w-1.5 rounded-full bg-emerald"></div>
+<span class="text-[11px] text-white/50 uppercase tracking-widest font-semibold">Live Session</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3"><div class="hidden md:flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-2 py-1 focus-within:border-primary/40 transition-all mr-2">
+<span class="material-symbols-outlined text-white/40 text-sm">search</span>
+<input class="bg-transparent border-none text-[11px] focus:ring-0 text-white placeholder-white/30 w-32 py-0" placeholder="Search messages..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 text-xs font-semibold hover:bg-white/5">
+<span class="material-symbols-outlined text-sm">history</span>
+                            Transcript
+                        </button>
+<button class="flex items-center justify-center h-8 w-8 rounded-lg bg-primary/20 text-primary hover:bg-primary/30">
+<span class="material-symbols-outlined text-xl">phone</span>
+</button>
+</div>
+</div>
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6 chat-scroll bg-gradient-to-b from-background-dark to-black/20">
+<div class="flex justify-center">
+<span class="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] bg-white/5 px-3 py-1 rounded-full">Today</span>
+</div>
+<!-- Customer Message -->
+<div class="flex gap-3 max-w-[80%]">
+<div class="h-8 w-8 rounded-full flex-shrink-0 bg-white/10 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Kwame Mensah avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSqzyCPwuEzEmj2dFiu6s7NyNSdO2ueyfB82a6ZYV4y12cuqXu4rdb4IwiKTtHyJGPKjWKKrRfnki7cfqF0wZjBwWFBRaFYRogYnanlTeNkfaN4hdOdfs_tnddZ4enGMxDMFKQTSRpJn6QvExg0JXiUcXxNNDAM-8EGyBiWCvHacZ-newSplcmkkKFrEctZYvNOYUk28kNT2y5w2jOpIXu7HpHpdFe5R4R8Y8vr7AVpfUeVYgLw2aOr6AtPzQ9hEOmW4gKhbKGPPU"/>
+</div>
+<div class="flex flex-col gap-1">
+<div class="bg-white/10 rounded-2xl rounded-tl-none p-4 backdrop-blur-sm text-sm leading-relaxed border border-white/5">
+                                Hello, I'm having trouble withdrawing from my weekly savings goal. It says "limit reached" but I haven't withdrawn anything this month.
+                            </div>
+<span class="text-[10px] text-white/30 ml-1">10:15 AM</span>
+</div>
+</div>
+<!-- Admin Message -->
+<div class="flex gap-3 max-w-[80%] self-end flex-row-reverse">
+<div class="h-8 w-8 rounded-full flex-shrink-0 bg-primary/20 border border-primary/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary rounded-2xl rounded-tr-none p-4 text-white text-sm leading-relaxed shadow-lg shadow-primary/10">
+                                Hello Kwame! I'm sorry to hear that. Let me look into your account limits right away. Can you confirm the last 4 digits of your linked SusuCard?
+                            </div>
+<span class="text-[10px] text-white/30 mr-1">10:17 AM</span>
+</div>
+</div><!-- Admin File Attachment -->
+<div class="flex gap-3 max-w-[80%] self-end flex-row-reverse">
+<div class="h-8 w-8 rounded-full flex-shrink-0 bg-primary/20 border border-primary/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-white/5 rounded-2xl rounded-tr-none p-3 backdrop-blur-sm border border-white/10 flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-sapphire/20 flex items-center justify-center text-sapphire">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-white">Limit_Policy_V2.pdf</span>
+<span class="text-[10px] text-white/40">1.2 MB • PDF</span>
+</div>
+<button class="ml-2 text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+<span class="text-[10px] text-white/30 mr-1">10:18 AM</span>
+</div>
+</div>
+<!-- Customer Message (Typing) -->
+<div class="flex gap-3 max-w-[80%]">
+<div class="h-8 w-8 rounded-full flex-shrink-0 bg-white/10 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Kwame Mensah avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEvnctN49jeV8EfKZVNjcWsak7R3e17XbFURb2EGYXde9dcwxeHe2HnYNZCTIM7scwE6MWktbTwlL_vH14RvqstMqFpvdD9gqc_qJrTEtTTYkSskv6lTn4WTg1XELUA776GVvlGvaELuYQtra-l1gZEwhQkrLV5uK2Rkfvd3cicA2t9GctppYXmFEGWUhw_CeBStmZkwdcWVO9PYo-riaPSf9rcgDwjYcOYfiwGzawXsUy0FE12p0O874yO2dZFFfKqDIPDGirsXA"/>
+</div>
+<div class="flex items-center bg-white/5 rounded-2xl rounded-tl-none px-4 py-3 border border-white/5">
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce"></div>
+<div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+<div class="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 border-t border-white/10 bg-background-dark/60 backdrop-blur-md">
+<div class="flex items-end gap-3 glass-panel p-2 rounded-2xl">
+<div class="flex gap-1 p-1">
+<button class="h-10 w-10 flex items-center justify-center rounded-xl text-white/60 hover:text-primary hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl text-white/60 hover:text-primary hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl text-white/60 hover:text-primary hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">mood</span>
+</button>
+</div>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-sm py-3 text-white placeholder-white/30 resize-none" placeholder="Type your response here..." rows="1"></textarea>
+<button class="h-10 px-4 flex items-center gap-2 rounded-xl bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span>Send</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Account Details -->
+<aside class="w-80 border-l border-white/10 bg-background-dark/40 overflow-y-auto chat-scroll">
+<!-- Profile Header -->
+<div class="p-6 text-center border-b border-white/10">
+<div class="inline-block relative mb-4">
+<img class="h-24 w-24 rounded-2xl border-2 border-primary/20 shadow-xl mx-auto" data-alt="Profile photo Kwame Mensah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBETWIx3pD_WlhgBng3Brzb1Ayl_ox3fk8u2UqdWOr3GnUiBVIhaQ7HZw1FElB7TWTccfr3aVCM9Cw6K6KJYYmX-4L7UnAQLQcgGkTlIs6l6ngbRvBWM47PuJGI9JCRrt8jkvIhbgee3OCrYZ2so4r9tYlFym6QCTbR2eWCEGjeKN8uCAf_GlWEBJcqVQPoT5qO-n_8CEHHPf2hn7DlPr-UvZ8pQDWhI394H7JkLjlT84VKMDeLwVC526azlXIMJ8JTPPpRthJn2o4"/>
+<div class="absolute -bottom-2 -right-2 bg-emerald text-white px-2 py-0.5 rounded-lg text-[10px] font-bold border-2 border-background-dark">VERIFIED</div>
+</div>
+<h3 class="text-lg font-bold">Kwame Mensah</h3>
+<p class="text-xs text-white/40">Member since Feb 2023 • Accra, GH</p>
+</div>
+<!-- Key Metrics -->
+<div class="p-6 space-y-4">
+<div class="bg-gradient-to-br from-sapphire/40 to-emerald/40 p-4 rounded-xl border border-white/10">
+<p class="text-[10px] font-bold text-white/60 uppercase tracking-widest mb-1">Total Balance</p>
+<h4 class="text-2xl font-bold">₵ 12,450.00</h4>
+<div class="mt-3 flex items-center justify-between text-[11px]">
+<span class="text-white/40">Tier 2 Account</span>
+<span class="text-emerald font-semibold">+4.5% interest</span>
+</div>
+</div>
+<div class="space-y-3">
+<h4 class="text-xs font-bold text-white/60 uppercase tracking-widest">Savings Goals</h4>
+<div class="space-y-3">
+<div class="bg-white/5 p-3 rounded-xl border border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium">New Home Fund</span>
+<span class="text-xs font-bold">85%</span>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<div class="bg-white/5 p-3 rounded-xl border border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-medium">Children's School</span>
+<span class="text-xs font-bold">42%</span>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-sapphire h-full w-[42%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 space-y-3 border-t border-white/10">
+<h4 class="text-xs font-bold text-white/60 uppercase tracking-widest">Internal Notes</h4>
+<div class="space-y-3">
+<!-- Note Input -->
+<div class="p-3 rounded-xl border border-white/5 bg-white/10">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-xs text-white placeholder-white/20 p-0 resize-none focus:placeholder-white/40" placeholder="Add a private note..." rows="2"></textarea>
+<div class="flex justify-end mt-2">
+<button class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-lg hover:bg-primary/30 transition-colors uppercase tracking-wider">Save Note</button>
+</div>
+</div>
+<!-- Past Notes List -->
+<div class="space-y-2 max-h-48 overflow-y-auto pr-1 chat-scroll">
+<div class="p-3 rounded-xl border border-white/5 bg-white/10">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold text-emerald">Agent Sarah</span>
+<button class="text-white/40 hover:text-white transition-colors mr-2"><span class="material-symbols-outlined text-xs">edit</span></button><button class="text-white/40 hover:text-red-400 transition-colors" onclick="document.getElementById('delete-modal').classList.remove('hidden'); document.getElementById('delete-modal').classList.add('flex');"><span class="material-symbols-outlined text-xs">delete</span></button><span class="text-[10px] text-white/30">Today, 09:45 AM</span>
+</div>
+<p class="text-[11px] text-white/70 leading-relaxed">
+                    Customer mentioned a possible card upgrade next month. Follow up on limits.
+                </p>
+</div>
+<div class="p-3 rounded-xl border border-white/5 bg-white/10">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[10px] font-bold text-sapphire">Agent David</span>
+<button class="text-white/40 hover:text-white transition-colors mr-2"><span class="material-symbols-outlined text-xs">edit</span></button><button class="text-white/40 hover:text-red-400 transition-colors" onclick="document.getElementById('delete-modal').classList.remove('hidden'); document.getElementById('delete-modal').classList.add('flex');"><span class="material-symbols-outlined text-xs">delete</span></button><span class="text-[10px] text-white/30">Jan 12, 02:20 PM</span>
+</div>
+<p class="text-[11px] text-white/70 leading-relaxed">
+                    Previous withdrawal issue resolved after bank verification.
+                </p>
+</div>
+</div>
+</div>
+</div><div class="pt-4 space-y-3 border-t border-white/10">
+<h4 class="text-xs font-bold text-white/60 uppercase tracking-widest">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white/60 mb-1">flag</span>
+<span class="text-[10px] font-bold">FLAG</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white/60 mb-1">move_item</span>
+<span class="text-[10px] font-bold">TRANSFER</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-white/60 mb-1">history_edu</span>
+<span class="text-[10px] font-bold">LOGS</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors">
+<span class="material-symbols-outlined text-red-400 mb-1">cancel</span>
+<span class="text-[10px] font-bold text-red-400">CLOSE</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<!-- Delete Confirmation Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="delete-modal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm"></div>
+<!-- Modal Content -->
+<div class="glass-panel relative w-full max-w-sm rounded-2xl p-6 shadow-2xl border border-white/10 overflow-hidden">
+<!-- Decorative gradient glow -->
+<div class="absolute -top-24 -right-24 h-48 w-48 bg-red-500/10 blur-[80px] rounded-full"></div>
+<div class="relative flex flex-col items-center text-center">
+<div class="h-14 w-14 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mb-4">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-2">Delete Note?</h3>
+<p class="text-sm text-white/60 mb-8">
+                Are you sure you want to delete this note? This action cannot be undone.
+            </p>
+<div class="flex gap-3 w-full">
+<button class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-semibold text-white/80 hover:bg-white/10 transition-colors" onclick="document.getElementById('delete-modal').classList.add('hidden')">
+                    Cancel
+                </button>
+<button class="flex-1 px-4 py-2.5 rounded-xl bg-red-500 text-white text-sm font-bold shadow-lg shadow-red-500/20 hover:bg-red-600 transition-all active:scale-95">
+                    Delete
+                </button>
+</div>
+</div>
+</div>
+</div></body></html>

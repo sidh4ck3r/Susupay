@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Support Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "sapphire": "#0f52ba",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 183, 127, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10b77f 0%, #0f52ba 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 glass-panel border-b border-white/5 px-6 lg:px-20 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">SusuPay <span class="text-primary">Support</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Knowledge Base</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Tickets</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAokTnu_noTm19zu9vYQPmiMKUz4825_FuxBn54_M655KbrdcFAVNmwmc54yxFcGnqqlVj6HsCD_FfOpEgL0fdurL7gGQLAJvE0QfJtk9rSIqhC6aVYSfj0992qnl7-hnY27tpiGJjVbWlflaYWk-k2JB-HdoTXWDr3oawNYoDFU1hIQP0brB8Okxdg_zWYokMpPc8priADmR8M2qKGx2m91fcHhv1a2P7E04Q5QWLhB8VjNXC8E_kTGc5Z73T851PhQRtd7Qv3rk8"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative py-20 px-6 overflow-hidden">
+<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(16,183,127,0.15),transparent_70%)]"></div>
+<div class="max-w-3xl mx-auto text-center space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">verified</span> Premium Support Hub
+                </div>
+<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-blue-500">
+                    How can we help you?
+                </h1>
+<p class="text-slate-400 text-lg max-w-xl mx-auto">
+                    Search our knowledge base for answers about savings, security, and mobile money transactions.
+                </p>
+<!-- Search Bar -->
+<div class="relative max-w-2xl mx-auto group">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-14 pr-4 py-5 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-500 text-lg" placeholder="Search for help with savings, security..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Account -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all cursor-pointer group border border-white/5">
+<div class="size-14 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Account</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Manage your profile, settings, and verification status.</p>
+</div>
+<!-- Savings -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all cursor-pointer group border border-white/5">
+<div class="size-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">savings</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Savings</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Everything about automated savings and interest rates.</p>
+</div>
+<!-- Security -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all cursor-pointer group border border-white/5">
+<div class="size-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">security</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Security</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Protect your funds with 2FA, biometric locks and more.</p>
+</div>
+<!-- MoMo -->
+<div class="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all cursor-pointer group border border-white/5">
+<div class="size-14 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">smartphone</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Mobile Money</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Help with deposits and withdrawals via local MoMo providers.</p>
+</div>
+</div>
+</section>
+<!-- FAQs & Articles -->
+<section class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2 space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold">Frequently Asked Questions</h2>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View All Articles</a>
+</div>
+<div class="space-y-4">
+<div class="glass-panel p-6 rounded-xl border border-white/5 flex items-center justify-between group cursor-pointer hover:border-primary/30 transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<h4 class="font-semibold">How do I reset my transaction PIN?</h4>
+<p class="text-slate-400 text-sm">Last updated 2 days ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/5 flex items-center justify-between group cursor-pointer hover:border-primary/30 transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<h4 class="font-semibold">What is the daily withdrawal limit?</h4>
+<p class="text-slate-400 text-sm">Last updated 1 week ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/5 flex items-center justify-between group cursor-pointer hover:border-primary/30 transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<h4 class="font-semibold">How to link multiple mobile money numbers?</h4>
+<p class="text-slate-400 text-sm">Last updated 3 days ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/5 flex items-center justify-between group cursor-pointer hover:border-primary/30 transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<h4 class="font-semibold">Can I use SusuPay while traveling abroad?</h4>
+<p class="text-slate-400 text-sm">Last updated 1 month ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Sidebar / Contact -->
+<div class="space-y-6">
+<div class="emerald-gradient p-8 rounded-3xl text-white space-y-6 shadow-2xl shadow-emerald-500/10">
+<h3 class="text-2xl font-bold">Still need help?</h3>
+<p class="text-emerald-50/80 leading-relaxed">Our support team is available 24/7 to help you with any issues you might be facing.</p>
+<button class="w-full py-4 bg-white text-emerald-900 font-bold rounded-xl hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">support_agent</span>
+                        Chat with Support
+                    </button>
+<button class="w-full py-4 bg-white/10 text-white font-bold rounded-xl border border-white/20 hover:bg-white/20 transition-colors">
+                        Email Us
+                    </button>
+</div>
+<div class="glass-panel p-6 rounded-2xl space-y-4">
+<h4 class="font-bold">Community Support</h4>
+<p class="text-sm text-slate-400">Join our Telegram or WhatsApp groups to chat with other SusuPay users.</p>
+<div class="flex gap-3">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 cursor-pointer hover:bg-blue-500/20">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div class="size-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 cursor-pointer hover:bg-emerald-500/20">
+<span class="material-symbols-outlined">group</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-white/5 py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 grayscale opacity-60">
+<div class="size-8 bg-slate-500 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold text-sm">payments</span>
+</div>
+<span class="text-slate-400 font-bold">SusuPay</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+<p class="text-slate-600 text-sm">© 2024 SusuPay. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>

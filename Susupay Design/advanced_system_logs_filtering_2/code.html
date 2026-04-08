@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin - System Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#12110a",
+                        "surface-dark": "#1c1a0e",
+                        "border-gold": "#484223"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(28, 26, 14, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(72, 66, 35, 0.3);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-border-gold/30 bg-surface-dark/50 flex flex-col h-screen shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-xl bg-primary flex items-center justify-center text-background-dark shadow-[0_0_20px_rgba(238,205,43,0.3)]">
+<span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-lg font-bold leading-tight">SusuPay</h1>
+<p class="text-primary/70 text-xs font-medium uppercase tracking-widest">Fintech Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Withdrawals</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="text-sm font-medium">System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-border-gold/20">
+<div class="glass-panel p-4 rounded-xl flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Admin user profile picture avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqe68IXi4o3MGvY16HLXxFYxPhTIxu7YT9ODGfbOHyqClW8mn1lcSv_faqP2sg9TWbio-RNicGeml5pw_TOn3SdUijyruyRXEETse-N9eupy2FYp6Zt192kRJzAWC0fCmBqH9sphAGw9qOV-WPyKUs8oV-HeoMlYZ_S8zg1mTWwGnjxEWcWL-OyuqrMBez8pMlMbn--Lre3TsZBrd0Dh2-qFigbzPh71EmnglWFlmpKoYteLO801EIZ8gwNvIrc332EYMam2L9LBk')"></div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-semibold text-slate-100 truncate">Alexander Vance</p>
+<p class="text-xs text-slate-400 truncate">Security Lead</p>
+</div>
+<button class="text-slate-400 hover:text-red-400">
+<span class="material-symbols-outlined text-sm">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto scrollbar-hide">
+<!-- Header -->
+<header class="h-20 border-b border-border-gold/30 px-8 flex items-center justify-between sticky top-0 bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex items-center gap-6">
+<h2 class="text-2xl font-bold text-slate-100">System Logs</h2>
+<div class="h-8 w-px bg-border-gold/40"></div>
+<div class="flex items-center gap-2 px-3 py-1.5 glass-panel rounded-lg border-primary/20 text-primary cursor-pointer hover:bg-primary/5">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<select class="bg-transparent border-none p-0 text-sm font-medium text-primary focus:ring-0 appearance-none cursor-pointer">
+<option class="bg-background-dark" value="last24h">Last 24 Hours</option>
+<option class="bg-background-dark" selected="" value="last7d">Last 7 Days (Oct 12-19)</option>
+<option class="bg-background-dark" value="last30d">Last 30 Days</option>
+<option class="bg-background-dark" value="custom">Custom Range...</option>
+</select>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-80 bg-surface-dark border-border-gold/40 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary focus:border-primary text-slate-100 placeholder:text-slate-500" placeholder="Search logs, IPs, or users..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-background-dark font-bold rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export Logs
+                </button>
+<div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center relative text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Metrics Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-panel p-6 rounded-xl hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<span class="text-emerald-400 text-sm font-medium flex items-center">+12.4% <span class="material-symbols-outlined text-xs ml-1">trending_up</span></span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Total Events Today</p>
+<h3 class="text-3xl font-bold text-slate-100 mt-1">128,432</h3>
+<div class="mt-4 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[72%]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:border-red-500/50 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-red-500/10 text-red-500">
+<span class="material-symbols-outlined">error</span>
+</div>
+<span class="text-emerald-400 text-sm font-medium flex items-center">-2.1% <span class="material-symbols-outlined text-xs ml-1">trending_down</span></span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Error Rate</p>
+<h3 class="text-3xl font-bold text-slate-100 mt-1">0.04%</h3>
+<div class="mt-4 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full w-[15%] shadow-[0_0_8px_rgba(239,68,68,0.5)]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<span class="text-red-400 text-sm font-medium flex items-center">+5.2% <span class="material-symbols-outlined text-xs ml-1">trending_up</span></span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Avg. Response Time</p>
+<h3 class="text-3xl font-bold text-slate-100 mt-1">184<span class="text-lg font-normal text-slate-500 ml-1">ms</span></h3>
+<div class="mt-4 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[60%]"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">vpn_key</span>
+</div>
+<span class="text-slate-500 text-sm font-medium">Stable</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Active API Keys</p>
+<h3 class="text-3xl font-bold text-slate-100 mt-1">42</h3>
+<div class="mt-4 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[42%]"></div>
+</div>
+</div>
+</div>
+<!-- Health Chart & Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-panel rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-lg font-semibold text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">show_chart</span>
+                            System Health (Last 60m)
+                        </h4>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-xs text-slate-400">Request Vol</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-red-500"></span>
+<span class="text-xs text-slate-400">Latency spikes</span>
+</div>
+</div>
+</div>
+<div class="h-48 w-full flex items-end gap-1">
+<!-- Simulated chart bars -->
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[40%]" title="40% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[35%]" title="35% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[45%]" title="45% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[60%]" title="60% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[55%]" title="55% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[70%]" title="70% volume"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[85%]" title="85% volume"></div>
+<div class="flex-1 bg-red-500/40 rounded-t-sm h-[95%]" title="SPIKE DETECTED"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[80%]" title="80% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[65%]" title="65% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[50%]" title="50% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[45%]" title="45% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[40%]" title="40% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[38%]" title="38% volume"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[55%]" title="55% volume"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm h-[65%]" title="65% volume"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[60%]" title="60% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[55%]" title="55% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[45%]" title="45% volume"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[50%]" title="50% volume"></div>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-6 flex flex-col">
+<h4 class="text-lg font-semibold text-slate-100 flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-emerald-400">sensors</span>
+                        Live Feed
+                    </h4>
+<div class="flex-1 space-y-4 overflow-hidden">
+<div class="flex gap-3 text-xs">
+<div class="w-1 bg-primary rounded-full"></div>
+<div class="flex-1">
+<p class="text-slate-100 font-medium">User Login Success</p>
+<p class="text-slate-500">UID: 9821 • 2s ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-xs">
+<div class="w-1 bg-emerald-500 rounded-full"></div>
+<div class="flex-1">
+<p class="text-slate-100 font-medium">Transaction Verified</p>
+<p class="text-slate-500">TXID: 0x4f...a2 • 12s ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-xs">
+<div class="w-1 bg-red-500 rounded-full"></div>
+<div class="flex-1">
+<p class="text-slate-100 font-medium">Failed Withdrawal Attempt</p>
+<p class="text-slate-500">IP: 192.168.1.105 • 45s ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-xs">
+<div class="w-1 bg-primary rounded-full"></div>
+<div class="flex-1">
+<p class="text-slate-100 font-medium">API Key Rotated</p>
+<p class="text-slate-500">Entity: Stripe Integration • 1m ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Filtering & Main Log Table -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="p-6 border-b border-border-gold/20 flex flex-wrap gap-4 items-center justify-between">
+<div class="flex flex-wrap gap-4 items-center justify-between">
+<div class="flex flex-wrap gap-3 items-center">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors text-sm">warning</span>
+<select class="bg-surface-dark border-border-gold/40 rounded-lg pl-9 pr-10 py-2 text-sm text-slate-100 focus:ring-primary focus:border-primary appearance-none cursor-pointer">
+<option>Severity: All Levels</option>
+<option>Critical</option>
+<option>Warning</option>
+<option>Info</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors text-sm">category</span>
+<select class="bg-surface-dark border-border-gold/40 rounded-lg pl-9 pr-10 py-2 text-sm text-slate-100 focus:ring-primary focus:border-primary appearance-none cursor-pointer">
+<option>Type: All Events</option>
+<option>Auth</option>
+<option>Transaction</option>
+<option>API</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+</div>
+<div class="h-6 w-px bg-border-gold/20 mx-1"></div>
+<div class="relative group flex-1 min-w-[300px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary transition-colors text-sm">search</span>
+<input class="w-full bg-surface-dark/50 border-border-gold/40 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Search by Entity ID or Message..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-400 hover:text-primary glass-panel rounded-lg transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary glass-panel rounded-lg transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-dark/40 text-slate-400 text-xs uppercase tracking-wider font-semibold border-b border-border-gold/10">
+<th class="px-6 py-4">Timestamp</th>
+<th class="px-6 py-4">Event Type</th>
+<th class="px-6 py-4">Severity</th>
+<th class="px-6 py-4">Entity ID</th>
+<th class="px-6 py-4">Message / Action</th>
+<th class="px-6 py-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-gold/10 text-sm">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-slate-400 font-mono">2023-10-19 14:23:45</td>
+<td class="px-6 py-4 font-medium text-slate-200">Security</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-red-500/10 text-red-500 w-fit">
+<span class="size-1.5 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></span>
+<span class="text-xs font-bold uppercase">Critical</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary underline decoration-primary/30 underline-offset-4 cursor-pointer">USR_90214</td>
+<td class="px-6 py-4 text-slate-300">Unauthorized login attempt detected from unknown IP 185.22.10.4</td>
+<td class="px-6 py-4">
+<span class="text-slate-500 italic">Flagged</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-slate-400 font-mono">2023-10-19 14:22:12</td>
+<td class="px-6 py-4 font-medium text-slate-200">Transaction</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-blue-500/10 text-blue-400 w-fit">
+<span class="size-1.5 rounded-full bg-blue-400"></span>
+<span class="text-xs font-bold uppercase">Info</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary underline decoration-primary/30 underline-offset-4 cursor-pointer">TXN_A8F2K</td>
+<td class="px-6 py-4 text-slate-300">New withdrawal request for $4,200.00 initiated</td>
+<td class="px-6 py-4">
+<span class="text-emerald-400">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-slate-400 font-mono">2023-10-19 14:20:58</td>
+<td class="px-6 py-4 font-medium text-slate-200">API</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-amber-500/10 text-amber-500 w-fit">
+<span class="size-1.5 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold uppercase">Warning</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary underline decoration-primary/30 underline-offset-4 cursor-pointer">KEY_STRIPE_PRD</td>
+<td class="px-6 py-4 text-slate-300">Stripe API responded with high latency (1240ms)</td>
+<td class="px-6 py-4">
+<span class="text-slate-500 italic">Logged</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-slate-400 font-mono">2023-10-19 14:18:30</td>
+<td class="px-6 py-4 font-medium text-slate-200">Auth</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-blue-500/10 text-blue-400 w-fit">
+<span class="size-1.5 rounded-full bg-blue-400"></span>
+<span class="text-xs font-bold uppercase">Info</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary underline decoration-primary/30 underline-offset-4 cursor-pointer">USR_33109</td>
+<td class="px-6 py-4 text-slate-300">Two-factor authentication verified successfully</td>
+<td class="px-6 py-4">
+<span class="text-emerald-400 font-medium">Success</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 text-slate-400 font-mono">2023-10-19 14:15:22</td>
+<td class="px-6 py-4 font-medium text-slate-200">Security</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-amber-500/10 text-amber-500 w-fit">
+<span class="size-1.5 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold uppercase">Warning</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary underline decoration-primary/30 underline-offset-4 cursor-pointer">SYS_GATEWAY_02</td>
+<td class="px-6 py-4 text-slate-300">Firewall blocked 15 requests from known malicious crawler</td>
+<td class="px-6 py-4">
+<span class="text-slate-500 italic">Auto-blocked</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-border-gold/20 flex items-center justify-between">
+<p class="text-xs text-slate-400 italic">Showing last 1,000 logs • Refresh for latest</p>
+<div class="flex items-center gap-1">
+<button class="p-1 glass-panel rounded hover:text-primary disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-primary text-background-dark text-xs font-bold rounded">1</button>
+<button class="px-3 py-1 glass-panel hover:bg-primary/10 text-xs font-bold rounded">2</button>
+<button class="px-3 py-1 glass-panel hover:bg-primary/10 text-xs font-bold rounded">3</button>
+<span class="text-slate-500 px-2">...</span>
+<button class="px-3 py-1 glass-panel hover:bg-primary/10 text-xs font-bold rounded">48</button>
+<button class="p-1 glass-panel rounded hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- System Footer Info -->
+<footer class="mt-auto px-8 py-4 border-t border-border-gold/10 flex justify-between items-center text-[10px] uppercase tracking-widest text-slate-500">
+<div class="flex gap-6">
+<span class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    API Gateway: Operational
+                </span>
+<span class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Database: Syncing
+                </span>
+</div>
+<div>SusuPay Enterprise v2.4.1-LTS</div>
+</footer>
+</main>
+</body></html>

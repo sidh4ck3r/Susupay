@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Center - Emerald &amp; Sapphire</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(16, 183, 127, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .sapphire-glow {
+            box-shadow: 0 0 20px rgba(16, 115, 183, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<header class="flex items-center justify-between border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-8 py-4 z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">filter_vintage</span>
+<h2 class="text-xl font-bold tracking-tight">Emerald Analytics</h2>
+</div>
+<div class="hidden md:flex items-center bg-primary/5 rounded-lg border border-primary/10 px-3 py-1.5 w-64">
+<span class="material-symbols-outlined text-primary/60 text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-primary/40" placeholder="Search insights..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-background-dark"></span>
+</button>
+<button class="p-2 rounded-lg hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-br from-primary to-blue-500 sapphire-glow" data-alt="User avatar placeholder with abstract sapphire gradient"></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<aside class="w-64 border-r border-primary/10 p-6 flex flex-col gap-6 bg-background-dark/40 backdrop-blur-sm">
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary text-background-dark font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-primary/10 text-slate-400 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-primary/10 text-slate-400 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">history</span> Audit Logs
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-primary/10 text-slate-400 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">description</span> Reports
+                    </a>
+</nav>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto relative">
+<div class="max-w-5xl mx-auto space-y-8">
+<div class="flex items-end justify-between">
+<div>
+<h1 class="text-3xl font-bold">Main Dashboard</h1>
+<p class="text-slate-400 mt-1">Monitoring Q4 Performance &amp; Security Metrics</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">calendar_today</span> Oct - Dec 2023
+                            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass p-6 rounded-xl sapphire-glow">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium">Active Sessions</span>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div class="text-3xl font-bold">1,284</div>
+<div class="text-xs text-primary mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% from yesterday
+                            </div>
+</div>
+<div class="glass p-6 rounded-xl sapphire-glow">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium">Threats Blocked</span>
+<span class="material-symbols-outlined text-blue-400">shield</span>
+</div>
+<div class="text-3xl font-bold">42</div>
+<div class="text-xs text-blue-400 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> All systems secure
+                            </div>
+</div>
+<div class="glass p-6 rounded-xl sapphire-glow">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium">Data Processed</span>
+<span class="material-symbols-outlined text-primary">database</span>
+</div>
+<div class="text-3xl font-bold">4.2 TB</div>
+<div class="text-xs text-slate-500 mt-2">Update: 2 mins ago</div>
+</div>
+</div>
+<div class="glass rounded-xl h-64 flex items-center justify-center border-dashed border-primary/20 bg-primary/5">
+<p class="text-slate-500 flex items-center gap-2">
+<span class="material-symbols-outlined">insert_chart</span> Chart Visualization Area
+                        </p>
+</div>
+</div>
+<div class="absolute top-6 right-6 z-50 animate-bounce-in">
+<div class="glass w-[400px] p-5 rounded-xl sapphire-glow border border-primary/30 shadow-2xl bg-background-dark/90 backdrop-blur-xl">
+<div class="flex gap-4">
+<div class="h-12 w-12 rounded-full flex-shrink-0 bg-gradient-to-br from-primary/40 to-blue-500/40 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-slate-100">New Filter Shared</h3>
+<button class="text-slate-400 hover:text-white">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<p class="text-sm text-slate-300 mt-1">
+<span class="font-semibold text-primary">Alex Rivera</span> shared a new Filter Preset: <span class="italic text-blue-400">Q4 Audit Log</span>
+</p>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 bg-primary text-background-dark font-bold py-2 px-4 rounded-lg text-sm hover:opacity-90 transition-opacity">
+                                        View Preset
+                                    </button>
+<button class="flex-1 bg-primary/10 text-primary border border-primary/20 font-bold py-2 px-4 rounded-lg text-sm hover:bg-primary/20 transition-all">
+                                        Dismiss
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-y-0 right-0 w-96 bg-background-dark/95 backdrop-blur-2xl border-l border-primary/20 z-50 sapphire-glow flex flex-col shadow-[-10px_0_30px_rgba(0,0,0,0.5)]">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<h2 class="text-xl font-bold">Notifications</h2>
+</div>
+<button class="p-2 hover:bg-primary/10 rounded-full">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="p-4">
+<h3 class="text-xs font-bold uppercase tracking-wider text-primary/60 mb-4 px-2">Recent Notifications</h3>
+<div class="bg-primary/10 border border-primary/30 rounded-xl p-4 mb-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+</div>
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">filter_list</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Shared Filter Preset</p>
+<p class="text-xs text-slate-400 mt-1">Alex Rivera shared 'Q4 Audit Log' with your team.</p>
+<div class="flex gap-2 mt-3">
+<button class="text-xs bg-primary px-3 py-1.5 rounded-md text-background-dark font-bold">Open</button>
+<button class="text-xs text-slate-400 px-3 py-1.5">Dismiss</button>
+</div>
+<p class="text-[10px] text-primary/40 mt-3">2 minutes ago</p>
+</div>
+</div>
+</div>
+<div class="hover:bg-primary/5 rounded-xl p-4 mb-4 border border-transparent transition-colors cursor-pointer">
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-blue-400 text-xl">shield</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-200">System Security Update</p>
+<p class="text-xs text-slate-400 mt-1">Automatic patch applied successfully to Emerald node #04.</p>
+<p class="text-[10px] text-slate-500 mt-2">1 hour ago</p>
+</div>
+</div>
+</div>
+<div class="hover:bg-primary/5 rounded-xl p-4 mb-4 border border-transparent transition-colors cursor-pointer">
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">insights</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-200">Weekly Summary Ready</p>
+<p class="text-xs text-slate-400 mt-1">Your weekly analytics report for the Admin Panel is now available.</p>
+<p class="text-[10px] text-slate-500 mt-2">4 hours ago</p>
+</div>
+</div>
+</div>
+<div class="hover:bg-primary/5 rounded-xl p-4 border border-transparent transition-colors cursor-pointer opacity-60">
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-slate-500/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-slate-400 text-xl">account_circle</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-300">Profile Updated</p>
+<p class="text-xs text-slate-500 mt-1">Your account settings were successfully updated.</p>
+<p class="text-[10px] text-slate-600 mt-2">Yesterday at 14:20</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-primary/10 bg-background-dark/50">
+<button class="w-full py-3 rounded-lg border border-primary/30 text-primary font-bold hover:bg-primary hover:text-background-dark transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">done_all</span> Mark all as read
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

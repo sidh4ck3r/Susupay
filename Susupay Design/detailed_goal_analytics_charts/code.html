@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#16140a",
+                        "surface-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(34, 31, 16, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Main Layout Container -->
+<div class="flex flex-col min-h-screen">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 glass border-b border-primary/10 px-4 lg:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-background-dark text-2xl font-bold">payments</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">SusuPay <span class="text-primary">Analytics</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary pb-1" href="#">Analytics</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Goals</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Cards</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a male user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO0y9fVvSl_XAMVxhJYjZNRGdlQMLSZ6EQ6zRD7VYj0TFPssPgFT9o8kWtC6NFmWZkHSVUAVCuTXN-jPV3Ys7jckHHT0SgTjFtR3wPs5cZe3ej6U7kSNN9xjr2quAUEEiuA4eyZR8YCqy7YF6I-iqAT-M4wA5dQvTowjMRueeuh7y0w_aT7YuyZKzgjqO1oTLL0jtg5S66F7JUbn-R1tcqw_8ETxB0lPcRbnev9BU3k1i8dKFEsVKGfC645ImGCt80YMsbwGx5icA"/>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 lg:p-10 space-y-8">
+<!-- Hero Section: Primary Goal -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 glass rounded-xl p-8 flex flex-col md:flex-row items-center gap-10">
+<!-- Circular Gauge -->
+<div class="relative flex items-center justify-center">
+<svg class="progress-ring w-48 h-48">
+<circle class="text-white/5" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="138.23" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black italic">75%</span>
+<span class="text-xs uppercase tracking-widest text-slate-400">Achieved</span>
+</div>
+</div>
+<div class="flex-1 space-y-4 text-center md:text-left">
+<div>
+<span class="text-primary text-xs font-bold uppercase tracking-tighter bg-primary/10 px-2 py-1 rounded">Primary Goal</span>
+<h1 class="text-5xl font-black mt-2 tracking-tight">Xmas Fund 2024</h1>
+<p class="text-slate-400 mt-2">Saving for the ultimate family holiday getaway.</p>
+</div>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<div class="bg-white/5 border border-white/10 rounded-lg px-4 py-2">
+<p class="text-xs text-slate-500">Current Balance</p>
+<p class="text-xl font-bold">$7,500.00</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-lg px-4 py-2">
+<p class="text-xs text-slate-500">Target Amount</p>
+<p class="text-xl font-bold text-primary">$10,000.00</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary text-background-dark font-bold px-6 py-2.5 rounded-lg hover:shadow-[0_0_15px_rgba(238,205,43,0.4)] transition-all">Add Funds</button>
+<button class="border border-white/20 hover:bg-white/5 px-6 py-2.5 rounded-lg font-bold transition-all">Adjust Plan</button>
+</div>
+</div>
+</div>
+<!-- Time Remaining Card -->
+<div class="lg:col-span-4 glass rounded-xl p-8 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+                            Time Remaining
+                        </h3>
+<p class="text-slate-400 text-sm">Goal deadline: Dec 20, 2024</p>
+</div>
+<div class="grid grid-cols-2 gap-4 my-6">
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-4 text-center">
+<span class="text-3xl font-black text-primary">45</span>
+<p class="text-xs uppercase text-slate-400">Days</p>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+<span class="text-3xl font-black">12</span>
+<p class="text-xs uppercase text-slate-400">Hours</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-500">Progress velocity</span>
+<span class="text-green-400">+12.5% this month</span>
+</div>
+<div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-400 h-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Metrics Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">trending_up</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Average Daily Contribution</p>
+<h4 class="text-3xl font-black mt-1">$42.80</h4>
+<p class="text-green-400 text-xs mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs font-bold">arrow_upward</span>
+                        8% from last week
+                    </p>
+</div>
+<div class="glass rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">event_available</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Projected Completion</p>
+<h4 class="text-3xl font-black mt-1">Nov 14</h4>
+<p class="text-primary text-xs mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs font-bold">bolt</span>
+                        36 days ahead of schedule
+                    </p>
+</div>
+<div class="glass rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">workspace_premium</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Current Streak</p>
+<h4 class="text-3xl font-black mt-1">18 Days</h4>
+<p class="text-slate-400 text-xs mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs font-bold text-orange-400">local_fire_department</span>
+                        Personal record!
+                    </p>
+</div>
+</section>
+<!-- Main Analytics Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Contribution Consistency Bar Chart -->
+<div class="glass rounded-xl p-6 flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-bold text-lg tracking-tight">Contribution Consistency</h3>
+<p class="text-xs text-slate-500">Daily deposits over the last 14 days</p>
+</div>
+<select class="bg-white/5 border-none text-xs rounded-lg text-slate-300 focus:ring-primary">
+<option>Last 14 Days</option>
+<option>Last Month</option>
+</select>
+</div>
+<div class="flex-1 flex items-end justify-between gap-2 h-48">
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[65%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[30%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[90%]"></div>
+<div class="w-full bg-primary hover:bg-primary transition-colors rounded-t-sm h-[100%] shadow-[0_0_10px_rgba(238,205,43,0.3)]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[55%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[45%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[75%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[85%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[20%]"></div>
+<div class="w-full bg-primary/20 hover:bg-primary transition-colors rounded-t-sm h-[95%]"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+<span>Oct 01</span>
+<span>Today</span>
+</div>
+</div>
+<!-- Progress Projection Line Chart -->
+<div class="glass rounded-xl p-6 flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-bold text-lg tracking-tight">Progress Projection</h3>
+<p class="text-xs text-slate-500">Actual vs. Projected Velocity</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Actual</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full border border-white/40 border-dashed"></span>
+<span class="text-[10px] text-slate-400 uppercase font-bold">Projected</span>
+</div>
+</div>
+</div>
+<!-- Mock Line Chart SVG -->
+<div class="flex-1 relative">
+<svg class="w-full h-40" preserveaspectratio="none" viewbox="0 0 400 100">
+<!-- Projected Path (Dashed) -->
+<path d="M0,100 L50,90 L100,80 L150,70 L200,60 L250,50 L300,40 L350,30 L400,20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4" stroke-width="2"></path>
+<!-- Actual Path -->
+<path d="M0,100 L50,95 L100,85 L150,70 L200,50 L250,35 L300,20" fill="none" stroke="#eecd2b" stroke-linecap="round" stroke-width="3"></path>
+<!-- Glow -->
+<path d="M0,100 L50,95 L100,85 L150,70 L200,50 L250,35 L300,20" fill="none" stroke="#eecd2b" stroke-opacity="0.1" stroke-width="8"></path>
+</svg>
+<div class="absolute bottom-0 w-full flex justify-between text-[10px] text-slate-500 uppercase font-bold">
+<span>Aug</span>
+<span>Sep</span>
+<span>Oct</span>
+<span>Nov</span>
+</div>
+</div>
+</div>
+<!-- Goal Comparison -->
+<div class="glass rounded-xl p-6 lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg tracking-tight">Performance Comparison</h3>
+<p class="text-xs text-slate-500">Active portfolio summary</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- House Fund -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-bold">House Fund</p>
+<p class="text-xs text-slate-500">$45,000 / $120k</p>
+</div>
+<span class="text-xs font-black text-slate-400">37%</span>
+</div>
+<div class="w-full bg-white/5 h-3 rounded-full overflow-hidden border border-white/5">
+<div class="bg-primary/40 h-full w-[37%]"></div>
+</div>
+</div>
+<!-- Education -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-bold">Education</p>
+<p class="text-xs text-slate-500">$8,200 / $15k</p>
+</div>
+<span class="text-xs font-black text-slate-400">54%</span>
+</div>
+<div class="w-full bg-white/5 h-3 rounded-full overflow-hidden border border-white/5">
+<div class="bg-primary/60 h-full w-[54%]"></div>
+</div>
+</div>
+<!-- Emergency -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-bold">Emergency</p>
+<p class="text-xs text-slate-500">$5,000 / $5k</p>
+</div>
+<span class="text-xs font-black text-green-400">100%</span>
+</div>
+<div class="w-full bg-white/5 h-3 rounded-full overflow-hidden border border-white/5">
+<div class="bg-primary h-full w-[100%] shadow-[0_0_10px_rgba(238,205,43,0.3)]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-auto py-10 px-4 border-t border-white/5 glass text-center">
+<div class="flex flex-col items-center gap-4">
+<div class="flex items-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-sm">payments</span>
+<p class="text-xs font-bold tracking-widest uppercase">SusuPay Premium Services</p>
+</div>
+<p class="text-slate-500 text-xs max-w-md">Detailed analytics provided for informative purposes. SusuPay is a registered trademark of SusuPay Global Ltd.</p>
+<div class="flex gap-6 text-xs text-slate-400 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

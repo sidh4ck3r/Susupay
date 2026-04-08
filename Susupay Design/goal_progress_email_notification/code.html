@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(51, 47, 25, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+<!-- Email Container -->
+<div class="max-w-[600px] w-full bg-background-light dark:bg-background-dark border border-slate-200 dark:border-primary/10 overflow-hidden rounded-xl shadow-2xl">
+<!-- Header -->
+<header class="flex items-center justify-between px-8 py-6 border-b border-slate-200 dark:border-primary/10">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">star_rate</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold tracking-tight">SusuPay</h2>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile picture of Alex" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHCOhl1puVMUVswnVcYJR_gthjTrboTg0BJpq2UogfZM4v1aw93eS0Ll-xA2V4FsaMrWf4OH976IZ3BiwvIEZxTJ0pLbW4HoH3MXPsq5y1sWstTtuRxt1aIon1J8jQmviVQ6DytkZrFcY18m1GyR_atgxP68W16rMUtLSQfgNxzuZEAtjdHyWa3Px3sZ-lZywAjjcHPSV4OVM8QCU3fBkPOAq4GZtKJ6P6uFa9kKrwWX-fTRlKEhB8BJ6qSwpl946lfqXA1P4dP4A"/>
+</div>
+</header>
+<!-- Main Body -->
+<main class="px-8 py-10">
+<!-- Greeting -->
+<div class="text-center mb-10">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight mb-2">Keep going, Alex!</h1>
+<p class="text-slate-600 dark:text-primary/70 text-lg">You're making incredible progress on your savings.</p>
+</div>
+<!-- Glassmorphism Main Card -->
+<div class="glass-card rounded-xl p-8 mb-8 relative overflow-hidden">
+<!-- Abstract background glow -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="flex flex-col md:flex-row gap-6 items-center">
+<div class="w-32 h-32 rounded-xl bg-primary/20 flex items-center justify-center shrink-0 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-5xl">home</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1">House Fund</h3>
+<p class="text-slate-600 dark:text-primary/80 font-medium">75% of your goal reached</p>
+</div>
+</div>
+<!-- Progress Bar Section -->
+<div class="mt-8">
+<div class="flex justify-between items-end mb-3">
+<span class="text-sm font-semibold text-slate-500 dark:text-primary/60 uppercase tracking-wider">Progress</span>
+<span class="text-2xl font-bold text-primary">75%</span>
+</div>
+<div class="h-4 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_15px_rgba(238,205,43,0.5)] transition-all duration-500" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between mt-3 text-sm">
+<span class="text-slate-600 dark:text-slate-400 font-medium">$7,500 saved</span>
+<span class="text-slate-600 dark:text-slate-400 font-medium">Goal: $10,000</span>
+</div>
+</div>
+</div>
+<!-- Milestone Section -->
+<div class="mb-10 bg-slate-100 dark:bg-white/5 rounded-xl p-6 border-l-4 border-primary">
+<div class="flex items-start gap-4">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">flag</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-slate-100">Next Milestone</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">You are only $2,500 away from securing your down payment! Deposit today to stay on track for your 2024 target.</p>
+</div>
+</div>
+</div>
+<!-- Primary CTA -->
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined font-bold">add_circle</span>
+                    Add Funds to House Fund
+                </button>
+<button class="w-full bg-transparent hover:bg-slate-200 dark:hover:bg-white/5 text-slate-900 dark:text-slate-100 font-semibold py-3 rounded-xl transition-colors border border-slate-300 dark:border-white/10">
+                    View All Goals
+                </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="px-8 py-10 bg-slate-100 dark:bg-black/20 border-t border-slate-200 dark:border-primary/10 text-center">
+<div class="flex justify-center gap-6 mb-8">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">language</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-500 leading-relaxed max-w-xs mx-auto">
+                Sent with ❤️ from SusuPay HQ.<br/>
+                123 Financial District, Suite 500, New York, NY
+            </p>
+<div class="mt-6 flex justify-center gap-4 text-xs font-medium text-slate-400">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<span>•</span>
+<a class="hover:underline" href="#">Unsubscribe</a>
+<span>•</span>
+<a class="hover:underline" href="#">Preferences</a>
+</div>
+<p class="mt-8 text-[10px] text-slate-400 uppercase tracking-widest">© 2024 SusuPay Inc.</p>
+</footer>
+</div>
+</body></html>

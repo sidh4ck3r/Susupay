@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay | Audit History &amp; Compliance Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0a120f",
+                        "glass": "rgba(16, 34, 28, 0.7)",
+                        "glass-border": "rgba(16, 183, 127, 0.2)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 34, 28, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.15);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(16, 183, 127, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 glass-panel border-b border-glass-border px-6 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">shield_person</span>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">SusuPay <span class="font-light text-slate-400">Admin</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Users</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Compliance</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 flex-1 justify-end">
+<div class="relative max-w-xs w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-800/50 border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary" placeholder="Search Audit Logs..." type="text"/>
+</div>
+<button class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 overflow-hidden">
+<img alt="Admin Avatar" data-alt="Admin user profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9itYyvxW1IxuPg5MMyjcP3XqVIz-fXfGc0AM1FHTvM7X4PZxnolgMQXZFu6r678RpYNWahCALha_uh0OCCO3UWaQccw6_ntck2gb2xStPuJUvK-w8IAqDnw7vxgFdMcbIplXVY6SWXkofr_xMHvXB_U7p-SQxwN5KpBrxcfJNKjziyRFHStVfT8GTMYx7iFvDvkARqVw55RdMl-OCJhB51ztTrLuREofLIFeeTIfzTnbV6oYKDCP4YtFuTr4BfyX4tsiir7h_KFI"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full p-6 space-y-8">
+<!-- Page Heading & Export -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="text-3xl font-extrabold text-white tracking-tight">Audit History &amp; Compliance Log</h1>
+<p class="text-slate-400">Monitor and review administrative actions and document resolutions for KYC/AML compliance.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-background-dark font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">ios_share</span>
+                    Export Audit Log (CSV/PDF)
+                </button>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-panel rounded-xl p-5 border-l-4 border-l-primary/50 emerald-glow">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Total Reviewed</p>
+<span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full font-bold">+12%</span>
+</div>
+<p class="text-3xl font-bold text-white mt-2">12,480</p>
+<p class="text-slate-500 text-xs mt-1">Previous 30 days: 11,142</p>
+</div>
+<div class="glass-panel rounded-xl p-5 border-l-4 border-l-primary emerald-glow">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Approved</p>
+<span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-1 rounded-full font-bold">82.1%</span>
+</div>
+<p class="text-3xl font-bold text-white mt-2">10,240</p>
+<p class="text-slate-500 text-xs mt-1">Consistent with last month</p>
+</div>
+<div class="glass-panel rounded-xl p-5 border-l-4 border-l-rose-500/50">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Rejected</p>
+<span class="bg-rose-500/10 text-rose-400 text-xs px-2 py-1 rounded-full font-bold">-3%</span>
+</div>
+<p class="text-3xl font-bold text-white mt-2">1,850</p>
+<p class="text-slate-500 text-xs mt-1">High: Poor photo quality</p>
+</div>
+<div class="glass-panel rounded-xl p-5 border-l-4 border-l-amber-500/50">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Escalated</p>
+<span class="bg-amber-500/10 text-amber-400 text-xs px-2 py-1 rounded-full font-bold">+5%</span>
+</div>
+<p class="text-3xl font-bold text-white mt-2">390</p>
+<p class="text-slate-500 text-xs mt-1">Requires Senior Review</p>
+</div>
+</div>
+<!-- Filters -->
+<div class="glass-panel rounded-xl p-6 space-y-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-lg">filter_list</span>
+<h3 class="text-white font-semibold">Advanced Filters</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date Range</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">calendar_today</span>
+<select class="w-full bg-slate-800/40 border-slate-700/50 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>Custom Range</option>
+</select>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Status</label>
+<select class="w-full bg-slate-800/40 border-slate-700/50 rounded-lg px-4 py-2 text-sm focus:ring-primary">
+<option>All Statuses</option>
+<option>Approved</option>
+<option>Rejected</option>
+<option>Escalated</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Reviewer</label>
+<select class="w-full bg-slate-800/40 border-slate-700/50 rounded-lg px-4 py-2 text-sm focus:ring-primary">
+<option>All Admin Personnel</option>
+<option>Sarah Jenkins</option>
+<option>Robert Chen</option>
+<option>Amara Okafor</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Document Type</label>
+<select class="w-full bg-slate-800/40 border-slate-700/50 rounded-lg px-4 py-2 text-sm focus:ring-primary">
+<option>All Documents</option>
+<option>Passport</option>
+<option>ID Card</option>
+<option>Driver's License</option>
+<option>Proof of Address</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Audit Table -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-800/30 border-b border-glass-border">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Date &amp; Time</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Document Details</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Reviewer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Resolution Reason</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-glass-border">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Oct 24, 2023</div>
+<div class="text-xs text-slate-500">14:32:10 UTC</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">badge</span>
+<div>
+<div class="text-sm font-medium text-white">Passport</div>
+<div class="text-xs text-slate-500">ID: P-99201-X</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Jonathan Harker</div>
+<div class="text-xs text-slate-500">UID: 882193</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-700 overflow-hidden border border-slate-600">
+<img alt="Sarah J" data-alt="Avatar of Sarah Jenkins admin reviewer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsrLa8NPZLWm6YELUrlewjiSYwI22qaj8EKz1rtTbvYQC4fODMi7qBYoy_WzGcnp-2-eGjSO3kv9pLVkvxa_sguVroBWVY7kxEpbQqDG09oV-t6fmu_hPV1pZTcc_qtopvN_WK4yCtteWiaZ7WxmsioereG_odA-5pszvhORsLR8iZQM-sbZb81WVV6q-kxoeMnBoiA7ymEs40ERkkuxrFiHioGUsTkroybM8mRwFp6bFtUyY6kCAKKXsS3BgmeWAdoElWv0wwSdE"/>
+</div>
+<span class="text-sm text-slate-300">Sarah J.</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        Approved
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-slate-400 max-w-[200px] truncate">Identity Verified Successfully</div>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1 ml-auto">
+                                        View Original
+                                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Oct 24, 2023</div>
+<div class="text-xs text-slate-500">12:15:44 UTC</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">credit_card</span>
+<div>
+<div class="text-sm font-medium text-white">ID Card</div>
+<div class="text-xs text-slate-500">ID: N-55312-C</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Mina Murray</div>
+<div class="text-xs text-slate-500">UID: 991044</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-700 overflow-hidden border border-slate-600">
+<img alt="Robert C" data-alt="Avatar of Robert Chen admin reviewer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZkbWcYZ-9ogTXelk57kAkvgsA157X2rxznD_jAff9sa_Xm7v2yULCRGVMEQ_To5GbeezOWUj7Wi_H3QMbzCDUQ16NTvqWs4LJ7TQiScY_revikTbZBJ-p_EYf_bX1KwXGLuhEbIoiC1xLlyeeGZsN7580DMX7CtkKIDgZVYeQFjqhEQmP4ICw6LHwSxwXk_H4X4ViVZVRg05oTaXdjLHlwshlMnbUPKim-PnGsa4YLU8tdTUxX7lYhtLWMv_96j7sAmp05TtrN5o"/>
+</div>
+<span class="text-sm text-slate-300">Robert C.</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                                        Rejected
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-slate-400 max-w-[200px] truncate">Blurred Image / Unreadable</div>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1 ml-auto">
+                                        View Original
+                                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Oct 24, 2023</div>
+<div class="text-xs text-slate-500">11:02:18 UTC</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">description</span>
+<div>
+<div class="text-sm font-medium text-white">Utility Bill</div>
+<div class="text-xs text-slate-500">ID: B-0021-A</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-white">Arthur Holmwood</div>
+<div class="text-xs text-slate-500">UID: 772183</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-700 overflow-hidden border border-slate-600">
+<img alt="Amara O" data-alt="Avatar of Amara Okafor admin reviewer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArLftK608R6Cp1avdMCYRZO9O1c3JQKZ3kNR-Y1B6vpNXO6xLt8fsJ-oJjW7hAt_f-9_oTqMmFoZNcvVOi1lzJ85yPgGPvUfOxjNXO7onTK-tkYI0Lzcmu2mPHY__XRpfxZNGB4iiQRC4dpCAFqS0YSkQnxK2JsqAZD_Xvf_lA4iQND-J8YK_kMTIcBRfNZ4RPxVXlh9Q2fiMxSEwzlTubG5IHqodMq_Z4j9YvDc1lQdXMAPVwhlv2WQYZbxuNutUewR-ADYbvJL4"/>
+</div>
+<span class="text-sm text-slate-300">Amara O.</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                        Escalated
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-slate-400 max-w-[200px] truncate">Document Tamper Flag (Auto)</div>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<button class="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1 ml-auto">
+                                        View Original
+                                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-glass-border">
+<p class="text-sm text-slate-400">Showing <span class="text-white font-medium">1-10</span> of <span class="text-white font-medium">12,480</span> results</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-800 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded-lg bg-primary text-background-dark text-sm font-bold">1</button>
+<button class="px-3 py-1 rounded-lg hover:bg-slate-800 text-slate-400 text-sm font-bold">2</button>
+<button class="px-3 py-1 rounded-lg hover:bg-slate-800 text-slate-400 text-sm font-bold">3</button>
+<span class="text-slate-600">...</span>
+<button class="px-3 py-1 rounded-lg hover:bg-slate-800 text-slate-400 text-sm font-bold">1,248</button>
+<button class="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Elements -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+</div>
+</body></html>

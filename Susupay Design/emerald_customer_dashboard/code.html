@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Customer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 183, 127, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(16, 183, 127, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md px-6 py-3 lg:px-10">
+<div class="mx-auto flex max-w-7xl items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-background-dark">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-100">SusuPay</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<div class="h-10 w-px bg-primary/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="hidden text-right sm:block">
+<p class="text-sm font-semibold text-slate-100">Alex Morgan</p>
+<p class="text-xs text-primary">Premium Member</p>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 bg-primary/10 overflow-hidden" data-alt="User profile avatar portrait">
+<img alt="User profile" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8AVESdxADOqpY0GbT6bOIRraI7nawvHAkT8nWjCh0zmiePevSESaLbhMdlxDe99HOjIAxdDcD_VVl3ptm4Wd9AYxIelqalrnqVdhT8AVHqyBQMiCIJeD1FgGoJ2fsmyI3U7b51A-mokjTSHK2j4c6HjWgOYMpPxGK2yUpsO-QcSQCfngNHFgD9_qg3JeEkOZM3jt7O0MKu82tQgYHIlS5a10fkO27T1WgnA-ARbOEwkA7ydWikRK-GjcP4QCDBLd3MI1vvnVLkM8"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="mx-auto flex w-full max-w-7xl grow flex-col gap-8 p-6 lg:flex-row lg:p-10">
+<!-- Sidebar Navigation -->
+<aside class="flex w-full flex-col gap-2 lg:w-64">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-xl bg-primary px-4 py-3 text-background-dark font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Savings</span>
+</a>
+<a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span>Cards</span>
+</a>
+<a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Transactions</span>
+</a>
+<div class="my-4 h-px bg-primary/5"></div>
+<a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-400 hover:bg-red-500/10 hover:text-red-500 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+<!-- Goal Progress Sidebar Widget -->
+<div class="mt-8 rounded-2xl glass-panel p-5">
+<h3 class="mb-4 text-sm font-bold uppercase tracking-wider text-primary">Goal Progress</h3>
+<div class="space-y-4">
+<div>
+<div class="mb-1 flex justify-between text-xs">
+<span class="text-slate-300">Vacation Fund</span>
+<span class="font-bold text-primary">75%</span>
+</div>
+<div class="h-1.5 w-full rounded-full bg-primary/10">
+<div class="h-full rounded-full bg-primary" style="width: 75%"></div>
+</div>
+</div>
+<div>
+<div class="mb-1 flex justify-between text-xs">
+<span class="text-slate-300">New Car</span>
+<span class="font-bold text-primary">42%</span>
+</div>
+<div class="h-1.5 w-full rounded-full bg-primary/10">
+<div class="h-full rounded-full bg-primary" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Dashboard Content -->
+<div class="flex flex-1 flex-col gap-8">
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class="rounded-2xl glass-panel p-6 shadow-xl">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-400">Total Balance</p>
+<span class="material-symbols-outlined text-primary">show_chart</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-bold text-slate-100">$12,450.80</h3>
+<p class="mt-2 flex items-center gap-1 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                +12.5% <span class="text-slate-500">vs last month</span>
+</p>
+</div>
+</div>
+<div class="rounded-2xl glass-panel p-6 shadow-xl">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-400">Monthly Savings</p>
+<span class="material-symbols-outlined text-primary">savings</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-bold text-slate-100">$2,100.00</h3>
+<p class="mt-2 flex items-center gap-1 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                +5.2% <span class="text-slate-500">vs target</span>
+</p>
+</div>
+</div>
+<div class="hidden rounded-2xl glass-panel p-6 shadow-xl lg:block">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-400">Active Goals</p>
+<span class="material-symbols-outlined text-primary">flag</span>
+</div>
+<div class="mt-4">
+<h3 class="text-3xl font-bold text-slate-100">4</h3>
+<p class="mt-2 text-sm text-slate-500">2 reaching target soon</p>
+</div>
+</div>
+</div>
+<!-- Main Charts & Activity Row -->
+<div class="grid grid-cols-1 gap-8 xl:grid-cols-3">
+<!-- Savings Chart -->
+<div class="xl:col-span-2">
+<div class="rounded-2xl glass-panel p-6">
+<div class="mb-6 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-100">Savings Growth</h3>
+<select class="rounded-lg border-primary/20 bg-primary/5 text-sm text-primary focus:ring-primary">
+<option>Last 6 months</option>
+<option>Last year</option>
+</select>
+</div>
+<div class="relative h-[240px] w-full">
+<svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 500 200">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#10b77f" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#10b77f" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Area Path -->
+<path d="M0,180 Q50,160 100,140 T200,100 T300,60 T400,80 T500,40 V200 H0 Z" fill="url(#gradient)"></path>
+<!-- Line Path -->
+<path d="M0,180 Q50,160 100,140 T200,100 T300,60 T400,80 T500,40" fill="none" stroke="#10b77f" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="mt-4 flex justify-between text-xs font-medium text-slate-500">
+<span>JAN</span>
+<span>FEB</span>
+<span>MAR</span>
+<span>APR</span>
+<span>MAY</span>
+<span>JUN</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Transactions -->
+<div class="xl:col-span-1">
+<div class="rounded-2xl glass-panel flex flex-col h-full">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-100">Recent Transactions</h3>
+<button class="text-xs font-bold text-primary hover:underline">View All</button>
+</div>
+<div class="flex-1 space-y-1 p-4 overflow-y-auto max-h-[300px] xl:max-h-none">
+<div class="flex items-center justify-between rounded-xl p-3 hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Grocery Store</p>
+<p class="text-xs text-slate-500">Today, 2:45 PM</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-100">-$85.20</p>
+</div>
+<div class="flex items-center justify-between rounded-xl p-3 hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Payroll Deposit</p>
+<p class="text-xs text-slate-500">Yesterday</p>
+</div>
+</div>
+<p class="text-sm font-bold text-primary">+$3,400.00</p>
+</div>
+<div class="flex items-center justify-between rounded-xl p-3 hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Rent Payment</p>
+<p class="text-xs text-slate-500">3 days ago</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-100">-$1,200.00</p>
+</div>
+<div class="flex items-center justify-between rounded-xl p-3 hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">electric_bolt</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Utility Bill</p>
+<p class="text-xs text-slate-500">4 days ago</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-100">-$124.50</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cards & Quick Actions Row -->
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+<div class="rounded-2xl glass-panel p-6">
+<h3 class="mb-6 text-lg font-bold text-slate-100">My Cards</h3>
+<div class="group relative h-48 w-full cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-[#0a7a55] p-6 text-background-dark shadow-2xl transition-transform hover:-translate-y-1">
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-3xl opacity-80">contactless</span>
+<span class="font-bold text-xl italic opacity-90">SusuPay Platinum</span>
+</div>
+<div class="mt-8">
+<p class="text-xs font-medium uppercase tracking-widest opacity-70">Card Number</p>
+<p class="mt-1 text-xl font-bold tracking-[0.2em]">**** **** **** 4289</p>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase opacity-70">Card Holder</p>
+<p class="text-sm font-bold">ALEX MORGAN</p>
+</div>
+<div>
+<p class="text-[10px] uppercase opacity-70">Expires</p>
+<p class="text-sm font-bold">12/26</p>
+</div>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary/10 py-3 text-sm font-bold text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                                Add Card
+                            </button>
+<button class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary/10 py-3 text-sm font-bold text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                                Card Details
+                            </button>
+</div>
+</div>
+<div class="rounded-2xl glass-panel p-6">
+<h3 class="mb-6 text-lg font-bold text-slate-100">Quick Transfer</h3>
+<div class="space-y-6">
+<div class="flex gap-4 overflow-x-auto pb-2">
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 flex-shrink-0 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center text-primary cursor-pointer hover:bg-primary/20">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="text-[10px] font-medium text-slate-400">Add New</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 flex-shrink-0 rounded-full overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-primary transition-all" data-alt="Recipient profile avatar Sarah">
+<img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFhb2IsqLMQKsogepzlLfBclj-9FGkepTJqhLLumMCXr7ud4rgXBHKCrN1fCbTBOxoYvjPKufd4pBHFYTQZJhsAyvchJ-QmLClipsolEpG1mEd6CX-qIFDcCF7LLMHx1qi4oy4jYV1FcoiX7RYjb0VYA744DybgqK9dHDWTPjaZIfhKxn84AnBegkWVMnX7chl0W1wi8S7VhTg5YphnnYbbyRo4nYOzBjOgjjIUx6MPW0kC32RUYVRf0O461peXUDKwdIvWq47OTg"/>
+</div>
+<span class="text-[10px] font-medium text-slate-300">Sarah</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 flex-shrink-0 rounded-full overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-primary transition-all" data-alt="Recipient profile avatar David">
+<img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG9WLyo7LvvFz0Vpa3z2KyvZ4IbQplAmWXE4wJVXLLbFc6hYXjDRimKTQUHi7kdSuVIhu9xS0z-zGZwV8ezg9BhW1eJXWJUMD5eFoLRJnHEsRQ7GAyPaPEwpZPCcB3nmCz5GYQUsq4Ibi-25E-GksRdEcPHBwYyIshB_6tkqorMR-AaDi5MobA2oPcfeK6E9_NyVcjjsVf1G2Ui01EGXr6h5KHK12ng7GFC1_ol695rp625xyzrCSSGiWQ_ZrXQNRVPm8uvN6VQBU"/>
+</div>
+<span class="text-[10px] font-medium text-slate-300">David</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 flex-shrink-0 rounded-full overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-primary transition-all" data-alt="Recipient profile avatar Emily">
+<img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9nPj4Qr0n81gm6oh2r5rnGj9zum6hCxiuQo-ufT10rsSy_hz0H1KsZT0t17e3we5OuymQZI0swdWIIQEofojEFfDMRQk6K1p6Hua6_kqW44S31hUL4z38Fk6H-9GRG_ZRk530H4novQg3gE3W28agYnnGLFT3_3MQxKsUHeCxlSzGcIU9-7RG4BweM99l1T5VVL9bj2KYwlX0dC6r904agDYCbVlm4xdI8L6x4F2cayffur1Krr5k238xn9OqC2EJsY7PnM1G4dE"/>
+</div>
+<span class="text-[10px] font-medium text-slate-300">Emily</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="h-12 w-12 flex-shrink-0 rounded-full overflow-hidden cursor-pointer ring-2 ring-transparent hover:ring-primary transition-all" data-alt="Recipient profile avatar James">
+<img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnPS9z6XP0gAnpN2QAAHppdCYd9yYte4AaqyHSHhYkPUAIxAr5itgdKrmTiBwVPM5G9_FVhckzzzMF3PBXGbrqsyf2cCCZJM2JIkeWWOMh3mvZOnGtPp7MUiK1yvfFQHtU27SX8pmiIz0_2wYTdkyntZKRLpC0hVeM7b_v8zCHW4NBqak2Cp-vaXytrujv2BexxoFOm1SUGa7iKU0t580KtdyeXvKV00trkeF49t7K_f9n9tMstq_TxjSoshQyfG7baoYjJihbcCM"/>
+</div>
+<span class="text-[10px] font-medium text-slate-300">James</span>
+</div>
+</div>
+<div class="relative">
+<label class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Amount</label>
+<div class="flex items-center gap-3">
+<div class="relative flex-1">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">$</span>
+<input class="w-full rounded-xl border-primary/20 bg-primary/5 py-4 pl-10 pr-4 text-xl font-bold text-slate-100 focus:border-primary focus:ring-0" placeholder="0.00" type="text"/>
+</div>
+<button class="h-14 w-14 flex-shrink-0 rounded-xl bg-primary text-background-dark shadow-lg shadow-primary/20 flex items-center justify-center hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined font-bold">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Tab Bar (Mobile Only) -->
+<div class="fixed bottom-0 left-0 z-50 flex w-full border-t border-primary/10 bg-background-dark/90 p-2 backdrop-blur-md lg:hidden">
+<a class="flex flex-1 flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">savings</span>
+<span class="text-[10px] font-bold">Savings</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-[10px] font-bold">Cards</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</div>
+</div>
+</body></html>

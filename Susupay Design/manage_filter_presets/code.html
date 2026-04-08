@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin - Manage Presets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(16, 183, 127, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between border-b border-primary/20 px-6 py-4 lg:px-12 glass-panel sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-4xl">payments</span>
+</div>
+<div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">SusuPay Admin</h2>
+<p class="text-xs text-primary/70">Emerald-Sapphire Edition</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Transactions</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Exports</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg p-2 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 p-0.5">
+<div class="h-full w-full rounded-full bg-cover bg-center" data-alt="User profile avatar circle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCg0Lu_Rj5wY4iL2X5vzad7bDPo0iazJC5ooxeQ4CpfurSi1r6hlzNQGQ4lbkZoo5fkC6lzjbO5pqZCbCS1NmCtHtVPuzPtMbXRY8KJch9_P0TsV7dooeucMO64DzoXNkmaJlxkCVOc13r_kNL-XHpU6hWqNWDxXzd2iTeEPSsOrelly-hRZelBzVjlnzJyhy4T8MC1g8cLqyqC3W_jRiF_G4FWrrn1fBbQHfEUReFrpaUbtbFE_dgrdzrkOR8AnouPjsArtl6gRbU')"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 py-8 lg:px-12 max-w-7xl mx-auto w-full">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+<div>
+<h1 class="text-4xl font-black tracking-tight mb-2">Manage Presets</h1>
+<p class="text-slate-400 text-lg">Manage your saved export filter configurations for faster reporting.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold hover:scale-[1.02] transition-transform emerald-glow">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Create New Preset</span>
+</button>
+</div>
+<div class="mb-8 flex flex-col md:flex-row gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/60">search</span>
+<input class="w-full bg-primary/5 border border-primary/20 rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-slate-100 placeholder:text-slate-500" placeholder="Search presets by name or filters..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">sort</span>
+<span>Sort</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between hover:border-primary/40 transition-all group">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Monthly Collector Report</h3>
+<span class="bg-primary/20 text-primary text-[10px] uppercase font-bold px-2 py-1 rounded">Shared</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Created: Oct 12, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">history</span>
+<span>Last Used: 2 hours ago</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Date: Last 30 Days</span>
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Role: Collector</span>
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Status: Active</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-background-dark py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Apply</button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Update
+                            </button>
+<button class="bg-red-500/10 text-red-400 py-2 rounded-lg font-bold text-sm hover:bg-red-500/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+                                Delete
+                            </button>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between hover:border-primary/40 transition-all group">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Quarterly Audit Log</h3>
+<span class="bg-slate-700 text-slate-300 text-[10px] uppercase font-bold px-2 py-1 rounded">Private</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Created: Sep 05, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">history</span>
+<span>Last Used: 3 days ago</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Range: Q3 2023</span>
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Type: All Logs</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-background-dark py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Apply</button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Update
+                            </button>
+<button class="bg-red-500/10 text-red-400 py-2 rounded-lg font-bold text-sm hover:bg-red-500/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+                                Delete
+                            </button>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between hover:border-primary/40 transition-all group">
+<div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">High-Value Transfers</h3>
+<span class="bg-primary/20 text-primary text-[10px] uppercase font-bold px-2 py-1 rounded">Shared</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Created: Aug 20, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span class="material-symbols-outlined text-sm">history</span>
+<span>Last Used: 1 week ago</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Amount: &gt; $10,000</span>
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Currency: USD</span>
+<span class="bg-primary/10 text-primary/80 text-xs px-2 py-1 rounded-md border border-primary/10">Verified: Yes</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-background-dark py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Apply</button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit
+                            </button>
+<button class="bg-primary/10 text-slate-300 py-2 rounded-lg font-bold text-sm hover:bg-primary/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Update
+                            </button>
+<button class="bg-red-500/10 text-red-400 py-2 rounded-lg font-bold text-sm hover:bg-red-500/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">delete</span>
+                                Delete
+                            </button>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between border-dashed border-primary/20 opacity-60 hover:opacity-100 transition-all group cursor-pointer border-2 min-h-[280px]">
+<div class="flex flex-col items-center justify-center h-full gap-4 text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">New Filter Preset</h3>
+<p class="text-slate-400 text-sm">Save your current filters as a new preset</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-12 border-t border-primary/10 py-8 px-6 lg:px-12 glass-panel">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-sm">© 2023 SusuPay Admin. All rights reserved.</p>
+<div class="flex gap-6 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">API Reference</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

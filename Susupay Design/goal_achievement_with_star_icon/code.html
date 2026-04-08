@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .gold-gradient-bg {
+            background: radial-gradient(circle at center, rgba(238, 205, 43, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden gold-gradient-bg">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-4 md:px-10 py-3">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">token</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SusuPay</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col items-center justify-center pt-12 pb-8 px-4">
+<div class="text-center mb-8">
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl md:text-5xl font-bold leading-tight mb-2">Goal Achieved!</h1>
+<p class="text-primary text-xl font-medium">Incredible work, Alex!</p>
+</div>
+<div class="w-full max-w-md @container">
+<div class="glass-card rounded-xl p-8 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mb-6 border border-primary/30 relative">
+<div class="absolute inset-0 rounded-full animate-pulse bg-primary/10"></div>
+<span class="material-symbols-outlined text-6xl text-primary fill-1">stars</span>
+</div>
+<div class="space-y-2 mb-8 relative z-10">
+<h3 class="text-2xl font-bold text-slate-100">House Fund</h3>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary text-background-dark text-xs font-bold uppercase tracking-wider">
+                                        100% Completed
+                                    </div>
+<p class="text-slate-400 text-sm mt-4">You've successfully saved the full amount for your dream home. This is a massive milestone!</p>
+</div>
+<div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden mb-8">
+<div class="h-full bg-primary w-full shadow-[0_0_15px_rgba(238,205,43,0.5)]"></div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">share</span>
+                                    Share Achievement
+                                </button>
+</div>
+</div>
+<div class="mt-12 w-full max-w-md">
+<p class="text-slate-400 text-sm font-medium uppercase tracking-widest text-center mb-6">Spread the joy</p>
+<div class="grid grid-cols-4 gap-4">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-slate-800/50 flex items-center justify-center border border-slate-700 group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">chat</span>
+</div>
+<span class="text-xs text-slate-500">WhatsApp</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-slate-800/50 flex items-center justify-center border border-slate-700 group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">close</span>
+</div>
+<span class="text-xs text-slate-500">Twitter/X</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-slate-800/50 flex items-center justify-center border border-slate-700 group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">social_leaderboard</span>
+</div>
+<span class="text-xs text-slate-500">Facebook</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-slate-800/50 flex items-center justify-center border border-slate-700 group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary">content_copy</span>
+</div>
+<span class="text-xs text-slate-500">Copy Link</span>
+</button>
+</div>
+</div>
+<div class="mt-16 w-full max-w-2xl px-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-100">Other Active Goals</h3>
+<button class="text-primary text-sm font-medium">View All</button>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">flight</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<p class="font-semibold text-slate-200">Europe Trip</p>
+<p class="text-sm text-primary">65%</p>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-8 text-center border-t border-primary/10">
+<p class="text-slate-500 text-xs">© 2024 SusuPay Savings. Securely reaching milestones together.</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

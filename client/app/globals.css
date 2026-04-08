@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --emerald: #10b981;
+  --sapphire: #3b82f6;
+  --gold: #fbbf24;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0a0f1a] text-slate-100;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/40 border border-white/10 rounded-2xl shadow-2xl;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  .emerald-gradient {
+    @apply bg-gradient-to-br from-emerald-500/20 to-emerald-900/20;
+  }
+  
+  .glow-border {
+    @apply border border-emerald-500/30 hover:border-emerald-500/60 transition-colors duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)];
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}

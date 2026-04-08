@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#1a180e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #eecd2b 0%, #b89a1a 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 glass border-b border-primary/10 px-6 py-4 lg:px-20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div>
+<h1 class="text-xl font-bold tracking-tight">Customer Profile</h1>
+<p class="text-xs text-slate-400">Viewing detailed activity for SP-2024-0892</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/50 overflow-hidden">
+<img alt="Collector" class="h-full w-full object-cover" data-alt="Profile picture of collector Kofi Mensah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu0ufVQdRrsomXfi4E1Kx_Ngfeok2r4MYo7x4j9PSc9hAbdBF6pMfhhq_WkHslqiQPK6MC1Uz_S-rxXvDQVIgZl3V1MfMBl_zFT3UvnOAuU4UggtmPI3pOjaGqHrA-7KabG2FHuyn3XcGNRFtA9uzyx20DnILI5xoQWl2pTQfJnETuqtw7Ba7l7pzwUzH0qObr6qpKm1zG3pdbu5J5H7FqeveRWvAH-25pW-d8WDDzjhZXLFIUsB8y_di0b16aTx1D3d182HulZc4"/>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-4 lg:p-10 space-y-8">
+<!-- Profile Header Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 glass rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center md:items-start relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="relative">
+<div class="size-32 rounded-full border-4 border-primary/20 p-1 shadow-2xl">
+<img alt="Customer Avatar" class="rounded-full h-full w-full object-cover" data-alt="Portrait of Ama Serwaa, customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpqAK_nG5gbC9arDki-fQkeX7DhmAkiqgIkt5Ok_8leGx0bZiJcQPdj8laHuzsZKAXxEhYBO9ZfmOnXwKi3Muq1Ubtr2Ta9KuFJFb95ujp1bckJlU5L7pvxtYJf8IUbm6uDRRnVxl2MlFyJwrlhyhsMNowI2wPCt5R--rHvUwzyzGqzUpq4HmZnH41dZOicpXJtkgTdShF2TZMEio9_jRQS-gNHuELtZgosr4xwmqoYcuK7-72VcBnO3NH9Eqj-Gv64sdFcTprmhU"/>
+</div>
+<span class="absolute bottom-2 right-2 bg-green-500 size-5 rounded-full border-4 border-background-dark"></span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-3 mb-2">
+<h2 class="text-3xl font-bold">Ama Serwaa</h2>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/20 self-center uppercase tracking-wider">Premium Member</span>
+</div>
+<p class="text-slate-400 mb-6 font-medium">Member ID: <span class="text-slate-200">SP-2024-0892</span></p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-primary text-xl">call</span>
+<span class="text-sm">+233 24 123 4567</span>
+</div>
+<div class="flex items-center gap-3 text-slate-300">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<span class="text-sm">Plot 12, Adum, Kumasi</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full md:w-auto">
+<button class="bg-primary text-background-dark font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined">payments</span>
+                            Record Collection
+                        </button>
+<button class="bg-primary/10 text-primary border border-primary/20 font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">send_money</span>
+                            Send Reminder
+                        </button>
+</div>
+</div>
+<!-- Goal Progress Card -->
+<div class="glass rounded-xl p-8 flex flex-col justify-between border-t-4 border-t-primary">
+<div>
+<h3 class="text-lg font-bold mb-1">Savings Goal</h3>
+<p class="text-xs text-slate-400 uppercase tracking-widest mb-6">Xmas Fund 2024</p>
+<div class="mb-4">
+<div class="flex justify-between items-end mb-2">
+<span class="text-3xl font-bold">GHS 4,250</span>
+<span class="text-primary font-bold">85%</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-3">
+<div class="progress-gradient h-3 rounded-full shadow-[0_0_15px_rgba(238,205,43,0.3)]" style="width: 85%"></div>
+</div>
+</div>
+<p class="text-sm text-slate-400">Target: <span class="text-slate-200 font-semibold">GHS 5,000.00</span></p>
+</div>
+<div class="pt-6 border-t border-primary/10 mt-6">
+<div class="flex justify-between items-center">
+<span class="text-sm text-slate-400">Daily Plan:</span>
+<span class="text-primary font-bold">GHS 20.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Financial Summary Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass p-6 rounded-xl border border-primary/10 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[100px]">account_balance_wallet</span>
+</div>
+<p class="text-slate-400 text-sm mb-1">Total Contributions</p>
+<h4 class="text-2xl font-bold mb-2">GHS 12,840.50</h4>
+<span class="text-green-400 text-xs flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +12.4% from last month
+                    </span>
+</div>
+<div class="glass p-6 rounded-xl border border-primary/10 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[100px]">history</span>
+</div>
+<p class="text-slate-400 text-sm mb-1">Last Activity</p>
+<h4 class="text-2xl font-bold mb-2">GHS 20.00</h4>
+<span class="text-slate-400 text-xs flex items-center gap-1 font-medium uppercase">
+                        Collected Today, 10:45 AM
+                    </span>
+</div>
+<div class="glass p-6 rounded-xl border border-primary/10 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[100px]">calendar_today</span>
+</div>
+<p class="text-slate-400 text-sm mb-1">Strike Rate</p>
+<h4 class="text-2xl font-bold mb-2">28 / 30 Days</h4>
+<span class="text-primary text-xs flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">star</span>
+                        Excellent consistency
+                    </span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Transaction History -->
+<div class="lg:col-span-2 glass rounded-xl overflow-hidden border border-primary/10">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between bg-primary/5">
+<h3 class="font-bold text-lg">Recent Transactions</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="text-xs text-slate-500 uppercase bg-primary/5">
+<tr>
+<th class="px-6 py-4">Transaction Details</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Type</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold">Daily Collection</span>
+<span class="text-xs text-slate-500">Oct 24, 2024 • 10:45 AM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-bold">GHS 20.00</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-green-400 text-xs font-bold uppercase">
+<span class="material-symbols-outlined text-sm">sync</span>
+                                            Synced
+                                        </div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400 font-medium">Cash</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold">Daily Collection</span>
+<span class="text-xs text-slate-500">Oct 23, 2024 • 09:12 AM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-bold">GHS 20.00</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-green-400 text-xs font-bold uppercase">
+<span class="material-symbols-outlined text-sm">sync</span>
+                                            Synced
+                                        </div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400 font-medium">Cash</span>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-semibold">Bulk Deposit</span>
+<span class="text-xs text-slate-500">Oct 22, 2024 • 04:30 PM</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="font-bold text-primary">GHS 200.00</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-orange-400 text-xs font-bold uppercase">
+<span class="material-symbols-outlined text-sm">hourglass_empty</span>
+                                            Pending
+                                        </div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400 font-medium">Mobile Money</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Field Notes Section -->
+<div class="flex flex-col gap-6">
+<div class="glass rounded-xl p-6 border border-primary/10 flex-1">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h3 class="font-bold">Collector Notes</h3>
+</div>
+<div class="space-y-4">
+<div class="p-3 bg-primary/5 rounded border-l-2 border-primary">
+<p class="text-xs text-slate-500 mb-1">OCT 20, 2024</p>
+<p class="text-sm">Customer requested a withdrawal for school fees next month. Check balance eligibility.</p>
+</div>
+<textarea class="w-full bg-slate-900/50 border-primary/10 rounded-lg text-sm focus:border-primary focus:ring-1 focus:ring-primary p-3 h-24 placeholder:text-slate-600" placeholder="Add field observation..."></textarea>
+<button class="w-full py-2 bg-primary/10 text-primary border border-primary/20 rounded-lg text-sm font-bold hover:bg-primary/20 transition-all">Save Note</button>
+</div>
+</div>
+<div class="glass rounded-xl p-6 border border-primary/10">
+<h3 class="font-bold mb-4">Map Location</h3>
+<div class="w-full aspect-video rounded-lg overflow-hidden relative">
+<img alt="Location Map" class="w-full h-full object-cover" data-alt="Map location of Adum, Kumasi" data-location="Kumasi, Ghana" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb-NSQ2_kU9OkOardqgHrcqh60J8u9DCGnQ5UtebvGniAUr-uY6PsHpnxWQTPLzVZOfNKMbwu_X8ZzuigKxFQlRuOrjw9wowvgtdkGdDiM7RbwcxieDhne1k2Kc1DlDNeIrjFOpUvbabOSFn1aYubRs9abinGewTgcfGkgm5phoeJYpwwEtuMq5kZhYKW1Tg3nA0lE-gn_4JLYP5frRTJmtosi9G3_RtXpNuCecBOEGCAJMLRM72XOf8MREPa0dt4viaJs78fq4_c"/>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary text-4xl">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Quick Floating Action for Mobile -->
+<div class="fixed bottom-6 right-6 lg:hidden">
+<button class="bg-primary text-background-dark h-16 w-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "name": "start-susupay",
+            "type": "command",
+            "command": "bash ./start_termux.sh prod > startup_auto.log 2>&1 &"
+          }
+        ]
+      }
+    ]
+  }
+}

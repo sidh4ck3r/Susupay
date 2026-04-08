@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>SusuPay Notifications</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Mobile Lock Screen Simulation -->
+<div class="relative min-h-screen w-full flex flex-col items-center justify-start p-6 overflow-hidden">
+<!-- Background Decor -->
+<div class="absolute inset-0 z-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50"></div>
+<!-- Header / Status Bar Area -->
+<div class="w-full max-w-sm flex justify-between items-center mb-8 z-10 px-2">
+<span class="text-sm font-semibold">9:41</span>
+<div class="flex gap-1 items-center">
+<span class="material-symbols-outlined text-sm">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<!-- Lock Screen Clock -->
+<div class="z-10 text-center mb-12">
+<h1 class="text-7xl font-bold tracking-tight text-slate-100">09:41</h1>
+<p class="text-lg font-medium text-slate-400">Tuesday, October 24</p>
+</div>
+<!-- Notification Center -->
+<div class="w-full max-w-sm flex flex-col gap-4 z-10">
+<!-- SMS / Push Notification Mockup -->
+<div class="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="bg-primary rounded-lg p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark text-xs font-bold">payments</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary">SusuPay</span>
+</div>
+<span class="text-[10px] text-slate-400">now</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-semibold text-white">Transaction Confirmed</p>
+<p class="text-xs leading-relaxed text-slate-300">
+                        GHS 20.00 Susu Collection confirmed for Ama Serwaa. New Balance: GHS 1,260.00. Ref: TXN-9823410
+                    </p>
+</div>
+</div>
+<!-- In-App Notification Toast Simulation (Floating above content) -->
+<div class="mt-8">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-4 text-center">In-App Toast Preview</p>
+<div class="bg-background-dark border-l-4 border-primary shadow-xl rounded-lg p-4 flex items-center gap-4">
+<div class="shrink-0 bg-primary/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">Susu Collection Successful</p>
+<p class="text-xs text-slate-400">Ama Serwaa • GHS 20.00</p>
+</div>
+<button class="material-symbols-outlined text-slate-500 hover:text-white transition-colors">close</button>
+</div>
+</div>
+</div>
+<!-- Bottom Home Indicator -->
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-100/30 rounded-full"></div>
+</div>
+<!-- App Interface Mockup -->
+<div class="relative h-screen w-full flex flex-col bg-background-light dark:bg-background-dark border-t border-slate-800 shadow-2xl mt-20 rounded-t-[3rem] overflow-hidden">
+<!-- App Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-6 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-none">SusuPay</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Secure Payments</p>
+</div>
+</div>
+<div class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">notifications</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Balance Card -->
+<div class="bg-primary p-6 rounded-2xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-background-dark/70 text-sm font-medium">Total Balance</p>
+<h3 class="text-background-dark text-3xl font-black mt-1">GHS 1,260.00</h3>
+</div>
+<div class="absolute -right-10 -bottom-10 size-40 bg-background-dark/5 rounded-full"></div>
+</div>
+<!-- Toast Overlay (Demonstrating in-app placement) -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-100 dark:bg-slate-800/50 p-4 border border-slate-200 dark:border-slate-700">
+<div class="flex flex-[2_2_0px] flex-col gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-tight">Just now</p>
+</div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Confirmed Transaction</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-snug">GHS 20.00 Susu Collection confirmed for Ama Serwaa. Ref: TXN-9823410</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-background-dark text-sm font-bold leading-normal w-fit transition-transform active:scale-95">
+<span class="truncate">View Receipt</span>
+</button>
+</div>
+<div class="w-32 bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-md" data-alt="Abstract yellow and black geometric circular pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBV92WR0epHP3Jk9l5kcEubD88WF_Z8uVHWkUPBrz4VjG0kEaUkWG9_j0JdkYfrwF1NqJAXFzL2rBLUnkyZzimJEcEOPOtFWxr_ufx16beptYzeOwlvnWDz6lDX_I6N-LCHraXDtXM5oA6bu5ycl4doHbBqPSVrHipsqSdHyYYTPsfIO10nj-4Zd_CYe8OFkttE600ZT_ZFJFd3yolfmIzJwwAHAX8yg9cZUYMgaQxXMhWYG2yUHep70qe9l74RfmGINK6gklHdZQ0");'></div>
+</div>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pt-2">Recent Transactions</h3>
+<div class="flex gap-4 bg-white dark:bg-slate-800/30 rounded-xl p-4 items-center justify-between border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-primary/20" data-alt="Portrait of a female customer Ama Serwaa" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA31DTxEJMHL5O7mEgHYkarc2cSYGjGF9OOToH5ITSZPY0qQaIyOyB9MLHAeLO_cz2wyO0n2m3to4_6YghMRD24Z2UTW-Lv1zAE2IC5Me5k0PaCo2G0Ly8huFn21_N38btUh_R1AHiRaxQ3floZCvMH615Ruo24r4MMUIhfMi7te2QRAz5eghUJ7a8X5G5o_YmnDm1a8TTbxANDFaSjjnXb-Z_ci5Fdtads3tvvf3q5Z4cmW9dKC5Tf6m1AXTLglZ4FGdA1SuiPRk0");'></div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-none">Ama Serwaa</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Susu Collection • 10:45 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary text-base font-black">+ GHS 20.00</p>
+<p class="text-slate-400 text-[10px]">TXN-9823410</p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-8 pt-3">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<p class="text-[10px] font-bold uppercase tracking-widest">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-bold uppercase tracking-widest">History</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">wallet</span>
+<p class="text-[10px] font-bold uppercase tracking-widest">Wallet</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-bold uppercase tracking-widest">Profile</p>
+</a>
+</div>
+</div>
+</body></html>

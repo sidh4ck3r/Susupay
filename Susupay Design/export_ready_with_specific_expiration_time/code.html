@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin - Export Ready</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "accent-blue": "#3b82f6",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(16, 34, 28, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.2);
+        }
+        .glass-premium {
+            background: linear-gradient(135deg, rgba(16, 183, 127, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<!-- Dashboard Background (Simulating SCREEN_66) -->
+<div class="relative flex h-screen w-full flex-col overflow-hidden opacity-40 grayscale-[0.5] blur-[2px]">
+<header class="flex items-center justify-between border-b border-primary/10 px-10 py-4 glass">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-3xl">payments</span>
+<h2 class="text-xl font-bold tracking-tight">SusuPay Admin</h2>
+</div>
+<div class="flex items-center bg-primary/5 rounded-xl px-4 py-2 border border-primary/10">
+<span class="material-symbols-outlined text-primary/60 mr-2">search</span>
+<span class="text-sm text-primary/40">Search transactions...</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="flex gap-6 text-sm font-medium text-slate-400">
+<span class="text-primary border-b-2 border-primary pb-1">Dashboard</span>
+<span>Transactions</span>
+<span>Audits</span>
+<span>Users</span>
+</nav>
+<div class="flex gap-3">
+<div class="size-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">notifications</span>
+</div>
+<div class="size-10 rounded-full bg-slate-800 border border-slate-700" data-alt="User profile avatar placeholder"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-8 grid grid-cols-12 gap-6">
+<!-- Sidebar placeholder -->
+<div class="col-span-2 space-y-4">
+<div class="h-10 w-full bg-primary/10 rounded-lg"></div>
+<div class="h-10 w-full bg-white/5 rounded-lg"></div>
+<div class="h-10 w-full bg-white/5 rounded-lg"></div>
+<div class="h-10 w-full bg-white/5 rounded-lg"></div>
+</div>
+<!-- Main Content placeholder -->
+<div class="col-span-10 space-y-6">
+<div class="grid grid-cols-4 gap-4">
+<div class="h-32 bg-primary/5 border border-primary/10 rounded-xl p-6">
+<div class="h-4 w-24 bg-primary/20 rounded mb-4"></div>
+<div class="h-8 w-32 bg-primary/40 rounded"></div>
+</div>
+<div class="h-32 bg-white/5 border border-white/10 rounded-xl p-6">
+<div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+<div class="h-8 w-32 bg-white/20 rounded"></div>
+</div>
+<div class="h-32 bg-white/5 border border-white/10 rounded-xl p-6">
+<div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+<div class="h-8 w-32 bg-white/20 rounded"></div>
+</div>
+<div class="h-32 bg-white/5 border border-white/10 rounded-xl p-6">
+<div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+<div class="h-8 w-32 bg-white/20 rounded"></div>
+</div>
+</div>
+<div class="h-64 bg-white/5 border border-white/10 rounded-xl w-full"></div>
+<div class="h-64 bg-white/5 border border-white/10 rounded-xl w-full"></div>
+</div>
+</main>
+</div>
+<!-- Centered Alert Notification -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-background-dark/40 backdrop-blur-sm">
+<div class="glass-premium max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20 flex flex-col items-center p-8 relative">
+<!-- Decorative sapphire/emerald orb background -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 blur-[80px] rounded-full"></div>
+<div class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-48 h-48 bg-accent-blue/20 blur-[60px] rounded-full"></div>
+<!-- Icon Header -->
+<div class="relative mb-6">
+<div class="size-20 rounded-2xl bg-gradient-to-br from-primary to-accent-blue p-[1px] shadow-lg shadow-primary/20">
+<div class="w-full h-full bg-[#10221c] rounded-[15px] flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl bg-gradient-to-br from-primary to-accent-blue bg-clip-text text-transparent">
+                            ios_share
+                        </span>
+</div>
+</div>
+<div class="absolute -top-2 -right-2 size-6 bg-primary rounded-full border-2 border-[#10221c] flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px] font-bold">check</span>
+</div>
+</div>
+<!-- Content -->
+<div class="text-center relative z-10">
+<h3 class="text-2xl font-bold text-slate-100 mb-2 tracking-tight">Export Ready</h3>
+<p class="text-slate-400 text-base mb-6 leading-relaxed">
+                    Your generated report <span class="text-primary font-mono font-medium">Audit_History_Q4.csv</span> is prepared and ready for secure download.
+                </p>
+<div class="flex flex-col gap-3 w-full">
+<button class="group relative flex items-center justify-center gap-2 w-full h-12 bg-primary hover:bg-primary/90 text-background-dark font-bold rounded-xl transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
+<span class="material-symbols-outlined font-bold transition-transform group-hover:translate-y-0.5">download</span>
+                        Download Now
+                    </button><button class="group relative flex items-center justify-center gap-2 w-full h-12 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-xl transition-all border border-white/10 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:scale-110">link</span>
+    Copy Download Link
+</button>
+<button class="w-full h-12 bg-white/5 hover:bg-white/10 text-slate-300 font-semibold rounded-xl transition-all border border-white/10">
+                        Dismiss
+                    </button>
+</div>
+</div>
+<!-- File Details Footer -->
+<div class="mt-8 pt-6 border-t border-white/5 w-full flex items-center justify-between text-[11px] text-slate-500 uppercase tracking-widest font-bold">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary/40"></span>
+                    Size: 1.2 MB
+                </div>
+<div class="flex items-center gap-2"><span class="size-2 rounded-full bg-accent-blue/40"></span>Link expires on Oct 24, 2023 at 14:30 GMT</div>
+</div>
+</div>
+</div>
+<!-- Small toast variation in corner -->
+<div class="fixed bottom-6 right-6 z-[60] flex items-center gap-4 glass-premium p-4 rounded-xl shadow-2xl border-l-4 border-l-primary max-w-sm pointer-events-none opacity-0 lg:opacity-100 lg:translate-y-0 translate-y-20 transition-all duration-700">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-100">Export Completed</p>
+<p class="text-xs text-slate-400 truncate">Audit_History_Q4.csv is ready.</p>
+</div>
+<button class="text-primary text-xs font-bold px-3 py-1.5 bg-primary/10 rounded-lg hover:bg-primary/20 pointer-events-auto transition-colors">
+            GET
+        </button>
+</div><div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] flex items-center gap-3 glass-premium px-6 py-3 rounded-full shadow-2xl border border-primary/30 pointer-events-none opacity-0 translate-y-10 transition-all duration-500" id="copy-toast">
+<div class="size-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<p class="text-sm font-bold text-slate-100">Link copied to clipboard!</p>
+</div>
+</body></html>

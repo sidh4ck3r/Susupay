@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(34, 31, 16, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased h-screen flex items-center justify-center overflow-hidden">
+<!-- Main Content Background (Simulated Dashboard) -->
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+<div class="absolute top-20 left-40 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-40 right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<!-- UI Container for Notifications -->
+<div class="relative z-10 w-full max-w-md p-6 flex flex-col gap-6">
+<!-- Active Progress Notification -->
+<div class="glass-panel rounded-xl shadow-2xl p-5 border-l-4 border-l-primary">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-100">Exporting Data</h3>
+<p class="text-xs text-slate-400">Preparing your CSV export...</p>
+</div>
+</div>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-300">CSV Generation</span>
+<span class="text-primary">65%</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 65%;"></div>
+</div>
+<div class="flex justify-end pt-2">
+<button class="text-xs font-bold text-slate-400 hover:text-primary px-3 py-1 rounded border border-slate-700 hover:border-primary/50 transition-all">
+                        Cancel
+                    </button>
+</div>
+</div>
+</div>
+<!-- Completion Notification -->
+<div class="glass-panel rounded-xl shadow-2xl p-5 border-l-4 border-l-green-500">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-10 flex items-center justify-center rounded-lg bg-green-500/10 text-green-500">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<h3 class="text-sm font-bold text-slate-100">Export Complete</h3>
+<p class="text-xs text-slate-400">Your report is ready for download.</p>
+</div>
+</div>
+<div class="shrink-0 ml-4">
+<button class="bg-primary hover:bg-primary/90 text-background-dark px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Download
+                    </button>
+</div>
+</div>
+</div>
+<!-- Context Preview (Small helper text) -->
+<div class="text-center opacity-40">
+<p class="text-[10px] uppercase tracking-widest font-bold">SusuPay Premium Toast Notifications</p>
+</div>
+</div>
+<!-- Hidden Layout components for structure reference -->
+<div class="fixed top-0 left-0 w-full p-4 flex justify-between items-center glass-panel border-b border-primary/10">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark font-black">S</div>
+<span class="font-bold tracking-tight">SusuPay</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined opacity-50">notifications</span>
+<span class="material-symbols-outlined opacity-50">account_circle</span>
+</div>
+</div>
+</body></html>

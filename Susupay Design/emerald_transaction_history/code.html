@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History - Emerald &amp; Sapphire</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "sapphire": "#0f52ba",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(16, 34, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 15px rgba(16, 183, 127, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 py-4 lg:px-10 glass-effect sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight">FinEmerald</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Overview</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-1" href="#">Accounts</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-primary/10 border border-primary/20">
+<div class="text-primary/60 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent text-slate-100 focus:ring-0 placeholder:text-primary/40 px-4 text-sm" placeholder="Search transactions..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">person</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARHezB2Antd_z1fLfrYyrOaRj8uhhCb7kQGO3NjHQXl-HYjfJeP7uYGcq-nw8O9V6AqG-IT8aiIGJmEKOuJovMTE12WmPK3IbRqqOeBOE32AbkANJ5YWfDv0UoC5baS5Ddt6pzLnruSBuKFkO5Np8RRHO0gMyC5QRSjqQ-OAbxzMm_LqLsWInIPO5wL_2wTQH0yQfDiAdl-i9jfp55d_DwwiVtIYpDHwpMpq3kBz9O177gEsuGfJQThGkjpITw-KZbXXzy_jiCtrs");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col md:flex-row">
+<!-- Sidebar Sidebar -->
+<aside class="w-full md:w-64 border-r border-primary/10 p-4 glass-effect">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 p-2">
+<div class="bg-gradient-to-br from-primary to-primary/60 aspect-square bg-cover rounded-full size-12 shadow-lg" data-alt="Premium account icon with green gradient"></div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-sm font-bold">Premium Account</h1>
+<p class="text-primary text-xs font-semibold uppercase tracking-wider">Emerald Tier</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20 emerald-glow" href="#">
+<span class="material-symbols-outlined text-fill">history</span>
+<span class="text-sm font-bold">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1 flex flex-col bg-background-dark/50 p-6 lg:p-10">
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-100 text-3xl lg:text-4xl font-black tracking-tight">Transaction History</h2>
+<p class="text-slate-400 text-base font-medium">Detailed activity for your <span class="text-primary">Emerald</span> &amp; <span class="text-sapphire">Sapphire</span> portfolios</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-primary text-background-dark px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Export CSV
+                            </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="mb-6">
+<div class="flex border-b border-primary/10 gap-8 overflow-x-auto">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 px-2 whitespace-nowrap" href="#">
+<p class="text-sm font-bold tracking-wide">All Activity</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-400 hover:text-slate-200 pb-3 px-2 transition-all whitespace-nowrap" href="#">
+<p class="text-sm font-medium">Emerald Savings</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-400 hover:text-slate-200 pb-3 px-2 transition-all whitespace-nowrap" href="#">
+<p class="text-sm font-medium">Sapphire Withdrawals</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-400 hover:text-slate-200 pb-3 px-2 transition-all whitespace-nowrap" href="#">
+<p class="text-sm font-medium">MoMo Transfers</p>
+</a>
+</div>
+</div>
+<!-- Transactions Table -->
+<div class="glass-effect rounded-xl overflow-hidden shadow-2xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary/10 text-primary uppercase text-xs font-bold tracking-widest">
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4">Description</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4 text-right">Amount (GHS)</th>
+<th class="px-6 py-4 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 text-slate-400 text-sm">Oct 24, 2023</td>
+<td class="px-6 py-5 text-slate-100 font-medium">Monthly Salary - TechCorp</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/20 text-primary">
+                                                Emerald Savings
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right text-primary font-bold text-base group-hover:scale-105 transition-transform">+4,500.00</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-primary/30 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                                </span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 text-slate-400 text-sm">Oct 23, 2023</td>
+<td class="px-6 py-5 text-slate-100 font-medium">Global Bank ATM #122</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-sapphire/20 text-blue-400">
+                                                Sapphire Withdrawal
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right text-blue-400 font-bold text-base group-hover:scale-105 transition-transform">-500.00</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-primary/30 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                                </span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 text-slate-400 text-sm">Oct 22, 2023</td>
+<td class="px-6 py-5 text-slate-100 font-medium">Electricity &amp; Utility Bills</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/10 text-slate-300">
+                                                MoMo Transfer
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right text-slate-300 font-bold text-base group-hover:scale-105 transition-transform">-120.00</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/20">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Pending
+                                                </span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 text-slate-400 text-sm">Oct 20, 2023</td>
+<td class="px-6 py-5 text-slate-100 font-medium">Freelance Project Payment</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/20 text-primary">
+                                                Emerald Savings
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right text-primary font-bold text-base group-hover:scale-105 transition-transform">+1,200.00</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-primary/30 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                                </span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5 text-slate-400 text-sm">Oct 18, 2023</td>
+<td class="px-6 py-5 text-slate-100 font-medium">ShopRite Supermarket</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary/10 text-slate-300">
+                                                MoMo Transfer
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right text-slate-300 font-bold text-base group-hover:scale-105 transition-transform">-350.00</td>
+<td class="px-6 py-5">
+<div class="flex justify-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-primary/30 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Confirmed
+                                                </span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination Footer -->
+<div class="flex items-center justify-between mt-6 px-2">
+<p class="text-slate-400 text-sm">Showing <span class="text-primary font-bold">1-5</span> of 24 transactions</p>
+<div class="flex gap-2">
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary text-background-dark font-bold text-sm">1</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary/10 text-slate-300 border border-primary/10 hover:bg-primary/20 text-sm">2</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary/10 text-slate-300 border border-primary/10 hover:bg-primary/20 text-sm">3</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

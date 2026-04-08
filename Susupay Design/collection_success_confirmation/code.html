@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay - Collection Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#1a180e",
+                        "surface-dark": "#2a2718",
+                        "accent-gold": "#eecd2b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(42, 39, 24, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .success-gradient {
+            background: radial-gradient(circle at center, rgba(238, 205, 43, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Blurred background context -->
+<div class="fixed inset-0 z-0 opacity-40 overflow-hidden pointer-events-none">
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+</div>
+<div class="relative z-10 flex h-full min-h-screen w-full flex-col items-center justify-center p-4">
+<div class="layout-container flex h-full grow flex-col w-full max-w-[480px]">
+<header class="flex items-center justify-between whitespace-nowrap px-4 py-6">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h2 class="text-slate-100 text-xl font-bold leading-tight tracking-tight">SusuPay</h2>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-primary/20 text-slate-100">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</header>
+<main class="flex flex-1 flex-col items-center pt-8 pb-12">
+<!-- Success State Illustration -->
+<div class="relative mb-8 flex items-center justify-center">
+<div class="success-gradient absolute inset-0 scale-150 rounded-full"></div>
+<div class="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-primary text-background-dark shadow-[0_0_30px_rgba(238,205,43,0.4)]">
+<span class="material-symbols-outlined text-5xl font-bold">check_circle</span>
+</div>
+</div>
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-slate-100 mb-2">Collection Successful</h1>
+<p class="text-slate-400">The contribution has been recorded in the ledger.</p>
+</div>
+<!-- Summary Card -->
+<div class="glass-effect w-full rounded-2xl p-6 mb-8 shadow-2xl">
+<div class="flex items-center justify-between border-b border-primary/10 pb-4 mb-4">
+<div class="flex flex-col">
+<span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Customer</span>
+<span class="text-lg font-bold text-slate-100">Ama Serwaa</span>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<p class="text-slate-400 text-sm">Amount Collected</p>
+<p class="text-primary text-lg font-bold">GHS 20.00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-slate-400 text-sm">New Balance</p>
+<p class="text-slate-100 font-semibold text-base">GHS 1,260.00</p>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-primary/5">
+<p class="text-slate-500 text-xs">Transaction ID</p>
+<p class="text-slate-400 text-xs font-mono">TXN-9823410</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-slate-500 text-xs">Date &amp; Time</p>
+<p class="text-slate-400 text-xs">Oct 24, 2023, 14:30</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 text-background-dark font-bold text-base transition-transform active:scale-95">
+<span class="material-symbols-outlined">print</span>
+                        Print Receipt
+                    </button>
+<div class="flex gap-3">
+<button class="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/20 bg-surface-dark py-4 text-slate-100 font-semibold text-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined text-green-500">share</span>
+                            WhatsApp
+                        </button>
+<button class="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/20 bg-surface-dark py-4 text-slate-100 font-semibold text-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                            Save PDF
+                        </button>
+</div>
+<button class="mt-4 flex w-full items-center justify-center py-3 text-slate-400 font-medium hover:text-primary transition-colors">
+                        Done
+                    </button>
+</div>
+</main>
+<!-- Status Indicator -->
+<footer class="py-6 flex justify-center">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+<div class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] uppercase tracking-widest text-green-500 font-bold">Cloud Synced</span>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

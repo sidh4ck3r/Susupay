@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin - Flagged Files Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0a1411",
+                        "emerald-glass": "rgba(16, 183, 127, 0.1)",
+                        "sapphire-glass": "rgba(15, 82, 186, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(16, 34, 28, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.15);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10b77f 0%, #0a7e58 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="glass-panel sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-primary/20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-10 emerald-gradient rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-background-dark font-bold">account_balance_wallet</span>
+</div>
+<h2 class="text-slate-100 text-xl font-bold tracking-tight">SusuPay <span class="text-primary font-medium text-sm ml-1 uppercase tracking-widest">Admin</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Analytics</a>
+<a class="text-primary bg-primary/10 px-3 py-1 rounded-full text-sm font-medium" href="#">Flagged Files</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Users</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-primary/5 border border-primary/20 rounded-xl pl-10 pr-4 py-2 text-sm w-64 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search files or agents..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-background-dark font-bold py-2 px-4 rounded-xl text-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Analytics
+                </button>
+<div class="size-10 rounded-full border-2 border-primary/30 p-0.5">
+<div class="size-full rounded-full bg-cover bg-center" data-alt="Admin user profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5tcoCX-N5wC_CsUuPtcNO-aNzNYhslN4XM-wIWUWLqMN76HemGrye_A2B4bZxBg0PiL1-pL56VdBMdpIoRAiqy6Qh4G7Fz9tQ-534n93nwQWlBfFi-j3YXrEQCvp_9YJi1thWpO3xAdsj_ikhOx_ULVDY65QMrEyaNpKYe1Rn0GLBnLsB-k7PbiTIWUgCjxDAex9lWeORbFxhFfW25boqd8AokKT-3Dxia4XR8orG33JClufjxe7EEIK-6_MJsRdeYTG3Rj3v9ts')"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl font-black tracking-tight text-slate-100">Flagged Files <span class="text-primary">Management</span></h1>
+<p class="text-slate-400 mt-2">Centralized monitoring system for suspicious documents and verification failures.</p>
+</div>
+<div class="flex gap-2">
+<button class="glass-panel px-4 py-2 rounded-xl text-sm font-medium border border-primary/20 hover:bg-primary/10 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export Report
+                    </button>
+<button class="glass-panel px-4 py-2 rounded-xl text-sm font-medium border border-primary/20 hover:bg-primary/10 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">tune</span>
+                        Bulk Actions
+                    </button>
+</div>
+</div>
+<!-- Summary Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">flag</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Total Flagged</p>
+<div class="flex items-baseline gap-3 mt-2">
+<p class="text-3xl font-bold text-slate-100 tracking-tight">1,284</p>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">trending_up</span> 12%
+                        </span>
+</div>
+<div class="w-full h-1 bg-primary/10 rounded-full mt-4">
+<div class="h-full bg-primary rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-yellow-500">
+<span class="material-symbols-outlined text-6xl">pending_actions</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Pending Review</p>
+<div class="flex items-baseline gap-3 mt-2">
+<p class="text-3xl font-bold text-slate-100 tracking-tight">432</p>
+<span class="text-yellow-500 text-xs font-bold bg-yellow-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">schedule</span> Critical
+                        </span>
+</div>
+<div class="w-full h-1 bg-yellow-500/10 rounded-full mt-4">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 35%"></div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl relative overflow-hidden group border-sapphire-glass">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-blue-500">
+<span class="material-symbols-outlined text-6xl">verified</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Resolved Today</p>
+<div class="flex items-baseline gap-3 mt-2">
+<p class="text-3xl font-bold text-slate-100 tracking-tight">89</p>
+<span class="text-blue-500 text-xs font-bold bg-blue-500/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">check_circle</span> +5.2%
+                        </span>
+</div>
+<div class="w-full h-1 bg-blue-500/10 rounded-full mt-4">
+<div class="h-full bg-blue-500 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- Table & Filtering Area -->
+<div class="space-y-4">
+<div class="flex flex-wrap items-center justify-between gap-4 glass-panel p-4 rounded-xl border border-primary/10">
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg bg-primary/20 text-primary text-xs font-bold border border-primary/30 uppercase tracking-wider">All Flags</button>
+<button class="px-4 py-2 rounded-lg hover:bg-white/5 text-slate-400 text-xs font-bold uppercase tracking-wider transition-colors">Verification Failure</button>
+<button class="px-4 py-2 rounded-lg hover:bg-white/5 text-slate-400 text-xs font-bold uppercase tracking-wider transition-colors">Suspicious Activity</button>
+<button class="px-4 py-2 rounded-lg hover:bg-white/5 text-slate-400 text-xs font-bold uppercase tracking-wider transition-colors">Poor Quality</button>
+</div>
+<div class="flex items-center gap-3">
+<select class="bg-primary/5 border border-primary/20 rounded-lg text-xs font-medium text-slate-300 py-1.5 pl-3 pr-8 focus:ring-primary focus:border-primary">
+<option>Filter by Date</option>
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+</select>
+<select class="bg-primary/5 border border-primary/20 rounded-lg text-xs font-medium text-slate-300 py-1.5 pl-3 pr-8 focus:ring-primary focus:border-primary">
+<option>Agent Name</option>
+<option>Alex Johnson</option>
+<option>Sarah Miller</option>
+</select>
+</div>
+</div>
+<div class="glass-panel rounded-2xl overflow-hidden border border-primary/10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary/5 border-b border-primary/10">
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">File Name</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Flagged By</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Reason</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">National_ID_v1.pdf</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Uploaded Oct 24, 2023</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-300 font-medium">Kwame Mensah</p>
+<p class="text-xs text-slate-500">ID: #982103</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-700" data-alt="Agent profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzuvs1LEpF1VyAcPakcWa16FfXERY--9D_6cQohPfFBWOjJH7Yxoc9dpwO4RMSD27sP_OMAHLV84u8_S1NelgDliFLu_3Dnd9FZ8yM4FYrR0oQlLXnCJh0vsZwi2XWl7VF-7mPPya10pjPCnDGre2jCjw3PCz0-jZItch_112ZUi4AhCWMo-ffwTvnhyD-xPiHH2S5QG6c3b4p12vTZh7cOs210N3pTCdFroI5OxWK90lra4Ht7hkrc2I0tZTXmeYTX8P_yXkMs4o')"></div>
+<p class="text-sm text-slate-300">Alex Johnson</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-500/10 text-red-500 border border-red-500/20">Verification Failure</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-yellow-500 animate-pulse"></div>
+<span class="text-xs font-medium text-yellow-500">Pending Review</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all" title="Review File">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all" title="Resolve Flag">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-500 hover:text-white text-slate-400 rounded-lg transition-all" title="Dismiss Flag">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Passport_Scan.jpg</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Uploaded Oct 25, 2023</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-300 font-medium">Amara Okafor</p>
+<p class="text-xs text-slate-500">ID: #774120</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-700" data-alt="Agent profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWdYshVs5mx7zAOnCEYT9kGoBsykoFPRR6UTb703-Jcx8-sKGIboSf0h9zofx_W7nGYMpLsj3L-dABGki2HSmsyFjZX04FwBE8Bj4xmPYK1MTsw1iTIwZqq5vYnyNS2kVFLmzHPSANsQMelqS1p7sm0N-xdzY2Tw9nI3gKUks_WRxBjpuWXFFNH7cquRECjL_7RuRovUm5q1qC1s3SGCLaIkzIimT6iRvobDRYIgUU_ATpiCIM5LYB4tysuNwN9btY4NwPGTSOvFE')"></div>
+<p class="text-sm text-slate-300">Sarah Miller</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/10 text-orange-500 border border-orange-500/20">Poor Quality</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-blue-500"></div>
+<span class="text-xs font-medium text-blue-500">Under Review</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-500 hover:text-white text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500">
+<span class="material-symbols-outlined">folder_zip</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-100">Tax_Returns_2023.zip</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Uploaded Oct 26, 2023</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-slate-300 font-medium">Babatunde Abiodun</p>
+<p class="text-xs text-slate-500">ID: #441092</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-700" data-alt="Agent profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAU15rT6Ld_BSzyxg5h4AaxVdc6KU7A2rwgUN2BheC6MeHwNJZDQIT3OSRvQ4O_GRDAgRczAhwuFF_IiaFqtR4CxscfI23lpHckVyeJqhW9TKX89AjIOjjeOkK_tlVuLSNN5AnpJH_fB6EDXCEdU2y_lHrvF0_FWoufs9yiQPXqWhWI_Cg85VsTSIfIQvGPcK7HffUu2a4VXReitfdJxI15T0e0Gtk_QYGQwQnyMZyvzw6aZEcfC0J8Ajbson6lYGclCs5DvXpU3b8')"></div>
+<p class="text-sm text-slate-300">System AI Agent</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-500/10 text-purple-500 border border-purple-500/20">Suspicious Activity</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-yellow-500 animate-pulse"></div>
+<span class="text-xs font-medium text-yellow-500">Pending Review</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-primary hover:text-background-dark text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-500 hover:text-white text-slate-400 rounded-lg transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-primary/10 flex items-center justify-between">
+<p class="text-xs text-slate-500 font-medium tracking-wide">Showing 1-10 of 432 flags</p>
+<div class="flex gap-2">
+<button class="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded bg-primary text-background-dark transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Pane Layout (Dual Column) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 glass-panel rounded-2xl p-6 border border-primary/10">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">preview</span>
+<h3 class="text-lg font-bold text-slate-100">Document Preview</h3>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-all">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-all">
+<span class="material-symbols-outlined">rotate_right</span>
+</button>
+</div>
+</div>
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-primary/10 flex items-center justify-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #10b77f 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="text-center p-12">
+<img alt="Document Preview" class="max-h-full mx-auto rounded shadow-2xl border border-white/10" data-alt="National identity document scan preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5dskeOaxyD4e3aV1hoYLziOn9BGw6fCHds5V0ryM3d9h6LMm287V7xEo0ro3HTnCamkhHT_3Hh-7QsJLpI0B-70d6NvEzVPXuV6nfpnn1Q2Xz8FNsyBIzALO27FxEKndoJQzj8zb-Rz2whJhEQDl52PDpw049ssItQq4zsWzSBlSimykY-ii_zqX80tY29G-4QCd5zXONVIvaeDWyL4kywb_iNIK_AaMxOS7lKrA7aYDTvK-n6EP-UM9RmiIe5P49YW4yyS6wewk"/>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-background-dark/80 backdrop-blur px-4 py-2 rounded-full border border-primary/20">
+<p class="text-xs text-slate-300 font-medium">Page 1 of 2</p>
+<div class="h-4 w-px bg-primary/20"></div>
+<span class="text-[10px] text-primary font-bold uppercase tracking-widest italic">Confidential</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-6">
+<div class="glass-panel rounded-2xl p-6 border border-primary/10">
+<h3 class="text-lg font-bold text-slate-100 mb-4">Flag Details</h3>
+<div class="space-y-4">
+<div class="p-3 rounded-xl bg-red-500/5 border border-red-500/20">
+<p class="text-[10px] text-red-500 font-bold uppercase tracking-widest mb-1">Reason for Flag</p>
+<p class="text-sm text-slate-200 font-medium">Verification Failure: The name on the document does not match the customer's registered account name.</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between">
+<span class="text-xs text-slate-500">Confidence Score</span>
+<span class="text-xs font-bold text-primary">94%</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full emerald-gradient rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex justify-between py-2 border-b border-primary/5">
+<span class="text-slate-500">Customer Name</span>
+<span class="text-slate-200 font-medium">Kwame Mensah</span>
+</div>
+<div class="flex justify-between py-2 border-b border-primary/5">
+<span class="text-slate-500">Document ID</span>
+<span class="text-slate-200 font-medium">GHA-8829-X</span>
+</div>
+<div class="flex justify-between py-2">
+<span class="text-slate-500">Expiry Date</span>
+<span class="text-slate-200 font-medium">12 Nov 2028</span>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-6 border border-primary/10 flex flex-col gap-3">
+<h3 class="text-lg font-bold text-slate-100 mb-1">Resolution Actions</h3>
+<p class="text-xs text-slate-500 mb-2">Assign an outcome to this flag to update the customer's status.</p>
+<button class="w-full bg-primary py-3 rounded-xl text-background-dark font-bold text-sm shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">verified</span>
+                            Approve &amp; Resolve
+                        </button>
+<button class="w-full bg-white/5 border border-white/10 py-3 rounded-xl text-slate-200 font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined">block</span>
+                            Reject Document
+                        </button>
+<button class="w-full bg-red-500/10 border border-red-500/20 py-3 rounded-xl text-red-500 font-bold text-sm flex items-center justify-center gap-2 hover:bg-red-500/20 transition-all">
+<span class="material-symbols-outlined">report</span>
+                            Escalate to Senior Admin
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Info -->
+<footer class="mt-12 px-6 py-8 border-t border-primary/10 text-center">
+<p class="text-slate-500 text-xs">SusuPay Security Operations Center © 2023. System time: 14:22 UTC.</p>
+</footer>
+</div>
+</body></html>

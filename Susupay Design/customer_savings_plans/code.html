@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay - Savings Plans &amp; Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#16150e", // Slightly deeper for better contrast
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(45, 42, 28, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 glass border-b border-primary/10 px-4 md:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">storm</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">SusuPay</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-primary underline underline-offset-4" href="#">Savings</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Payments</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 overflow-hidden">
+<img alt="User Profile" class="h-full w-full object-cover" data-alt="Professional user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEXzXFZcPFVDYC83xPYMns7-bz3xsKSbpGpw6f2CMnEdhK4OL3A5NPb9lxPgzCf9IgdosHV99hpSpe3_hmRhkgzwtqDpuqREpzlT2fXAFaML844_GBX7KFFNyf3d5RGbkAcyByDTvtKYn2_E4Wn7WQd4w4BykYPGjULMoLGpxBxC-qQ0gxiJC4bvfmSmV27xJJzID6l4Dr4oI--_sLSU6q_03LINZH9W0TUOTaWrqPbrr3VOYr5obkY_eRnKN2StrXA9fcRB-kxvs"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-4 md:px-10 py-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h1 class="text-3xl md:text-4xl font-black tracking-tight mb-2">Savings Goals</h1>
+<p class="text-slate-400">Manage your collective and personal susu contributions</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                    Create New Goal
+                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="glass p-6 rounded-2xl flex items-center gap-5">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-sm text-slate-400 font-medium">Total Balance</p>
+<h3 class="text-2xl font-bold">$24,580.00</h3>
+<p class="text-xs text-green-400 mt-1 flex items-center">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                            +4.2% from last month
+                        </p>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex items-center gap-5">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">target</span>
+</div>
+<div>
+<p class="text-sm text-slate-400 font-medium">Active Goals</p>
+<h3 class="text-2xl font-bold">6 Plans</h3>
+<p class="text-xs text-slate-400 mt-1">2 nearing completion</p>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex items-center gap-5">
+<div class="size-14 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">group</span>
+</div>
+<div>
+<p class="text-sm text-slate-400 font-medium">Susu Circles</p>
+<h3 class="text-2xl font-bold">3 Active</h3>
+<p class="text-xs text-slate-400 mt-1">Next payout in 4 days</p>
+</div>
+</div>
+</div>
+<div class="mb-6 flex items-center justify-between">
+<h2 class="text-xl font-bold">My Active Plans</h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-sm font-medium glass rounded-lg border-primary/40 text-primary">All</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">Susu Circles</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">Personal</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="glass p-6 rounded-2xl flex flex-col group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<h3 class="text-lg font-bold mb-1">Business Startup</h3>
+<span class="text-xs px-2 py-1 rounded bg-primary/20 text-primary w-fit font-bold uppercase tracking-wider">Susu Circle</span>
+</div>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-20">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary progress-ring__circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="53.4" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-bold">75%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Current Saved</span>
+<span class="font-bold">$15,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Target Goal</span>
+<span class="font-bold">$20,000.00</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-all">View Details</button>
+<button class="py-2.5 rounded-xl bg-primary text-background-dark text-sm font-bold hover:brightness-110 transition-all">Add Funds</button>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex flex-col group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<h3 class="text-lg font-bold mb-1">New Family Home</h3>
+<span class="text-xs px-2 py-1 rounded bg-slate-700/50 text-slate-300 w-fit font-bold uppercase tracking-wider">Personal Goal</span>
+</div>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-20">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary progress-ring__circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="149.5" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-bold">30%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Current Saved</span>
+<span class="font-bold">$45,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Target Goal</span>
+<span class="font-bold">$150,000.00</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-all">View Details</button>
+<button class="py-2.5 rounded-xl bg-primary text-background-dark text-sm font-bold hover:brightness-110 transition-all">Add Funds</button>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex flex-col group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<h3 class="text-lg font-bold mb-1">Emergency Fund</h3>
+<span class="text-xs px-2 py-1 rounded bg-slate-700/50 text-slate-300 w-fit font-bold uppercase tracking-wider">Personal Goal</span>
+</div>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-20">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary progress-ring__circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="21.3" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-bold">90%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Current Saved</span>
+<span class="font-bold">$9,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Target Goal</span>
+<span class="font-bold">$10,000.00</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-all">View Details</button>
+<button class="py-2.5 rounded-xl bg-primary text-background-dark text-sm font-bold hover:brightness-110 transition-all">Add Funds</button>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex flex-col group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<h3 class="text-lg font-bold mb-1">Holiday Trip 2024</h3>
+<span class="text-xs px-2 py-1 rounded bg-primary/20 text-primary w-fit font-bold uppercase tracking-wider">Susu Circle</span>
+</div>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-20">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary progress-ring__circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="106.8" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-bold">50%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Current Saved</span>
+<span class="font-bold">$2,500.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Target Goal</span>
+<span class="font-bold">$5,000.00</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 50%"></div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-all">View Details</button>
+<button class="py-2.5 rounded-xl bg-primary text-background-dark text-sm font-bold hover:brightness-110 transition-all">Add Funds</button>
+</div>
+</div>
+<div class="glass p-6 rounded-2xl flex flex-col group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex flex-col">
+<h3 class="text-lg font-bold mb-1">Tuition Fees</h3>
+<span class="text-xs px-2 py-1 rounded bg-slate-700/50 text-slate-300 w-fit font-bold uppercase tracking-wider">Personal Goal</span>
+</div>
+<div class="relative size-20 flex items-center justify-center">
+<svg class="size-20">
+<circle class="text-primary/10" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary progress-ring__circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="181.5" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-bold">15%</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Current Saved</span>
+<span class="font-bold">$1,200.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Target Goal</span>
+<span class="font-bold">$8,000.00</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-all">View Details</button>
+<button class="py-2.5 rounded-xl bg-primary text-background-dark text-sm font-bold hover:brightness-110 transition-all">Add Funds</button>
+</div>
+</div>
+<div class="border-2 border-dashed border-primary/20 rounded-2xl flex flex-col items-center justify-center p-8 group hover:border-primary/50 transition-all cursor-pointer">
+<div class="size-16 rounded-full bg-primary/5 flex items-center justify-center text-primary/40 group-hover:text-primary transition-all mb-4">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+<p class="font-bold text-slate-400 group-hover:text-primary transition-all">New Savings Goal</p>
+<p class="text-xs text-slate-500 mt-2 text-center">Set up a target and track your progress automatically</p>
+</div>
+</div>
+<section class="mt-16 mb-12">
+<div class="glass p-8 rounded-3xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] text-primary">analytics</span>
+</div>
+<div class="relative z-10">
+<h2 class="text-2xl font-bold mb-4">Susu Contribution History</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-slate-400 text-sm border-b border-primary/10">
+<th class="pb-4 font-medium">Date</th>
+<th class="pb-4 font-medium">Description</th>
+<th class="pb-4 font-medium">Plan Name</th>
+<th class="pb-4 font-medium">Amount</th>
+<th class="pb-4 font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-primary/5">
+<td class="py-4">Oct 12, 2023</td>
+<td class="py-4">Monthly Susu Share</td>
+<td class="py-4">Business Startup</td>
+<td class="py-4 font-bold text-primary">$500.00</td>
+<td class="py-4"><span class="px-2 py-1 rounded bg-green-400/10 text-green-400 text-xs font-bold uppercase">Success</span></td>
+</tr>
+<tr class="border-b border-primary/5">
+<td class="py-4">Oct 10, 2023</td>
+<td class="py-4">Top-up Payment</td>
+<td class="py-4">Emergency Fund</td>
+<td class="py-4 font-bold text-primary">$1,200.00</td>
+<td class="py-4"><span class="px-2 py-1 rounded bg-green-400/10 text-green-400 text-xs font-bold uppercase">Success</span></td>
+</tr>
+<tr class="border-b border-primary/5">
+<td class="py-4">Oct 05, 2023</td>
+<td class="py-4">Direct Deposit</td>
+<td class="py-4">Holiday Trip</td>
+<td class="py-4 font-bold text-primary">$300.00</td>
+<td class="py-4"><span class="px-2 py-1 rounded bg-green-400/10 text-green-400 text-xs font-bold uppercase">Success</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<button class="mt-6 text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                            View all transactions <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="mt-auto border-t border-primary/10 py-10 px-4 glass">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">storm</span>
+<span class="font-bold text-lg">SusuPay</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+<div class="text-xs text-slate-500">
+                    © 2023 SusuPay Financial Inc. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

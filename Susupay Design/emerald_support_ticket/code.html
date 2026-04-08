@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Support - Submit Ticket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "sapphire": "#0f52ba",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/20 px-6 lg:px-40 py-4 bg-white/5 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-4xl">account_balance_wallet</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">SusuPay Support</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-200/50 dark:bg-primary/10 text-slate-700 dark:text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-slate-200/50 dark:bg-primary/10 text-slate-700 dark:text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar with emerald border accent" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdGxF0lu2hCZff7IwdJKG_mJ1DCTRFK3xcqObZ77jtizhahJ2jYeZY0y4iTe0w37WJvLgPiSBPCXhW7uj-xR19qyMbr97WxbPmT0ZqEvmNb0Ez1lUZNHsrNicUSOujvaYgEf999ymf8KG686YRVkUL8-HwvSuKnZbvgpehMb8lByMcGqoHlv2ZVIvY4eKG1FvfcygfTgw99t2WC1j3bGLCvbt8PvKaqTV-cGSMC4eDYCt5gYcKMJuy5NEf8mE7h0TOgpPXV-05CJ0");'></div>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-10 px-4">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 gap-8">
+<!-- Hero Section -->
+<div class="flex flex-col gap-4 bg-gradient-to-br from-primary/10 via-sapphire/5 to-transparent p-8 rounded-xl border border-primary/10">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<p class="text-primary font-semibold tracking-wide uppercase text-xs">Premium Support</p>
+</div>
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tight">Submit a Ticket</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl leading-relaxed">
+                            Need assistance with your SusuPay account? Our team of emerald-tier support specialists is available 24/7 to resolve your issues.
+                        </p>
+</div>
+<!-- Ticket Form Container -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Form Area -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-primary/10 rounded-xl p-6 lg:p-8">
+<form class="flex flex-col gap-8">
+<!-- Category Selection -->
+<div class="flex flex-col gap-4">
+<label class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Ticket Category</label>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer group">
+<input checked="" class="sr-only peer" name="category" type="radio"/>
+<div class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary text-slate-600 dark:text-slate-300 transition-all hover:border-primary/50">
+                                                    Transaction Issue
+                                                </div>
+</label>
+<label class="cursor-pointer group">
+<input class="sr-only peer" name="category" type="radio"/>
+<div class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary text-slate-600 dark:text-slate-300 transition-all hover:border-primary/50">
+                                                    Account Access
+                                                </div>
+</label>
+<label class="cursor-pointer group">
+<input class="sr-only peer" name="category" type="radio"/>
+<div class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary text-slate-600 dark:text-slate-300 transition-all hover:border-primary/50">
+                                                    Card Services
+                                                </div>
+</label>
+<label class="cursor-pointer group">
+<input class="sr-only peer" name="category" type="radio"/>
+<div class="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:bg-primary peer-checked:text-background-dark peer-checked:border-primary text-slate-600 dark:text-slate-300 transition-all hover:border-primary/50">
+                                                    Technical Bug
+                                                </div>
+</label>
+</div>
+</div>
+<!-- Priority Levels -->
+<div class="flex flex-col gap-4">
+<label class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Priority Level</label>
+<div class="grid grid-cols-3 gap-4">
+<label class="cursor-pointer">
+<input class="sr-only peer" name="priority" type="radio"/>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:border-primary peer-checked:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 peer-checked:text-primary">low_priority</span>
+<span class="text-xs mt-2 font-medium">Standard</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" name="priority" type="radio"/>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:border-sapphire peer-checked:bg-sapphire/10 transition-all">
+<span class="material-symbols-outlined text-sapphire">priority_high</span>
+<span class="text-xs mt-2 font-medium">Urgent</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="priority" type="radio"/>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 dark:border-primary/20 bg-transparent peer-checked:border-red-500 peer-checked:bg-red-500/10 transition-all">
+<span class="material-symbols-outlined text-red-500">emergency_home</span>
+<span class="text-xs mt-2 font-medium">Critical</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Subject & Description -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider" for="subject">Subject</label>
+<input class="w-full bg-slate-100 dark:bg-background-dark/50 border border-slate-200 dark:border-primary/20 rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-500" id="subject" placeholder="Brief summary of your issue" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider" for="description">Description</label>
+<textarea class="w-full bg-slate-100 dark:bg-background-dark/50 border border-slate-200 dark:border-primary/20 rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-500 resize-none" id="description" placeholder="Please provide as much detail as possible..." rows="5"></textarea>
+</div>
+</div>
+<!-- File Attachment -->
+<div class="flex flex-col gap-4">
+<label class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Attachments</label>
+<div class="border-2 border-dashed border-slate-200 dark:border-primary/20 rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-slate-400 group-hover:text-primary transition-colors">cloud_upload</span>
+<div class="text-center">
+<p class="text-sm font-medium">Click to upload or drag and drop</p>
+<p class="text-xs text-slate-500 mt-1">PNG, JPG or PDF (max. 10MB)</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary hover:bg-primary/90 text-background-dark font-bold text-lg rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined">send</span>
+                                        Submit Ticket
+                                    </button>
+</form>
+</div>
+</div>
+<!-- Sidebar / Info Area -->
+<div class="flex flex-col gap-6">
+<div class="bg-white/5 dark:bg-white/5 border border-slate-200 dark:border-primary/10 rounded-xl p-6">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                                    Ticket Guidelines
+                                </h3>
+<ul class="flex flex-col gap-4 text-sm text-slate-600 dark:text-slate-400">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span>Include transaction IDs for payment issues.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span>Upload screenshots of any error messages.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span>Expect a response within 2-4 hours for urgent tickets.</span>
+</li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-sapphire/20 to-primary/20 border border-primary/20 rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-lg font-bold mb-2">Live Chat</h3>
+<p class="text-sm opacity-80 mb-4">Want immediate help? Start a conversation with an agent now.</p>
+<button class="w-full py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg font-semibold text-sm hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">forum</span>
+                                        Open Chat
+                                    </button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-9xl">chat_bubble</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest px-2">Recently Resolved</p>
+<div class="flex flex-col gap-2">
+<div class="p-3 bg-slate-100 dark:bg-white/5 rounded-lg border border-slate-200 dark:border-primary/10 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-semibold">TKT-8291</span>
+<span class="text-[10px] text-slate-500">Wallet Sync Error</span>
+</div>
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded uppercase">Solved</span>
+</div>
+<div class="p-3 bg-slate-100 dark:bg-white/5 rounded-lg border border-slate-200 dark:border-primary/10 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-semibold">TKT-8288</span>
+<span class="text-[10px] text-slate-500">Card Replacement</span>
+</div>
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded uppercase">Solved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-slate-200 dark:border-primary/10 py-8 flex justify-center items-center">
+<div class="flex flex-col items-center gap-4">
+<div class="flex gap-6 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Security</a>
+</div>
+<p class="text-xs text-slate-500">© 2024 SusuPay Emerald Services. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

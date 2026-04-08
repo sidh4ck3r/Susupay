@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay - Share Filter Preset</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "emerald-glass": "rgba(16, 183, 127, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(16, 34, 28, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.2);
+        }
+        .emerald-gradient {
+            background: radial-gradient(circle at top left, rgba(16, 183, 127, 0.15), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-screen w-full flex-col overflow-hidden emerald-gradient">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between px-10 py-4 border-b border-primary/20 bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-100 text-xl font-bold tracking-tight">SusuPay</h2>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-6 text-sm font-medium text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="hover:text-primary transition-colors" href="#">Transactions</a>
+<a class="text-primary" href="#">Reports</a>
+</nav>
+<div class="flex items-center gap-3 border-l border-primary/20 pl-6">
+<div class="bg-primary/10 p-2 rounded-full text-primary">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-primary/30" data-alt="User profile avatar of a business professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfq70NeVk_Bc-nYeBCZhMClO50fA98Ioe3td1mfVxqss2XHOUDdABZ6Ogmxe_mS4xwMqV-0svODCk94Lzp_4ftv5ekUDf26nRQQLSrSHEmK9azn_be-zH3-lQybbyGX0xSOGSfwbOd-WpsceVP4TUTLS0NBceb75U_NH8R45J4c9CHBkmtJcWgaVZbAKwkuX4XLdkTyZCpfcw05s3ilLkVcVrWPwgRi-qEa2p3mGjIXaTd_jZHWkxB1qJwtFbcZYcYb7EnaRZgWh0");'>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area (Blurred background to simulate modal focus) -->
+<main class="flex-1 flex items-center justify-center p-6 relative">
+<!-- Emerald & Sapphire Modal Container -->
+<div class="glass-effect w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="p-6 border-b border-primary/10">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h1 class="text-2xl font-bold text-slate-100 tracking-tight">Share Filter Preset</h1>
+<p class="text-primary/70 text-sm">Distribute <span class="text-primary font-semibold">'Emerald &amp; Sapphire'</span> export configuration to your team.</p>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-lg">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Modal Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8 max-h-[70vh]">
+<!-- Search Field -->
+<div class="space-y-3">
+<label class="text-xs font-semibold uppercase tracking-wider text-slate-400 ml-1">Search Team Members</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary/60 group-focus-within:text-primary">
+<span class="material-symbols-outlined">person_search</span>
+</div>
+<input class="w-full bg-primary/5 border border-primary/20 rounded-xl py-3 pl-12 pr-4 text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none" placeholder="Enter name, email, or department..." type="text"/>
+</div>
+</div>
+<!-- Role Based Sharing -->
+<div class="space-y-3">
+<label class="text-xs font-semibold uppercase tracking-wider text-slate-400 ml-1">Share by Role</label>
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+                                All Admins
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+                                Finance Dept
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+                                Compliance
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">groups</span>
+                                Managers
+                            </button>
+</div>
+</div>
+<!-- Custom Message -->
+<div class="space-y-3">
+<label class="text-xs font-semibold uppercase tracking-wider text-slate-400 ml-1">Add a Message (Optional)</label>
+<textarea class="w-full bg-primary/5 border border-primary/20 rounded-xl p-4 text-slate-100 placeholder:text-slate-600 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none resize-none" placeholder="Hey team, use this preset for the Q4 audit exports..." rows="3"></textarea>
+</div>
+<!-- Share Link -->
+<div class="bg-primary/5 rounded-xl p-4 border border-dashed border-primary/30">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="bg-primary/20 p-2 rounded-lg text-primary shrink-0">
+<span class="material-symbols-outlined">link</span>
+</div>
+<div class="truncate">
+<p class="text-xs text-slate-400 font-medium">Direct Share Link</p>
+<p class="text-sm text-slate-300 truncate font-mono">susupay.com/export/preset/em-sap-823k-01</p>
+</div>
+</div>
+<button class="bg-primary text-background-dark px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-primary/90 transition-colors whitespace-nowrap">
+                                Copy Link
+                            </button>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-6 border-t border-primary/10 bg-white/5 flex items-center justify-between">
+<button class="text-slate-400 hover:text-white text-sm font-semibold px-4 py-2 transition-colors">
+                        Cancel
+                    </button>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-primary/10 border border-primary/30 text-primary px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">save</span>
+                            Save Draft
+                        </button>
+<button class="flex items-center gap-2 bg-primary text-background-dark px-6 py-2.5 rounded-lg text-sm font-bold shadow-[0_0_20px_rgba(16,183,127,0.3)] hover:scale-[1.02] transition-all">
+<span class="material-symbols-outlined text-lg">send</span>
+                            Share Now
+                        </button>
+</div>
+</div>
+</div>
+<!-- Background Decorations -->
+<div class="absolute top-20 left-40 w-64 h-64 bg-primary/20 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-20 right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px] -z-10"></div>
+</main>
+<!-- Footer Stats Bar -->
+<footer class="h-12 border-t border-primary/10 bg-background-dark flex items-center px-10 justify-between text-[10px] text-slate-500 uppercase tracking-[0.2em]">
+<div class="flex gap-8">
+<span>System Status: <span class="text-primary">Operational</span></span>
+<span>Uptime: 99.99%</span>
+</div>
+<div class="flex gap-8">
+<span>SEC-256 Encrypted</span>
+<span>© 2024 SusuPay Global</span>
+</div>
+</footer>
+</div>
+</body></html>

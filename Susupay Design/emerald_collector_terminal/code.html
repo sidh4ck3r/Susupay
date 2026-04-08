@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f", // Emerald
+                        "secondary": "#3b82f6", // Sapphire
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#050a09",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(16, 183, 127, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .glass-blue {
+            background: rgba(59, 130, 246, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10b77f 0%, #064e3b 100%);
+        }
+        .sapphire-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 glass border-b border-primary/10 px-6 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl emerald-gradient flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight">SusuPay <span class="text-primary">Collector</span></h2>
+<p class="text-xs text-slate-400 font-medium uppercase tracking-widest">Premium Terminal</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-semibold text-primary">Terminal Active</span>
+</div>
+<button class="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-secondary/50 p-0.5 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="Professional headshot of male field collector" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP8BlSK0BGwqdW5ZoxskVRrrmDFlrgfiCNvXBUpe9atdlK_65T5kpC8BM2GzIHktiY357f7OCJHt0vXR-SGNeIHD0BdTJ5S1u4CD8ZJYpRemjyelp1-ifon9kkXmNnK1vbC15ZR0lOMGDEKOOHqWjE-qfUCYpnJYR6QNxvS04n-WCi955hLlq-66njhLcS8KMZESXFJ3kgmpsXPYtPrZc5k-i9aMVdxJfA8kaAP-Ym9u0T1V24z-NFvsKK-EO-SkZ_8Dv0QrTMEz4"/>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Sidebar / Quick Actions -->
+<aside class="lg:col-span-3 space-y-6">
+<div class="glass p-5 rounded-2xl border border-primary/10">
+<div class="mb-6">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Collector ID</p>
+<p class="text-xl font-mono text-slate-100">#SP-EMR-8820</p>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/20 text-primary border border-primary/30 font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                            Terminal
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+                            Customers
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+                            Logs
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-slate-800/50 hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                            Setup
+                        </a>
+</nav>
+</div>
+<!-- Collection Progress Card -->
+<div class="glass-blue p-5 rounded-2xl border border-secondary/10 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 size-24 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
+<p class="text-slate-400 text-sm font-medium mb-1">Daily Target</p>
+<div class="flex items-baseline gap-2 mb-4">
+<span class="text-3xl font-bold text-white tracking-tight">GH₵ 3,120</span>
+<span class="text-secondary text-sm font-semibold">/ 4,000</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-2 mb-2 overflow-hidden">
+<div class="sapphire-gradient h-full rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex justify-between text-xs font-bold">
+<span class="text-secondary">78% Achieved</span>
+<span class="text-slate-500">GH₵ 880 to go</span>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<div class="lg:col-span-9 space-y-6">
+<!-- Quick Collection Bar -->
+<div class="glass p-4 rounded-2xl border border-primary/10 flex flex-col md:flex-row gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/60">search</span>
+<input class="w-full bg-slate-900/50 border border-primary/20 rounded-xl py-3 pl-12 pr-4 text-slate-100 placeholder:text-slate-500 focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all" placeholder="Search customer by name or ID (e.g. Ama Serwaa)..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary/80 text-background-dark font-bold px-8 py-3 rounded-xl flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                        New Collection
+                    </button>
+</div>
+<!-- Collection Status Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass p-6 rounded-2xl border border-primary/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
+<span class="material-symbols-outlined">done_all</span>
+</div>
+<span class="text-emerald-400 text-xs font-bold bg-emerald-400/10 px-2 py-1 rounded">+14%</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Successful Today</p>
+<p class="text-2xl font-bold text-white">42 Deposits</p>
+</div>
+<div class="glass-blue p-6 rounded-2xl border border-secondary/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-blue-500/20 text-blue-400">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-blue-400 text-xs font-bold bg-blue-400/10 px-2 py-1 rounded">8 Near</span>
+</div>
+<p class="text-slate-400 text-sm font-medium">Pending Visits</p>
+<p class="text-2xl font-bold text-white">12 Customers</p>
+</div>
+<div class="glass p-6 rounded-2xl border border-primary/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">map</span>
+</div>
+</div>
+<p class="text-slate-400 text-sm font-medium">Current Route</p>
+<p class="text-2xl font-bold text-white">Adabraka Sector</p>
+</div>
+</div>
+<!-- Pending Collections List -->
+<div class="glass rounded-2xl border border-primary/10 overflow-hidden">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between bg-white/5">
+<h3 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hourglass_empty</span>
+                            Pending Field Collections
+                        </h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-900/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Location</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Expected</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Type</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full sapphire-gradient flex items-center justify-center text-[10px] font-bold text-white shadow-sm">KO</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Kofi Osei</p>
+<p class="text-xs text-slate-500">ID: SUSU-293</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Block B, Stall 44</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100 font-mono">GH₵ 150.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-secondary/10 text-secondary border border-secondary/20">SAVINGS</span>
+</td>
+<td class="px-6 py-4">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold border border-primary/20 hover:bg-primary hover:text-background-dark transition-all">Collect</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full emerald-gradient flex items-center justify-center text-[10px] font-bold text-white shadow-sm">AA</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Abena Appiah</p>
+<p class="text-xs text-slate-500">ID: SUSU-112</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Main Gate Row</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100 font-mono">GH₵ 200.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">LOAN PMT</span>
+</td>
+<td class="px-6 py-4">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold border border-primary/20 hover:bg-primary hover:text-background-dark transition-all">Collect</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full sapphire-gradient flex items-center justify-center text-[10px] font-bold text-white shadow-sm">YM</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Yaw Mensah</p>
+<p class="text-xs text-slate-500">ID: SUSU-554</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">South Market Arc</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100 font-mono">GH₵ 50.00</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-secondary/10 text-secondary border border-secondary/20">SAVINGS</span>
+</td>
+<td class="px-6 py-4">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold border border-primary/20 hover:bg-primary hover:text-background-dark transition-all">Collect</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-slate-900/50 flex justify-center border-t border-primary/10">
+<button class="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                            SYNC PENDING LIST
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / System Stats -->
+<footer class="p-6 mt-auto">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+<div class="flex items-center gap-6">
+<p class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">battery_full</span>
+                        98% Optimized
+                    </p>
+<p class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">cloud_done</span>
+                        All Data Synced
+                    </p>
+</div>
+<p>© 2024 SusuPay Emerald Terminal. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>

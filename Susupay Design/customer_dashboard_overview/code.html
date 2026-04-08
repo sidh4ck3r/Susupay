@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Premium Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(238, 205, 43, 0.15) 0%, rgba(34, 31, 16, 0.4) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(238, 205, 43, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col lg:flex-row min-h-screen w-full overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-full lg:w-72 glass-panel border-r border-primary/10 flex flex-col p-6 gap-8 z-50">
+<div class="flex items-center gap-3 px-2">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-background-dark shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-slate-100">SusuPay</h1>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Premium Gold</span>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-background-dark font-semibold" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">savings</span>
+<span>Savings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="glass-card p-4 rounded-2xl flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full border-2 border-primary/50 overflow-hidden bg-background-dark" data-alt="User profile avatar smiling professional">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXBfQogxUvFCk-TEN1ZGeUj9pqe3JS6wor6ckdt3WH5NZLIZN4cQaoHzc-OMlKGtYrQ6yBX8AOiQFg8zjc8UbTQ-FGtMZ4MetYy4aNWnd_9GNpqQuPQ02yz1c5aNi0ltg7MBZaEAD-wKMF9pp9hUzv2cFFR9nSDFDk4jLwv9L1btZdoSs6UdA02WVa0YEEqUWn9YarWZzP9DjtryWVgtnRepO_0F5pNW4ozwF9XTgA4aa2vvyfvXF-pTYMu5hzFLfMt0xR0EZ6Vr0"/>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-100 leading-none">Alex Rivera</p>
+<p class="text-[11px] text-slate-400">Gold Member</p>
+</div>
+</div>
+<button class="w-full py-2 bg-primary/10 border border-primary/30 text-primary text-xs font-bold rounded-lg hover:bg-primary hover:text-background-dark transition-all">
+                    Upgrade Account
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-4 lg:p-8 flex flex-col gap-8 max-w-7xl mx-auto w-full">
+<!-- Header -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-100">Welcome back, Alex</h2>
+<p class="text-slate-400">Here's what's happening with your accounts today.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-primary/5 border-primary/10 rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary w-64 text-slate-100" placeholder="Search transactions..." type="text"/>
+</div>
+<button class="p-2.5 glass-panel rounded-xl text-slate-300 hover:text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Top Grid: Balance & Savings -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Balance Card -->
+<div class="lg:col-span-2 glass-card rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[240px]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full -mr-20 -mt-20"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-primary text-sm font-medium uppercase tracking-widest mb-1">Total Balance</p>
+<h3 class="text-4xl md:text-5xl font-bold text-slate-100">$42,850.24</h3>
+</div>
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-8 flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold">Monthly Income</span>
+<span class="text-emerald-400 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> $5,240
+                                </span>
+</div>
+<div class="w-[1px] h-full bg-slate-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold">Monthly Spent</span>
+<span class="text-rose-400 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> $2,100
+                                </span>
+</div>
+</div>
+</div>
+<div class="mt-auto flex gap-3 relative z-10 pt-6">
+<button class="flex-1 bg-primary text-background-dark font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span> Deposit
+                        </button>
+<button class="flex-1 bg-white/10 text-slate-100 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-white/20 transition-all border border-white/10">
+<span class="material-symbols-outlined">send</span> Send
+                        </button>
+</div>
+</div>
+<!-- Savings Goal Widget -->
+<div class="glass-panel rounded-3xl p-6 flex flex-col border-primary/20">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-bold text-slate-100">Active Goal</h4>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">House Fund</span>
+</div>
+<div class="flex flex-col items-center justify-center flex-1 py-4">
+<div class="relative size-32">
+<!-- SVG Progress Ring -->
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-slate-800" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-slate-100">75%</span>
+<span class="text-[10px] text-slate-400 uppercase">Reached</span>
+</div>
+</div>
+<div class="mt-6 text-center">
+<p class="text-xl font-bold text-slate-100">$15,000.00</p>
+<p class="text-xs text-slate-400">Target: $20,000.00</p>
+</div>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-xl border border-primary/30 text-primary text-sm font-bold hover:bg-primary/5">
+                        Manage Goals
+                    </button>
+</div>
+</div>
+<!-- Bottom Grid: Quick Actions & History -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Transactions Feed -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-slate-100">Recent Transactions</h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">See All</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Transaction Item -->
+<div class="glass-panel p-4 rounded-2xl flex items-center justify-between border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="font-bold text-slate-100">Apple Store Purchase</p>
+<p class="text-xs text-slate-500">Today, 2:45 PM • Electronics</p>
+</div>
+</div>
+<p class="font-bold text-rose-400">-$999.00</p>
+</div>
+<div class="glass-panel p-4 rounded-2xl flex items-center justify-between border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-bold text-slate-100">Salary Deposit</p>
+<p class="text-xs text-slate-500">Yesterday • Income</p>
+</div>
+</div>
+<p class="font-bold text-emerald-400">+$4,200.00</p>
+</div>
+<div class="glass-panel p-4 rounded-2xl flex items-center justify-between border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="font-bold text-slate-100">Le Petit Bistro</p>
+<p class="text-xs text-slate-500">Oct 24, 2023 • Dining</p>
+</div>
+</div>
+<p class="font-bold text-rose-400">-$85.50</p>
+</div>
+</div>
+</div>
+<!-- Quick Actions / Cards -->
+<div class="flex flex-col gap-6">
+<h3 class="text-xl font-bold text-slate-100">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary/10 hover:border-primary/40 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary">receipt_long</span>
+<span class="text-sm font-bold text-slate-100">Pay Bills</span>
+</button>
+<button class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary/10 hover:border-primary/40 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary">sync_alt</span>
+<span class="text-sm font-bold text-slate-100">Transfer</span>
+</button>
+<button class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary/10 hover:border-primary/40 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary">qr_code_scanner</span>
+<span class="text-sm font-bold text-slate-100">Scan QR</span>
+</button>
+<button class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary/10 hover:border-primary/40 transition-all group">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary">support_agent</span>
+<span class="text-sm font-bold text-slate-100">Support</span>
+</button>
+</div>
+<!-- Small Info Banner -->
+<div class="mt-4 rounded-2xl bg-gradient-to-br from-primary/30 to-background-dark p-6 border border-primary/20">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">info</span>
+<span class="text-[10px] font-bold text-primary uppercase">Financial Tip</span>
+</div>
+<p class="text-sm text-slate-300 italic">"Increase your monthly savings by 5% to reach your house goal 4 months earlier."</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,17 @@
+{
+  "name": "susupay",
+  "version": "1.0.0",
+  "description": "SusuPay - Digital Savings Platform",
+  "scripts": {
+    "dev": "start_app.cmd",
+    "start-all": "start_all_services.bat",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix client/server",
+    "build": "npm run build --prefix client",
+    "start": "start_prod.bat",
+    "start:client": "npm run start --prefix client",
+    "start:server": "npm run start --prefix client/server"
+  },
+  "author": "",
+  "license": "ISC"
+}

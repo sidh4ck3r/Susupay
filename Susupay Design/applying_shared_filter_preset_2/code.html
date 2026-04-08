@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "sapphire": "#0f52ba",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>SusuPay - Applying Preset</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-primary/20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">SusuPay Admin</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 px-4">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Transactions</a>
+<a class="text-primary text-sm font-bold" href="#">Exports</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</div>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<div class="bg-center bg-no-repeat bg-cover h-full w-full" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-CnNHIbY0plGDw-rEX6s32NU5PnVOG-x-meOetpSBvNr62FiCpKrxGFxxLlq0jjoFBZ99OEZLOhLBxMYLNy5tEUzf_qcSV9oZu6lugo5MTXuSfVgz7M3XWJIFR8D3sIkgnw5cViMo1cqgrEd2BIO5vB2bVafL2afsxR0i7IDKou-R9mZDOL-qTBgBhgL8uIKYZGf4gKWzZyULf77qBN6DVNEnxL2XdjcsIY5oRrr9C7R-qWc_GoSa1KWsuUJ9SoWYh2mDSThhFNM");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex items-center justify-center p-4 relative">
+<!-- Background Decorative Elements -->
+<div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-sapphire/10 rounded-full blur-[100px]"></div>
+<!-- Export Settings Modal / Container -->
+<div class="w-full max-w-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/10 rounded-xl shadow-2xl overflow-hidden relative">
+<!-- Applying Preset Overlay (Glassmorphism Emerald & Sapphire Theme) -->
+<div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background-dark/60 backdrop-blur-md p-8 text-center">
+<div class="relative mb-8">
+<!-- Spinner/Progress Ring -->
+<div class="w-24 h-24 rounded-full border-4 border-primary/20 border-t-primary animate-spin"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">auto_fix_high</span>
+</div>
+</div>
+<h1 class="text-3xl font-bold text-white mb-2 tracking-tight">Applying Shared Filter Preset</h1>
+<p class="text-slate-300 mb-8 max-w-md">Configuring export parameters based on <span class="text-primary font-semibold">Q3 Regional Audit</span> preset...</p>
+<div class="w-full max-w-sm mb-8">
+<div class="flex justify-between mb-2">
+<span class="text-xs font-medium text-slate-400">Updating 4 filters...</span>
+<span class="text-xs font-bold text-primary">65%</span>
+</div>
+<div class="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-sapphire rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition-all border border-white/10">
+                            Cancel
+                        </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-background-dark text-sm font-bold shadow-lg shadow-primary/20 transition-all">
+                            Skip Animation
+                        </button>
+</div>
+</div>
+<!-- Modal Content (Blurred behind overlay) -->
+<div class="p-8 opacity-40">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold">Export Settings</h3>
+<span class="material-symbols-outlined text-slate-400">close</span>
+</div>
+<div class="space-y-6">
+<!-- Date Range Filter -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Date Range</label>
+<div class="flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="text-sm">July 1, 2023 - Sept 30, 2023</span>
+</div>
+</div>
+<!-- User Roles Filter -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">User Roles</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full border border-primary/30">Regional Admin</span>
+<span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full border border-primary/30">Finance Lead</span>
+<span class="px-3 py-1 bg-white/5 text-slate-400 text-xs font-bold rounded-full border border-white/10">Customer Support</span>
+</div>
+</div>
+<!-- Transaction Type Filter -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Transaction Type</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-primary/10 border border-primary/50 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<span class="text-sm font-medium">Internal Transfers</span>
+</div>
+<div class="p-3 bg-primary/10 border border-primary/50 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-sm font-medium">Merchant Payouts</span>
+</div>
+</div>
+</div>
+<!-- Region Filter -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Region</label>
+<div class="flex items-center gap-3 p-3 bg-primary/10 border border-primary/50 rounded-lg">
+<span class="material-symbols-outlined text-primary">public</span>
+<span class="text-sm">Sub-Saharan Africa, South East Asia</span>
+</div>
+</div>
+</div>
+<!-- Footer Actions (Blurred) -->
+<div class="mt-8 flex justify-end gap-4 pt-6 border-t border-white/10">
+<button class="px-6 py-2 rounded-lg text-sm font-medium">Reset</button>
+<button class="px-8 py-2 bg-primary/50 rounded-lg text-sm font-bold">Generate Export</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sidebar / Navigation Preview -->
+<nav class="fixed left-0 top-20 bottom-0 w-64 p-6 hidden lg:block">
+<div class="space-y-4">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">dashboard</span>
+<span class="text-sm font-medium text-slate-400 group-hover:text-white">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">swap_horiz</span>
+<span class="text-sm font-medium text-slate-400 group-hover:text-white">Transactions</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined">download</span>
+<span class="text-sm font-bold">Exports</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">settings</span>
+<span class="text-sm font-medium text-slate-400 group-hover:text-white">Settings</span>
+</div>
+</div>
+<div class="mt-12 p-4 bg-gradient-to-br from-primary/10 to-sapphire/10 border border-white/10 rounded-xl">
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Current Preset</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-white">auto_awesome</span>
+<p class="text-sm font-medium text-white truncate">Q3 Regional Audit</p>
+</div>
+</div>
+</nav>
+</div>
+</body></html>

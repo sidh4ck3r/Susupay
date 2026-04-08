@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#12110a",
+                        "surface-dark": "#1e1c11",
+                        "glass-dark": "rgba(34, 31, 16, 0.7)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(30, 28, 17, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #12110a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #484223;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-72 flex-shrink-0 bg-background-dark border-r border-primary/10 flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-tight">SusuPay</h1>
+<p class="text-primary text-xs font-medium uppercase tracking-widest">Premium Gold</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Wallets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">savings</span>
+<span class="text-sm font-medium">Savings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/20 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-primary/10 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">help_center</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto">
+<div class="bg-primary/10 rounded-2xl p-4 border border-primary/20 mb-6">
+<p class="text-xs text-primary font-bold uppercase mb-2">Current Plan</p>
+<p class="text-white text-sm font-semibold mb-3">SusuPay Gold Tier</p>
+<button class="w-full py-2 bg-primary text-background-dark text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                        Manage Plan
+                    </button>
+</div>
+<div class="flex items-center gap-3 px-2">
+<div class="size-10 rounded-full bg-slate-800 border border-slate-700 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB14SPzpxIRIe6fKpEyEKrfnJkCzxYQbyYASw9HdsWTWMtnVFqKNaEdP_ZT2dt1zcyS0CtTcZiCfrAiRZHTKKSkyGoPer_vS6GWJvezf8JbvwaoobTNVmSsdMz19XbaaXZbC_4TFq_69Nm7EWyl_DToCQHIZlmgDESDF4O-fPFXOynLFgANawYmzAv-GaNMe5PYKB_twrU_9AVW2Z8DjIYC_oT2Xku8ygg7pHo5hUJv-EPhffDwHr8F8tupFke6E5oPDrIvGRgYbtc"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-white text-sm font-semibold truncate">Alex Boateng</p>
+<p class="text-slate-500 text-xs truncate">alex.b@susupay.com</p>
+</div>
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background-dark relative">
+<!-- Header -->
+<header class="sticky top-0 z-10 glass-panel px-8 py-6 flex justify-between items-center border-b border-primary/10">
+<div>
+<h2 class="text-2xl font-bold text-white tracking-tight">Settings &amp; Security</h2>
+<p class="text-slate-400 text-sm">Update your profile and manage security preferences</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-white bg-slate-800/50 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-700"></div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-background-dark font-bold text-sm rounded-lg shadow-[0_0_20px_rgba(238,205,43,0.3)]">
+<span class="material-symbols-outlined text-sm">save</span>
+                        Save Changes
+                    </button>
+</div>
+</header>
+<div class="p-8 max-w-5xl mx-auto space-y-8">
+<!-- Profile Settings -->
+<section class="glass-panel rounded-2xl overflow-hidden p-6">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined">person</span>
+<h3 class="text-lg font-bold text-white uppercase tracking-wider text-sm">Profile Settings</h3>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="relative group">
+<div class="size-32 rounded-2xl bg-slate-800 border-2 border-primary/30 overflow-hidden">
+<img alt="Alex Boateng Profile" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Portrait of Alex Boateng for profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApHh4xA4cPKvjAQMKogHaRZ-kLxIGrTa5aCwm42EjjSLBX5IpD4tznZf3CB-2oL13MzsF29jaBIh2Pvg3nacCcFd79l888s9s_ku3YVldZ6eAHL0xd5xF_TmHZE6W76dUNVF-VCGeXFUWK5jlKaeaUFrVsvEc6EsYXwhHJaIhupMMKyUHJreu1VCYQm2225dmH5M3pW0-EHC6HmcXgxfHCAhKXf1t7Wd1U87VoOQNYZkxhik_IIc8h-dx64dGZ5ShyQr1mzwiU1Tk"/>
+</div>
+<button class="absolute -bottom-2 -right-2 p-2 bg-primary text-background-dark rounded-xl shadow-lg border-2 border-background-dark">
+<span class="material-symbols-outlined text-base">photo_camera</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Full Name</label>
+<input class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-0 transition-all" type="text" value="Alex Boateng"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Email Address</label>
+<input class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-0 transition-all" type="email" value="alex.boateng@email.com"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Phone Number</label>
+<input class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-0 transition-all" type="text" value="+233 24 123 4567"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Country</label>
+<select class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-0 transition-all">
+<option>Ghana</option>
+<option>Nigeria</option>
+<option>Kenya</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Security & Authentication -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="glass-panel rounded-2xl p-6">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined">security</span>
+<h3 class="text-lg font-bold text-white uppercase tracking-wider text-sm">Security &amp; Auth</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-slate-900/30 rounded-xl border border-slate-800">
+<div class="flex flex-col">
+<span class="text-white font-medium text-sm">Password Management</span>
+<span class="text-slate-500 text-xs">Last changed 3 months ago</span>
+</div>
+<button class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-primary text-xs font-bold rounded-lg border border-primary/20 transition-all">
+                                    Change Password
+                                </button>
+</div>
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col">
+<span class="text-white font-medium text-sm">Two-Factor Authentication</span>
+<span class="text-slate-500 text-xs">Add an extra layer of security</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col">
+<span class="text-white font-medium text-sm">Biometric Login</span>
+<span class="text-slate-500 text-xs">Face ID or Fingerprint</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Linked Accounts -->
+<section class="glass-panel rounded-2xl p-6">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined">link</span>
+<h3 class="text-lg font-bold text-white uppercase tracking-wider text-sm">Linked Accounts</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-slate-900/30 rounded-xl border border-slate-800">
+<div class="size-10 bg-yellow-500 rounded-lg flex items-center justify-center font-bold text-background-dark text-xs">MTN</div>
+<div class="flex-1">
+<p class="text-white font-medium text-sm">MTN MoMo</p>
+<p class="text-slate-500 text-xs">**** 4567</p>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+<button class="text-slate-500 hover:text-red-400">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-slate-900/30 rounded-xl border border-slate-800">
+<div class="size-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">account_balance</span>
+</div>
+<div class="flex-1">
+<p class="text-white font-medium text-sm">Standard Chartered</p>
+<p class="text-slate-500 text-xs">Savings Account</p>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+<button class="text-slate-500 hover:text-red-400">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<button class="w-full flex items-center justify-center gap-2 p-3 border-2 border-dashed border-slate-700 rounded-xl text-slate-500 hover:border-primary/40 hover:text-primary transition-all font-medium text-sm">
+<span class="material-symbols-outlined">add</span>
+                                Add New Account
+                            </button>
+</div>
+</section>
+</div>
+<!-- Privacy -->
+<section class="glass-panel rounded-2xl p-6">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined">visibility</span>
+<h3 class="text-lg font-bold text-white uppercase tracking-wider text-sm">Privacy &amp; Data</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="pt-1">
+<input checked="" class="rounded border-slate-700 bg-slate-900 text-primary focus:ring-primary/50" type="checkbox"/>
+</div>
+<div>
+<p class="text-white font-medium text-sm">Personalized Offers</p>
+<p class="text-slate-500 text-xs">Allow SusuPay to share data with partners for better cashback deals.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="pt-1">
+<input class="rounded border-slate-700 bg-slate-900 text-primary focus:ring-primary/50" type="checkbox"/>
+</div>
+<div>
+<p class="text-white font-medium text-sm">Public Profile</p>
+<p class="text-slate-500 text-xs">Allow other SusuPay users to find you by your phone number.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="pt-1">
+<input checked="" class="rounded border-slate-700 bg-slate-900 text-primary focus:ring-primary/50" type="checkbox"/>
+</div>
+<div>
+<p class="text-white font-medium text-sm">Activity Status</p>
+<p class="text-slate-500 text-xs">Show when you are online to your contacts.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="pt-1">
+<input checked="" class="rounded border-slate-700 bg-slate-900 text-primary focus:ring-primary/50" type="checkbox"/>
+</div>
+<div>
+<p class="text-white font-medium text-sm">Marketing Emails</p>
+<p class="text-slate-500 text-xs">Receive weekly digests and platform updates.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Sessions -->
+<section class="glass-panel rounded-2xl overflow-hidden">
+<div class="p-6 border-b border-primary/10 flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">devices</span>
+<h3 class="text-lg font-bold text-white uppercase tracking-wider text-sm">Active Sessions</h3>
+</div>
+<button class="text-xs font-bold text-red-400 hover:text-red-300">Logout of All Devices</button>
+</div>
+<div class="divide-y divide-slate-800">
+<!-- Session 1 -->
+<div class="p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">desktop_windows</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Windows PC • Chrome Browser</p>
+<p class="text-slate-500 text-xs">Accra, Ghana • Active Now</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-green-500/20 text-green-500 text-[10px] font-black uppercase rounded-lg border border-green-500/30">Current Device</span>
+</div>
+<!-- Session 2 -->
+<div class="p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">iPhone 14 Pro Max • SusuPay App</p>
+<p class="text-slate-500 text-xs">Kumasi, Ghana • 2 hours ago</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-slate-800 hover:bg-red-500/10 text-slate-400 hover:text-red-500 font-bold text-xs rounded-lg border border-slate-700 transition-all">
+                                Logout
+                            </button>
+</div>
+<!-- Session 3 -->
+<div class="p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">MacBook Pro M2 • Safari Browser</p>
+<p class="text-slate-500 text-xs">London, UK • 3 days ago</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-slate-800 hover:bg-red-500/10 text-slate-400 hover:text-red-500 font-bold text-xs rounded-lg border border-slate-700 transition-all">
+                                Logout
+                            </button>
+</div>
+</div>
+</section>
+<div class="pt-8 pb-12 flex items-center justify-center gap-8 text-slate-500">
+<button class="flex items-center gap-2 hover:text-red-500 transition-colors text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-lg">delete_forever</span>
+                        Delete Account
+                    </button>
+<div class="size-1 bg-slate-700 rounded-full"></div>
+<p class="text-xs">SusuPay Security Audit v2.4.0</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

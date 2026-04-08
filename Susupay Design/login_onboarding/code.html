@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(34, 31, 16, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(238, 205, 43, 0.2);
+        }
+        .abstract-blob {
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center overflow-hidden relative">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary rounded-full abstract-blob"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/60 rounded-full abstract-blob"></div>
+<div class="absolute top-[20%] right-[10%] w-[20%] h-[20%] bg-primary/30 rounded-full abstract-blob"></div>
+<div class="relative z-10 w-full max-w-[480px] px-6 py-12">
+<div class="glass-card rounded-xl p-8 shadow-2xl">
+<div class="flex flex-col items-center mb-8">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-background-dark text-4xl font-bold">account_balance_wallet</span>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-slate-100 mb-1">SusuPay</h1>
+<p class="text-slate-400 text-sm">Secure your financial future with ease</p>
+</div>
+<div class="mb-8">
+<div class="flex h-12 w-full items-center justify-center rounded-lg bg-primary/10 p-1 border border-primary/20">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-primary has-[:checked]:text-background-dark text-slate-400 text-sm font-semibold transition-all">
+<span class="truncate">Customer</span>
+<input checked="" class="invisible w-0" name="role-selector" type="radio" value="Customer"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-primary has-[:checked]:text-background-dark text-slate-400 text-sm font-semibold transition-all">
+<span class="truncate">Collector</span>
+<input class="invisible w-0" name="role-selector" type="radio" value="Collector"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-primary has-[:checked]:text-background-dark text-slate-400 text-sm font-semibold transition-all">
+<span class="truncate">Admin</span>
+<input class="invisible w-0" name="role-selector" type="radio" value="Admin"/>
+</label>
+</div>
+</div>
+<form class="space-y-5">
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Phone Number or Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">alternate_email</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-lg bg-background-dark/50 border border-primary/20 text-slate-100 placeholder:text-slate-600 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none transition-all" placeholder="name@example.com" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">PIN or Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xl">lock</span>
+<input class="w-full pl-12 pr-12 py-4 rounded-lg bg-background-dark/50 border border-primary/20 text-slate-100 placeholder:text-slate-600 focus:ring-2 focus:ring-primary/40 focus:border-primary outline-none transition-all" placeholder="Enter your secret PIN" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between px-1 py-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 rounded border-primary/30 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">Remember me</span>
+</label>
+<a class="text-sm text-primary hover:underline font-medium" href="#">Forgot PIN?</a>
+</div>
+<button class="w-full py-4 bg-primary text-background-dark font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4" type="submit">
+                    Get Started
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-slate-400 text-sm">
+                    Don't have an account? 
+                    <a class="text-primary font-semibold hover:underline" href="#">Join the community</a>
+</p>
+</div>
+</div>
+<div class="mt-8 flex justify-center gap-6">
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">language</span>
+</a>
+<a class="text-slate-500 hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">security</span>
+</a>
+</div>
+</div>
+</body></html>

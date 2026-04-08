@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#eecd2b",
+              "background-light": "#f8f8f6",
+              "background-dark": "#1a180e",
+              "card-dark": "#2a2718",
+              "glass": "rgba(42, 39, 24, 0.6)",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(42, 39, 24, 0.4);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex font-display">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-primary/10 bg-background-light dark:bg-background-dark hidden lg:flex flex-col h-screen sticky top-0">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-background-dark font-bold">payments</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight text-primary">SusuPay</h1>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-primary/10 text-slate-400" href="#">
+<span class="material-icons">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-background-dark transition-all" href="#">
+<span class="material-icons">people</span>
+<span class="font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-primary/10 text-slate-400" href="#">
+<span class="material-icons">receipt_long</span>
+<span class="font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-primary/10 text-slate-400" href="#">
+<span class="material-icons">account_balance_wallet</span>
+<span class="font-medium">Withdrawals</span>
+</a>
+<div class="pt-8 pb-4">
+<span class="px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">System</span>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-primary/10 text-slate-400" href="#">
+<span class="material-icons">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<div class="flex items-center gap-3 p-2 bg-primary/5 rounded-xl border border-primary/10">
+<img class="w-10 h-10 rounded-lg object-cover" data-alt="Admin user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAAIg3vfhS9JdeQFOBs4IfpUWrbPmjiwzxs9lWtoh-bxVpM65smpMCGb8bGnyfarIIrAsTL5oi7zrsDxRhQ6gAPM-kcvcTkRECitvk3ml2vbD1YIkuj3ILOhWi_VxMa5sgLHdd-8AThWgji7HV4Grj9FMXbI0bUzrWaGLOrov_YBXDlbNF1Bpv10Pop35Si3jbUztrg7qHFuPzQ_K0IgYodlka4dxjIIxJNx-Eolr4vKdnfCMJBVN5OZgzuVHpM_46oToVV9WcLhw"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Alex Morgan</p>
+<p class="text-xs text-primary/70">Super Admin</p>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-lg">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0 overflow-y-auto">
+<!-- Header -->
+<header class="h-20 flex items-center justify-between px-8 border-b border-primary/10 bg-background-light dark:bg-background-dark/80 sticky top-0 z-10 backdrop-blur-md">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-primary/5 border border-primary/10 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-slate-500 text-sm" placeholder="Search users by name, email or ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/5 text-primary border border-primary/10">
+<span class="material-icons">notifications</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-background-dark font-bold px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-icons text-sm">person_add</span>
+<span>Add New User</span>
+</button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-effect p-6 rounded-2xl relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-400 text-sm font-medium">Total Users</p>
+<h3 class="text-3xl font-bold mt-1">12,482</h3>
+</div>
+<div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
+<span class="material-icons">groups</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-emerald-400 text-sm">
+<span class="material-icons text-sm">trending_up</span>
+<span>12.5% from last month</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-icons text-[120px]">groups</span>
+</div>
+</div>
+<div class="glass-effect p-6 rounded-2xl relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-400 text-sm font-medium">Active Collectors</p>
+<h3 class="text-3xl font-bold mt-1">1,120</h3>
+</div>
+<div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
+<span class="material-icons">handshake</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-primary text-sm">
+<span class="material-icons text-sm">circle</span>
+<span>98 currently online</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-icons text-[120px]">handshake</span>
+</div>
+</div>
+<div class="glass-effect p-6 rounded-2xl relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-400 text-sm font-medium">Pending Approvals</p>
+<h3 class="text-3xl font-bold mt-1">24</h3>
+</div>
+<div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
+<span class="material-icons">verified_user</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-amber-400 text-sm">
+<span class="material-icons text-sm">schedule</span>
+<span>Requires urgent attention</span>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-icons text-[120px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="glass-effect rounded-2xl overflow-hidden">
+<div class="p-6 flex flex-col sm:flex-row items-center justify-between border-b border-primary/10 gap-4">
+<h2 class="text-xl font-bold flex items-center gap-2">
+                        User Management
+                        <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full font-medium">1,248 Users Found</span>
+</h2>
+<div class="flex items-center gap-3">
+<select class="bg-primary/5 border border-primary/10 rounded-xl px-4 py-2 text-sm focus:ring-primary outline-none text-slate-300">
+<option value="">All Roles</option>
+<option value="admin">Admin</option>
+<option value="collector">Collector</option>
+<option value="customer">Customer</option>
+</select>
+<select class="bg-primary/5 border border-primary/10 rounded-xl px-4 py-2 text-sm focus:ring-primary outline-none text-slate-300">
+<option value="">All Status</option>
+<option value="active">Active</option>
+<option value="suspended">Suspended</option>
+<option value="pending">Pending</option>
+</select>
+<button class="bg-primary/5 border border-primary/10 text-primary hover:bg-primary/10 rounded-xl px-4 py-2 flex items-center gap-2 transition-all">
+<span class="material-icons text-sm">filter_list</span>
+<span class="text-sm font-medium">Advanced</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-primary/5 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+<th class="px-6 py-4">User Details</th>
+<th class="px-6 py-4">Role</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Date Joined</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover" data-alt="User avatar profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsHdXlhlvLpE8dRp-4IS_YCwRvJBEGtBRoSjIg3-ZaiWRZDSnVkvmeNY21Nv-ImQkSNPgJj_VBUHyTWHsjEgGRGd5cBa5XkMxYT_oVwl0-8FZa_aZ8ZsVh4dzQqlMTluSqUaY7fbUKU99TxaZqfKUAyWbgmXtv_9hJsP4yMcXsJCJQ1dXkyxwU86mZXiMNsc_zS1_tQZi5OM0PhdZ5r-wObvKIKPp9mSJE-mKSEAVCMJKr4qnoPblaO0KHxHVtM46YnryDk8GBCZo"/>
+<div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-background-dark rounded-full"></div>
+</div>
+<div>
+<p class="font-semibold text-sm">James Wilson</p>
+<p class="text-xs text-slate-500">james.wilson@susupay.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-indigo-400/10 text-indigo-400 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider border border-indigo-400/20">Admin</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 text-emerald-400 text-sm">
+<span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all" title="Edit">
+<span class="material-icons text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-red-400/10 text-red-400 flex items-center justify-center hover:bg-red-400 hover:text-white transition-all" title="Suspend">
+<span class="material-icons text-lg">block</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center hover:bg-amber-400 hover:text-background-dark transition-all" title="Reset Password">
+<span class="material-icons text-lg">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover" data-alt="User avatar woman profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe_0tdePwC4qlvxMBXVdkcb7nEY9oc0B-WEBZp1mofrxe68jnCyjiT1IupeRLlLUVE7t6mLG7nUuZnQ3TjMNQx_iY6aaU1t1RXIrZZx1edKRZgEva8hYK22B5IAgbWSq94OoXEeU59yr8JK2orHOoOI4CHderw7YUhBMc4B7bIsvcvvxN7IdbrCSeHgm1rgi7DIsEEpcPaUHQICUYxzIRWcMkkAsKObFD88PyevHJgjdDuyHJnIbR3U4xKNWQoreLvpEbU0xxVObk"/>
+</div>
+<div>
+<p class="font-semibold text-sm">Sarah Adetola</p>
+<p class="text-xs text-slate-500">sarah.a@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider border border-primary/20">Collector</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 text-emerald-400 text-sm">
+<span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Nov 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all" title="Edit">
+<span class="material-icons text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-red-400/10 text-red-400 flex items-center justify-center hover:bg-red-400 hover:text-white transition-all" title="Suspend">
+<span class="material-icons text-lg">block</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center hover:bg-amber-400 hover:text-background-dark transition-all" title="Reset Password">
+<span class="material-icons text-lg">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover" data-alt="User avatar man profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChBWTyXGP77MH7KCt-T15FwQU3-XQzJXMf5jpsZTvvj0niPa34io-bEUl5eP6W75c2nnhUi-BJ1OltGrZm36rn9axREgXlGkItiaWLRWgNe8STWLO20fsh5uCt33AqtJujGRQ-39uG5g_WyY9DzsCdfJCMjayjCRTZuExRp1F0ABkyoYdcqg_bWKXRWrH83-E5CcREOgeE77xwdG7tbaL43e-GKhQMsFnrVy4miFqWgEfY49iRGTRbK8EhS--sTedBw0RUmqQOmOs"/>
+</div>
+<div>
+<p class="font-semibold text-sm">David Chen</p>
+<p class="text-xs text-slate-500">d.chen@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-slate-400/10 text-slate-400 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider border border-slate-400/20">Customer</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 text-red-400 text-sm">
+<span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span>
+                                        Suspended
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Dec 01, 2023</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all" title="Edit">
+<span class="material-icons text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-emerald-400/10 text-emerald-400 flex items-center justify-center hover:bg-emerald-400 hover:text-white transition-all" title="Unsuspend">
+<span class="material-icons text-lg">check_circle</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center hover:bg-amber-400 hover:text-background-dark transition-all" title="Reset Password">
+<span class="material-icons text-lg">lock_reset</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover" data-alt="User avatar woman glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuE0ASZVUm6G579RJrayjn8TMD6Ikn7-a-wRpbXqDVtdmyFay4x2ZLhkjM4zkYyTWVvRczzh8QoHu6lwR4skw9ixhrZLwyl-8Ilgp9fN-tVSpkjIwIT4QRivMxRnbm4Z7RUq3Aus27WGe1YgUz4AP5Xj2YB3YmNcrwQYfKzYSoY7Evx6g0r4dx57AAzNYaQmokHA4RvONMZNCBnjXnCmm7j2-IdFlUoqjE-NgDJWitR2k95gJbrZM6E7NBkrpCVPZjBq8mrnLZeRI"/>
+</div>
+<div>
+<p class="font-semibold text-sm">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">e.rodriguez@susupay.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider border border-primary/20">Collector</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 text-amber-400 text-sm">
+<span class="w-1.5 h-1.5 bg-amber-400 rounded-full"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Jan 15, 2024</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="w-8 h-8 rounded-lg bg-emerald-400/10 text-emerald-400 flex items-center justify-center hover:bg-emerald-400 hover:text-white transition-all" title="Approve">
+<span class="material-icons text-lg">verified</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all" title="Edit">
+<span class="material-icons text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-red-400/10 text-red-400 flex items-center justify-center hover:bg-red-400 hover:text-white transition-all" title="Reject">
+<span class="material-icons text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 border-t border-primary/10 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="text-slate-200">1</span> to <span class="text-slate-200">10</span> of <span class="text-slate-200">1,248</span> users</p>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-primary/5 transition-all">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-background-dark font-bold text-sm">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-primary/5 transition-all text-sm">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-primary/5 transition-all text-sm">3</button>
+<span class="text-slate-500 mx-1">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-primary/5 transition-all text-sm">125</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-primary/10 text-slate-400 hover:bg-primary/5 transition-all">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

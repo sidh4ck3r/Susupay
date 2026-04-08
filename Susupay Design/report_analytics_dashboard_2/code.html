@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#121108",
+                        "surface-dark": "#1c1a0d",
+                        "border-dark": "#363118",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(28, 26, 13, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(238, 205, 43, 0.1); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col glass border-r border-border-dark hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<div>
+<h1 class="text-slate-100 font-bold text-lg leading-none">SusuPay</h1>
+<p class="text-primary text-xs font-medium uppercase tracking-wider mt-1">Admin Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm font-medium">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Withdrawals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-primary transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-border-dark">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-primary/5">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold text-slate-100 truncate">Alex Rivera</p>
+<p class="text-xs text-slate-400 truncate">Super Admin</p>
+</div>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-slate-100">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Top Header -->
+<header class="sticky top-0 z-10 glass border-b border-border-dark px-8 py-4 flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-bold text-slate-100">Report Analytics</h2>
+<p class="text-slate-400 text-sm">Comprehensive performance insights for SusuPay system.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-dark border border-border-dark rounded-lg px-3 py-2 text-sm text-slate-300">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Oct 01, 2023 - Oct 31, 2023</span>
+<span class="material-symbols-outlined text-sm cursor-pointer">expand_more</span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-background-dark font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Export Report
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Deposits -->
+<div class="glass p-6 rounded-xl flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium uppercase tracking-wider">Total Deposits</span>
+<div class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-xs font-bold">+12.5%</div>
+</div>
+<h3 class="text-2xl font-bold text-slate-100 mb-2">$1,240,500</h3>
+<div class="mt-auto h-12 w-full">
+<svg class="w-full h-full stroke-primary fill-none stroke-2" viewbox="0 0 100 30">
+<path d="M0 25 Q15 20, 30 22 T60 10 T90 5 T100 8" stroke-linecap="round"></path>
+</svg>
+</div>
+</div>
+<!-- Active Users -->
+<div class="glass p-6 rounded-xl flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium uppercase tracking-wider">Active Users</span>
+<div class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-xs font-bold">+5.2%</div>
+</div>
+<h3 class="text-2xl font-bold text-slate-100">12,840</h3>
+<p class="text-slate-500 text-xs mt-2">Active in last 24 hours</p>
+<div class="mt-4 bg-border-dark h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[65%]"></div>
+</div>
+</div>
+<!-- Commissions Paid -->
+<div class="glass p-6 rounded-xl flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium uppercase tracking-wider">Commissions Paid</span>
+<div class="bg-red-500/20 text-red-400 px-2 py-0.5 rounded text-xs font-bold">-2.1%</div>
+</div>
+<h3 class="text-2xl font-bold text-slate-100">$45,200</h3>
+<p class="text-slate-500 text-xs mt-2">Payouts to collectors</p>
+<div class="flex items-center gap-2 mt-4">
+<span class="material-symbols-outlined text-primary text-sm">trending_down</span>
+<span class="text-xs text-slate-400">Lower than last month</span>
+</div>
+</div>
+<!-- System Liquidity -->
+<div class="glass p-6 rounded-xl flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-slate-400 text-sm font-medium uppercase tracking-wider">System Liquidity</span>
+<div class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-xs font-bold">+8.4%</div>
+</div>
+<h3 class="text-2xl font-bold text-slate-100">$890,000</h3>
+<div class="flex items-center -space-x-2 mt-4">
+<div class="size-6 rounded-full border-2 border-surface-dark bg-slate-700"></div>
+<div class="size-6 rounded-full border-2 border-surface-dark bg-slate-600"></div>
+<div class="size-6 rounded-full border-2 border-surface-dark bg-slate-500"></div>
+<span class="text-[10px] text-slate-400 ml-4">+4 sources</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Main Chart and Collectors -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Revenue Area Chart -->
+<div class="lg:col-span-2 glass p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold text-slate-100">Revenue &amp; Growth Trends</h4>
+<p class="text-slate-400 text-sm">Analysis of monthly collection growth</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs rounded-lg bg-primary text-background-dark font-bold">Revenue</button>
+<button class="px-3 py-1 text-xs rounded-lg border border-border-dark text-slate-400 hover:text-slate-200">Volume</button>
+</div>
+</div>
+<div class="h-64 relative">
+<!-- SVG Chart Simulation -->
+<svg class="w-full h-full" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"></stop><stop offset="100%" stop-color="#D4AF37" stop-opacity="0"></stop></lineargradient>
+</defs>
+<path d="M0,250 L100,230 L200,240 L300,180 L400,200 L500,120 L600,150 L700,80 L800,100 L900,40 L1000,60 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<path d="M0,250 L100,230 L200,240 L300,180 L400,200 L500,120 L600,150 L700,80 L800,100 L900,40 L1000,60" fill="none" stroke="#D4AF37" stroke-linecap="round" stroke-width="4"></path>
+<!-- Grid Lines -->
+<line stroke="rgba(255,255,255,0.05)" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="rgba(255,255,255,0.05)" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="rgba(255,255,255,0.05)" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+</svg>
+<div class="flex justify-between mt-4 text-xs text-slate-500 font-medium">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+</div>
+</div>
+</div>
+<!-- Top Collectors -->
+<div class="glass p-8 rounded-xl flex flex-col">
+<h4 class="text-lg font-bold text-slate-100 mb-6">Top Performers</h4>
+<div class="space-y-6 flex-1 overflow-y-auto">
+<!-- Collector 1 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Profile portrait of male top performing collector" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf2XIxuxGSbjC-GADe-R_c6Iw4tfyg6Dg5smQLUUR7M7s_PI5C7NGHlqlvPKKZhR7afojtfmhtrFen43kuGmxqRTtaclpNFTaBa9VPfpdQHl5tiO1J8Ppaon_YGL5AmPSdrEhfd8_uPI9SjD1fkx3xwmN_kj8GVGXYlpcYVvZCd6qGOJx4C52StlzjlQGOGpb7XIDToJHMWyUHgmb1owkmPAT2VEw5BOxBN_PW5kCTBstIvi6mUKQkgUbsXSt054qHF0IY6-dSGGE"/>
+</div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-primary rounded-full flex items-center justify-center text-[10px] text-background-dark font-black">1</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-100">Osei Kwaku</p>
+<p class="text-xs text-slate-400">Accra District</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">$12,450</p>
+<p class="text-[10px] text-slate-500 font-medium tracking-tighter">TOTAL VOL</p>
+</div>
+</div>
+<!-- Collector 2 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Profile portrait of female top performing collector" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYUwxJFMhdAwmLFy5TPGORxNfEWCkBVXvcf4kWF4hnypfz0k_z_0A_OqTEIIS22i2uo6RkVrbiDjq-b95tTLjkporRsrzzQ2MPcpTXSyvs9w8jwSWZwYuwKt1EdxuyciNVKxc7SIHW0IS-GUON3LeX-0XZ65I0WklTGXAltV-uqdWf4NXxc77u27s_nN-1Hk-vNyPS0B5PKLAVOTOeTIP2ybn6MzrPd6Uz2SygaV0OJJD149wADv18vQq0TxsTmQmoQZFxVlxy8a4"/>
+</div>
+<div class="absolute -bottom-1 -right-1 size-5 rounded-full flex items-center justify-center text-[10px] text-background-dark font-black bg-[#B8860B]">2</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-100">Amara Okafor</p>
+<p class="text-xs text-slate-400">Kumasi Central</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-200">$9,820</p>
+<p class="text-[10px] text-slate-500 font-medium tracking-tighter">TOTAL VOL</p>
+</div>
+</div>
+<!-- Collector 3 -->
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Profile portrait of male collector ranked third" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCifvnZq9EEwTjyrhYzbjYe4ssYn1AHa_UU1S1bCoUSGaeOni7xjOHJ0RauDj3GU_z_R4WbqRo0SgyUo1igkCnklN0Aa-LBfnB1PsEVNEWWPcqxnLhi9Xgtdd9Tr7OI-DzTH47PzoaLMT-SlDqOLeQqYeQw-kgCfugqN9Dtk-DR4iBEMz6im1qTdpRDFzxDq7jfqQ_SrlDdjUDVmKYJyxkJrVZaQ2AYLzlyIf20yzr3SM4zC5Yx2u0KSSccuLIgDcfKVGTSWhBTdsg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 size-5 rounded-full flex items-center justify-center text-[10px] text-slate-100 font-black bg-[#8B7500]">3</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-100">Kofi Mensah</p>
+<p class="text-xs text-slate-400">Tema East</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-200">$7,500</p>
+<p class="text-[10px] text-slate-500 font-medium tracking-tighter">TOTAL VOL</p>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2 border border-border-dark rounded-lg text-xs font-bold text-slate-400 hover:bg-primary/5 hover:text-primary transition-colors uppercase tracking-widest">View All Collectors</button>
+</div>
+</div>
+<!-- Bottom Section: Savings Distribution & Reports -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Donut Chart Distribution -->
+<div class="glass p-8 rounded-xl flex flex-col items-center">
+<h4 class="text-lg font-bold text-slate-100 self-start mb-6">Savings Plan Distribution</h4>
+<div class="relative size-48 mb-6">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#363118" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#D4AF37" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-width="12"></circle> <!-- 60% Daily -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#B8860B" stroke-dasharray="251.2" stroke-dashoffset="188.4" stroke-width="12"></circle> <!-- 25% Weekly -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#8B7500" stroke-dasharray="251.2" stroke-dashoffset="226.08" stroke-width="12"></circle> <!-- 15% Monthly -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<p class="text-2xl font-bold text-slate-100 leading-none">8.2k</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Total Plans</p>
+</div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2.5 rounded-full bg-[#D4AF37]"></div>
+<span class="text-slate-300">Daily Plans</span>
+</div>
+<span class="font-bold text-slate-100">60%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2.5 rounded-full bg-[#B8860B]"></div>
+<span class="text-slate-300">Weekly Plans</span>
+</div>
+<span class="font-bold text-slate-100">25%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2.5 rounded-full bg-[#8B7500]"></div>
+<span class="text-slate-300">Monthly Plans</span>
+</div>
+<span class="font-bold text-slate-100">15%</span>
+</div>
+</div>
+</div>
+<!-- Recent Reports List -->
+<div class="lg:col-span-2 glass p-8 rounded-xl">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-lg font-bold text-slate-100">Recently Generated Reports</h4>
+<a class="text-xs font-bold text-primary hover:underline uppercase tracking-wider" href="#">Schedule New</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-xs text-slate-500 uppercase tracking-wider border-b border-border-dark">
+<th class="pb-3 font-medium">Report Name</th>
+<th class="pb-3 font-medium text-center">Date Range</th>
+<th class="pb-3 font-medium text-center">Status</th>
+<th class="pb-3 font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<tr class="text-sm">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">article</span>
+</div>
+<span class="font-medium text-slate-200">Monthly Liquidity Audit</span>
+</div>
+</td>
+<td class="py-4 text-center text-slate-400">Sep 01 - Sep 30</td>
+<td class="py-4 text-center">
+<span class="px-2 py-1 rounded bg-green-500/10 text-green-500 text-[10px] font-bold uppercase">Ready</span>
+</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="text-sm">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+<span class="font-medium text-slate-200">User Retention Stats</span>
+</div>
+</td>
+<td class="py-4 text-center text-slate-400">Aug 01 - Sep 30</td>
+<td class="py-4 text-center">
+<span class="px-2 py-1 rounded bg-green-500/10 text-green-500 text-[10px] font-bold uppercase">Ready</span>
+</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="text-sm">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<span class="font-medium text-slate-200">Collector Commission Report</span>
+</div>
+</td>
+<td class="py-4 text-center text-slate-400">Weekly Summary</td>
+<td class="py-4 text-center">
+<span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 text-[10px] font-bold uppercase">Processing</span>
+</td>
+<td class="py-4 text-right">
+<button class="text-slate-600 cursor-not-allowed">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+<tr class="text-sm">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+</div>
+<span class="font-medium text-slate-200">Annual Growth Forecast</span>
+</div>
+</td>
+<td class="py-4 text-center text-slate-400">Jan 2023 - Dec 2023</td>
+<td class="py-4 text-center">
+<span class="px-2 py-1 rounded bg-green-500/10 text-green-500 text-[10px] font-bold uppercase">Ready</span>
+</td>
+<td class="py-4 text-right">
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

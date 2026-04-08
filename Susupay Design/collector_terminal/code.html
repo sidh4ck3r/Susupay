@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#1a180e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(40, 37, 20, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative overflow-hidden">
+<div class="absolute top-[-10%] left-[-20%] w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+<header class="flex items-center justify-between px-6 py-6 sticky top-0 z-10 backdrop-blur-md">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-background-dark font-bold">account_balance_wallet</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight">SusuPay</h1>
+<p class="text-xs text-primary/80 font-medium">Collector Terminal</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="glass-card p-2 rounded-full hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-slate-100">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Collector profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLBk9SEVlfE434XfJIJyH-r_3eiB2deNOLDFs6f1N1Mo0sW82Ycvw9rJVaRwvWTev3aJ4FmjtTt2-G4n_rGVD9pi-D2-W-TMqJ9ilrBidDBdzDz7dWT8cO8_5R-P42fF7G1Z625g-0G5mfNOj8mLWksXGsGGdsyl1KwSxnXCQU4TiwcS8YAVTURTZqk0vUNGtt76x1oWYvfchbrUXFgQVDm1WIdodqjo2vZOVGC0faO92lOtzPJiQ0HnVVRWJtN_gcQlMqvjlkloU"/>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 pb-24 space-y-6 overflow-y-auto">
+<section class="glass-card rounded-xl p-5 flex items-center justify-between">
+<div class="space-y-1">
+<p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Daily Progress</p>
+<h2 class="text-2xl font-bold">GH₵ 3,250</h2>
+<p class="text-sm text-slate-400">Target: <span class="text-primary font-medium">GH₵ 5,000</span></p>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-20 h-20">
+<circle class="text-slate-700/30" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-dasharray="201" stroke-dashoffset="70" stroke-linecap="round" stroke-width="6" style="transform: rotate(-90deg); transform-origin: 50% 50%;"></circle>
+</svg>
+<span class="absolute text-sm font-bold">65%</span>
+</div>
+</section>
+<section class="grid grid-cols-1 gap-4">
+<div class="glass-card rounded-xl p-5 border-l-4 border-l-primary relative overflow-hidden">
+<div class="relative z-10 flex justify-between items-start">
+<div>
+<p class="text-xs text-slate-400 font-medium mb-1">My Commission (3%)</p>
+<h3 class="text-2xl font-bold text-slate-100">GH₵ 450.00</h3>
+</div>
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">+12% from yesterday</span>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-800/40 border-none focus:ring-1 focus:ring-primary rounded-xl py-3 pl-12 pr-4 text-sm text-slate-100 placeholder:text-slate-500 glass-card" placeholder="Search customer name or ID..." type="text"/>
+</div>
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-slate-100">Assigned Customers</h3>
+<button class="text-primary text-xs font-bold flex items-center gap-1">
+                        VIEW ALL <span class="material-symbols-outlined text-xs">chevron_right</span>
+</button>
+</div>
+<div class="space-y-3">
+<div class="glass-card rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5cjLJ9zXApgsRnNYOJRH9wkpAHz-tblQaDvzESANuo8kgLDuGW0Uwwdqj81hIhkB0PUSl_yoIUFKJ4-hzp6wVZa1owG0yH8ZHwZPYEngDHl-Im9JYW3FblAFNevW9OWdy_i49084_zv1nHyhgWpKhYPWuVPNTHplB_tcDtjPtXg04XUi3wuD4rqtsOtjfE4RwvKUbY76gbMK7dsl5zZEB8Wcm90x_r8W4Edf7ALXgIhKuvoOzg5_GABc-_jfsoiIpejdRssA0w9U"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Abena Serwaa</h4>
+<p class="text-[10px] text-slate-400">ID: SUSU-4429 • Makola Market</p>
+<p class="text-xs text-primary font-semibold mt-1">Due: GH₵ 50.00</p>
+</div>
+</div>
+<button class="bg-primary text-background-dark font-bold text-xs py-2 px-4 rounded-lg hover:brightness-110 active:scale-95 transition-all">
+                            COLLECT
+                        </button>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center justify-between opacity-80">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_so6mlcMWCe6CVNjX1jyU_6uh8tRKVwlEsW9DY6TvfnxCrsXrjgKjcq1v8RdTU9yIEeev_uzO8qwIcFiOhGF_j-TGAnEYE2gyy4UhBegRCKrPPA-IEEQtX9_1NHapWH1TcYChVcjixEmyzzbe0d8hI7ZnH39MN1d3GKDrWCHq6zv0wAOxPkQ1GUQwB-hXpzctU6UioMNF3Vj1Zk8Od_LYhdBEfVu29lgnelQy39ljN4ZDnyWg8-cXlWulTK0CgD67B2HD6AFRdTs"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Kofi Mensah</h4>
+<p class="text-[10px] text-slate-400">ID: SUSU-8102 • Circle Hub</p>
+<p class="text-xs text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Collected
+                                </p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold">GH₵ 120.00</p>
+<p class="text-[10px] text-slate-500">10:15 AM</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkolMuGwlPoQuCtuuwAG4zKtD3w2VHS0_qm-1_VCbulB9ZG50457z_I3GAotdaJ0fekw_DLnYmhQ8E31rEE68rxw41_hholXVtHqMd0r_skWrF_oRq4mbuNoVZloqZ8m1lYsx2h_r-lcorEfhHsLPIPY9h42mkBAcha_7_aMXMqRq3MfKgtpkj3riWoeeqnOMhaF32GnihrCiOV_DIGSpNkc6YQLxl-Cm8xzv4_7LPk0KAZ9YG9VjQFOsKH2igYMajAvrxlblhIus"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Ama Boateng</h4>
+<p class="text-[10px] text-slate-400">ID: SUSU-2291 • Ridge Area</p>
+<p class="text-xs text-primary font-semibold mt-1">Due: GH₵ 200.00</p>
+</div>
+</div>
+<button class="bg-primary text-background-dark font-bold text-xs py-2 px-4 rounded-lg hover:brightness-110 active:scale-95 transition-all">
+                            COLLECT
+                        </button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-background-dark/80 backdrop-blur-xl border-t border-slate-800 px-8 py-4 flex justify-between items-center z-20">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Customers</span>
+</button>
+<div class="relative -top-8">
+<button class="bg-primary w-14 h-14 rounded-full shadow-lg shadow-primary/20 flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold text-3xl">qr_code_scanner</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-[10px] font-bold">Reports</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+</nav>
+</div>
+</body></html>

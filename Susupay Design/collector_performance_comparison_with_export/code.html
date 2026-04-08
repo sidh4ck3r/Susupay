@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Analytics - Collector Comparison</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#1a180e",
+                        "surface-dark": "#2a2614",
+                        "border-dark": "#3e3a24",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(42, 38, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex flex-col min-h-screen">
+<!-- Navigation -->
+<header class="border-b border-border-dark bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">spark</span>
+<h2 class="text-xl font-bold tracking-tight">SusuPay <span class="text-slate-100">Analytics</span></h2>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-5 mt-5" href="#">Reports</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Collectors</a>
+<a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="bg-surface-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 placeholder:text-slate-500" placeholder="Search analytics..." type="text"/>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+<img alt="User Profile" class="h-7 w-7 rounded-full" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHiL_8VovF-sMsF_ZF-XJy30QVcyJOj51umJolCg7ZxxtBWxjv8nxso-6m9UnqSmXgfEJkT_dnGWRmE2b4Nk_VqMg0rnNQlg_9f9_VkJlnToOoh8vqh5k6MYlPYjSRPE1a0fbK6aqG_FIjCOURCm0C51cD2cVb21r0hu6OBhwG45lC5k-x8-LBSyTDPmaeAuuGAMaLhRAMq1Pe3hF7OkuVRe3sxJLEUh5Nl2rT6JyDi8R0X5qM_jMosZlJ_XsD4W-F8jKYqwpfQk0"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-xs font-bold uppercase tracking-widest">Back to Reports</span>
+</div>
+<h1 class="text-3xl font-black tracking-tight text-slate-100">Collector Performance Analysis</h1>
+<p class="text-slate-400 max-w-2xl">A detailed comparative audit of regional collection efficiency, customer retention, and commission distribution across your entire agent network.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-dark text-slate-100 rounded-lg border border-border-dark hover:bg-border-dark transition-all font-semibold text-sm">
+<span class="material-symbols-outlined text-lg">share</span> Share
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90 transition-all font-bold text-sm shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-lg">download</span> Export CSV
+                    </button>
+</div>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="glass-panel rounded-xl p-5">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Top Region</p>
+<h3 class="text-2xl font-bold text-slate-100">Greater Accra</h3>
+<div class="mt-2 flex items-center gap-1 text-green-400 text-xs font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% vs last month
+                    </div>
+</div>
+<div class="glass-panel rounded-xl p-5">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Total Commission</p>
+<h3 class="text-2xl font-bold text-slate-100">$124,500.00</h3>
+<div class="mt-2 flex items-center gap-1 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-sm">payments</span> Paid to 45 collectors
+                    </div>
+</div>
+<div class="glass-panel rounded-xl p-5">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Avg. Collector Rating</p>
+<h3 class="text-2xl font-bold text-slate-100">4.2 Stars</h3>
+<div class="mt-2 flex items-center gap-1 text-slate-400 text-xs font-medium">
+<span class="material-symbols-outlined text-sm text-primary">star</span> High performance trend
+                    </div>
+</div>
+<div class="glass-panel rounded-xl p-5">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Active Collectors</p>
+<h3 class="text-2xl font-bold text-slate-100">1,240</h3>
+<div class="mt-2 flex items-center gap-1 text-green-400 text-xs font-medium">
+<span class="material-symbols-outlined text-sm">person_add</span> 12 onboarded today
+                    </div>
+</div>
+</div>
+<!-- Main Table Section -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<!-- Toolbar -->
+<div class="p-4 border-b border-border-dark flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+<button class="flex items-center gap-2 bg-primary/20 text-primary border border-primary/30 px-3 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap">
+                            All Regions <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-dark text-slate-300 border border-border-dark px-3 py-1.5 rounded-lg text-sm font-medium hover:text-white transition-colors whitespace-nowrap">
+                            Rating: 4+ Stars <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-dark text-slate-300 border border-border-dark px-3 py-1.5 rounded-lg text-sm font-medium hover:text-white transition-colors whitespace-nowrap">
+                            Collections &gt; $10k <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+</button>
+</div>
+<div class="relative w-full md:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-background-dark/50 border border-border-dark rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-full md:w-72" placeholder="Search by name or region..." type="text"/>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-dark/50 text-slate-400 text-xs font-bold uppercase tracking-widest">
+<th class="px-6 py-4 cursor-pointer hover:text-primary transition-colors">
+<div class="flex items-center gap-2">
+                                        Collector Name <span class="material-symbols-outlined text-sm">swap_vert</span>
+</div>
+</th>
+<th class="px-6 py-4">Region</th>
+<th class="px-6 py-4 text-right cursor-pointer hover:text-primary transition-colors">
+<div class="flex items-center justify-end gap-2">
+                                        Total Collections ($) <span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</th>
+<th class="px-6 py-4 text-center">Active Customers</th>
+<th class="px-6 py-4 text-right">Commission Earned ($)</th>
+<th class="px-6 py-4 text-center">Performance Rating</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-dark flex items-center justify-center border border-border-dark group-hover:border-primary/50 overflow-hidden">
+<img alt="Kwame Mensah" data-alt="Agent profile initial badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbEPKdQvkcQ0JL0f02YLwDqWN8Frmn0oRfO3DIyuf9p3MecEYWSFe5LgCF5gccAYedu432L1YjYfsESxlr0wBPC4oqOuokDallRrLFdDHf_ClqaBP-3E4QSj-z7ewFkTEWPJ2zE-Vr0sL7vuVy1CxVO-hjUsKw108Ax7RUppF8AuLYFYAejsKr6K5Ga1Yli_DRoN7gVgDzZY3WW977XN879qngJ3wsb6cMrhFz158ds_y5yJIGCDdFVUfgsPJPuwsA_Dv9xp4qCfM"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Kwame Mensah</p>
+<p class="text-xs text-slate-500">ID: SUSU-29402</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Greater Accra</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-slate-100">$45,200.00</td>
+<td class="px-6 py-4 text-sm text-center text-slate-400">124</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-primary">$2,260.00</td>
+<td class="px-6 py-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-green-400 mt-1 block tracking-tight">Elite Tier</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-dark flex items-center justify-center border border-border-dark group-hover:border-primary/50 overflow-hidden">
+<img alt="Abena Osei" data-alt="Agent profile initial badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk7zbMOiaXcTGRw8IDjinGT74DSGi_vLcMkui5-71hCBCUSywRxYVglwo9jziqIJUkgNvGxDXOLRqSh8X6WeNVLpL67_vy9AU8EOdWHFAXbXIRHguFeVpaZjeN0vemqHmvKdjdyviW6jaSCEZIn0lz0sQHvnFksAY_K6PoZiyGJSokF3eqHfxBfOuQTko_oXbBicdYjtKNbx0EAV8BQNxPyL1pOU77nemTW_x6l60s6whN9-fUMTI6PNIeHTpcdPpNNaorO2hqbVs"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Abena Osei</p>
+<p class="text-xs text-slate-500">ID: SUSU-29415</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Ashanti</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-slate-100">$38,150.00</td>
+<td class="px-6 py-4 text-sm text-center text-slate-400">98</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-primary">$1,907.50</td>
+<td class="px-6 py-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-400 mt-1 block tracking-tight">High Pro</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-dark flex items-center justify-center border border-border-dark group-hover:border-primary/50 overflow-hidden">
+<img alt="Kofi Boateng" data-alt="Agent profile initial badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoVyJ2mB0gBGnhvUjjtfix8iDzWrnbdReyufMnuPMnfdGWMdtsbRm0KuGcPT-vgtTcGRlDKoGnRFnKtToIfbsziNtCR-YUQ9qxXOT7JimhpHKS68f-mBxXpnV4phRyTAlaHtbfhYwW6XHzxShc0U9PJpeg8L9teZYTmTCLYpenhjfv-nUGiIXxvHDn10VTiSWXJ2kvt6tYnMLEH4zyLosolWVwHPXZ9lOSy2YN73oP5O7vz0mD_02SH-ns7eS2kJATxmJkiQwXZP0"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Kofi Boateng</p>
+<p class="text-xs text-slate-500">ID: SUSU-28104</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Western</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-slate-100">$31,400.00</td>
+<td class="px-6 py-4 text-sm text-center text-slate-400">85</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-primary">$1,570.00</td>
+<td class="px-6 py-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-400 mt-1 block tracking-tight">High Pro</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-dark flex items-center justify-center border border-border-dark group-hover:border-primary/50 overflow-hidden">
+<img alt="Ekua Addo" data-alt="Agent profile initial badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD63grA6BPsx11wqk3iOaoiMjFdo7cn3ekN7a0zFeIvDtbBuJbd5-iug3LgMb7WT7r6XYsOKZoNRkiAmwiZYwa0O9FKsDxbbyE5vTfjLsHHj4vBnYnzQ3cwohYnJduISnK9_QSPFr1wqIUvCpAp9UU1irdZwMNfrBK11JoD94pgkI-GuppaOsa6Lffv-V0tpAtk1uNbZ0zryGjORa0h2_vyA_Cv4UPZvVOaG7EDqmBlWkQVkWd912RTvr3SFPlianGKS8UYDzVtUYs"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Ekua Addo</p>
+<p class="text-xs text-slate-500">ID: SUSU-30129</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Central</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-slate-100">$29,800.00</td>
+<td class="px-6 py-4 text-sm text-center text-slate-400">72</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-primary">$1,490.00</td>
+<td class="px-6 py-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-500 mt-1 block tracking-tight">Standard</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-surface-dark flex items-center justify-center border border-border-dark group-hover:border-primary/50 overflow-hidden">
+<img alt="Yaw Antwi" data-alt="Agent profile initial badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANoHMqrNLxSu2SEbJ3xmX3vgtpZykWnnvZIUwkCelBYz6xjwTbg4oPO4iBCIHCoOcNA4BjbJt41dwOkYklsCw9i9cwU3vmxJrOckH1IwDBn3vG5ovwF4UJlaKxEVNUSJ8bYfaTY3MtdgAiHuTqXUBlvegeIF_h6aPWFcHOzZcBbNm488BEd9Nujm8sxT8Qmoh1i_HxOwBKTboAtLHBvcEjmHpbhV3EIv9s47hxQiRqQdOZqpyufho4VybTvDdCsKkKaldxZJru7kc"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-100">Yaw Antwi</p>
+<p class="text-xs text-slate-500">ID: SUSU-27551</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Eastern</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-slate-100">$22,100.00</td>
+<td class="px-6 py-4 text-sm text-center text-slate-400">54</td>
+<td class="px-6 py-4 text-sm font-mono text-right text-primary">$1,105.00</td>
+<td class="px-6 py-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-primary text-sm fill-[1]">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">star</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-slate-500 mt-1 block tracking-tight">Standard</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer / Pagination -->
+<div class="p-4 bg-surface-dark/30 border-t border-border-dark flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="text-slate-200 font-bold">1-5</span> of <span class="text-slate-200 font-bold">45</span> collectors</p>
+<div class="flex gap-2">
+<button class="h-8 w-8 rounded bg-background-dark border border-border-dark flex items-center justify-center text-slate-500 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="h-8 w-8 rounded bg-primary text-background-dark flex items-center justify-center text-sm font-bold">1</button>
+<button class="h-8 w-8 rounded bg-background-dark border border-border-dark flex items-center justify-center text-sm font-medium text-slate-400 hover:text-white hover:border-primary transition-all">2</button>
+<button class="h-8 w-8 rounded bg-background-dark border border-border-dark flex items-center justify-center text-sm font-medium text-slate-400 hover:text-white hover:border-primary transition-all">3</button>
+<button class="h-8 w-8 rounded bg-background-dark border border-border-dark flex items-center justify-center text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Regional Map Placeholder (Visual context for deep dive) -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-panel rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-lg font-bold text-slate-100">Collection Map Concentration</h4>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Live View</span>
+</div>
+<div class="h-64 rounded-lg bg-background-dark/50 border border-border-dark flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://placeholder.pics/svg/800x400')] bg-cover" data-alt="Stylized map showing region activity" data-location="Ghana" style=""></div>
+<div class="z-10 text-center">
+<span class="material-symbols-outlined text-5xl text-primary/40 mb-2">map</span>
+<p class="text-slate-400 text-sm font-medium">Regional heatmap visualization is loading...</p>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-6">
+<h4 class="text-lg font-bold text-slate-100 mb-6">Commission Structure</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-dark/50 border border-border-dark">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-500 text-lg">trending_up</span>
+</div>
+<span class="text-sm font-medium text-slate-200">Elite Commission</span>
+</div>
+<span class="text-sm font-bold text-primary">5%</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-dark/50 border border-border-dark">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500 text-lg">equalizer</span>
+</div>
+<span class="text-sm font-medium text-slate-200">Standard Rate</span>
+</div>
+<span class="text-sm font-bold text-primary">3.5%</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-dark/50 border border-border-dark">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-slate-500/10 border border-slate-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-lg">history</span>
+</div>
+<span class="text-sm font-medium text-slate-200">Retention Bonus</span>
+</div>
+<span class="text-sm font-bold text-primary">+0.5%</span>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-border-dark text-center">
+<button class="text-xs font-bold text-primary uppercase tracking-widest hover:underline">Update commission rules</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-border-dark py-8 bg-surface-dark/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-xl">verified</span>
+<span class="text-sm">Secure Banking Analytics Platform by SusuPay Team</span>
+</div>
+<div class="flex gap-6">
+<a class="text-sm text-slate-500 hover:text-slate-300 transition-colors" href="#">Documentation</a>
+<a class="text-sm text-slate-500 hover:text-slate-300 transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-slate-300 transition-colors" href="#">Support</a>
+</div>
+<div class="text-sm text-slate-500">
+                    © 2024 SusuPay Inc.
+                </div>
+</div>
+</footer>
+</div>
+</body></html>

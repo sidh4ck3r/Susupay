@@ -1,0 +1,46 @@
+# SusuPay System Prompt & Architecture
+
+## Project Objective
+Build a professional, secure, and scalable Susu Collection and Digital Savings Web Application (SusuPay) tailored for the Ghanaian market. The platform bridges traditional Susu collection with modern digital banking through a mobile-first, premium "Emerald & Sapphire" glassmorphism experience.
+
+## Design Aesthetic: "Emerald Glassmorphism"
+- **Primary Palette**: Deep obsidian backgrounds with vibrant emerald green (#10B981) and sapphire blue highlights.
+- **Visual Effects**: High-end glassmorphism with backdrop-blur, subtle gradients, and gold (#FBBF24) accents for currency and high-value actions.
+- **Typography**: Clean, modern sans-serif fonts with clear hierarchy and readability.
+- **Components**: Rounded corners (large radius), semi-transparent card overlays, and subtle glowing borders.
+
+## Core Architecture & User Flows
+
+### 1. Authentication & Onboarding
+- **Login**: Single entry point for Admins, Collectors, and Customers.
+- **Onboarding**: Role-based access control (RBAC) directs users to their specific dashboard.
+
+### 2. Customer Portal
+- **Dashboard**: High-level overview of total balance, recent transactions, and goal progress. Includes visual analytics (line charts for growth, doughnut charts for spending).
+- **MoMo Deposit Flow**: Provider selection (MTN, Vodafone, AirtelTigo), amount entry, and simulated MoMo number verification.
+- **Savings Goals**: Interface to create and manage multiple goals with automation settings (daily/weekly/monthly frequency).
+- **Withdrawals**: Payout requests to MoMo or local bank accounts with confirmation status tracking.
+- **Notifications**: Real-time transaction alerts and a history hub for milestones and security updates.
+
+### 3. Collector Terminal (Field Operations)
+- **Field Terminal**: Optimized for mobile use. Includes daily collection targets, a "Next Stop" navigation helper, and quick collection entry.
+- **Customer Directory**: Management view for assigned customers with contribution "Strike Rate" consistency metrics.
+- **Collection Workflow**: Record cash deposits with categorizations (Daily, Bulk, Special) and instant digital/physical receipt generation.
+- **Offline Mode**: Local data caching with high-visibility "Sync Now" controls.
+
+### 4. Admin Command Center
+- **System Overview**: Macro-level metrics on total liquidity, active collectors, revenue, and system health logs.
+- **Withdrawal Approvals**: Workflow for reviewing and processing payout requests.
+- **User Management**: Comprehensive CRUD operations for all user types.
+- **Support & Live Chat**: Real-time communication system with internal agent notes, file attachments, and searchable session history.
+- **Compliance & Flagging**: Automated and manual flagging system for document verification (KYC). Detailed review modals for approving or rejecting submissions with predefined reasons.
+
+### 5. Advanced Reporting & Data Export
+- **Report Generator**: Modular builder for financial summaries, audit logs, and performance reports.
+- **Export Settings**: Granular filters (role, region, date), searchable data previews, and secure link management (15m to 30d expiration settings).
+- **Collaboration**: Ability to save and share filter presets with other team members with real-time notifications.
+
+## Technical Requirements (Design for Implementation)
+- **Frontend**: Next.js (App Router), Tailwind CSS, Lucide React Icons, and a charting library like Recharts or Chart.js.
+- **Interactions**: Use high-fidelity animations for goal completion (confetti, sound feedback) and smooth state transitions for modals and sidebars.
+- **Mobile First**: All terminal and dashboard views must be fully responsive, prioritizing the mobile experience for field collectors.

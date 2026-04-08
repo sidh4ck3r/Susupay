@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "sapphire": "#0f52ba",
+                        "emerald": "#50c878",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0a1411",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(16, 183, 127, 0.15);
+        }
+        .sapphire-glow {
+            box-shadow: 0 0 20px rgba(15, 82, 186, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 md:px-10 py-4">
+<div class="flex items-center gap-4">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Savings Vault</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-100">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-medium text-primary">Emerald Tier</p>
+<p class="text-sm font-bold">Alex Sterling</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/30 p-0.5">
+<img alt="User Profile" class="rounded-full size-full object-cover" data-alt="Professional headshot of a premium member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkC45veWsx5Kkz_2KDOvUUT3ooMrsNkEtnOWilhaHMH75sr8k2tU-OO_6bjYd6TEVBWm7S4hDXw-iaNvyQTS4G1H84_GWiV_4lkpjMFYig_4M2AOm0-83gIbMbmqAEPnfHM7XMsFmYApUUMIuM6XO7buf2FN5BR3mktTL2fE5G5cWZOtb3hAFi9Fv3zlpK4v0duipDFqpilJRUEN9MzU0QxvRwO0bnFgO8ULvsOTeleBtTxogri7sXRz2xbgQCDwBeCUXg1nEfihU"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full p-6 md:p-10">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-3xl md:text-4xl font-bold mb-2 tracking-tight">Savings Overview</h1>
+<p class="text-slate-400">Manage your high-yield emerald and sapphire savings goals.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-background-dark font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                    New Goal
+                </button>
+</div>
+</div>
+<!-- Tier Highlights -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="glass-card rounded-2xl p-6 emerald-glow border-emerald/20">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-emerald/10 rounded-xl">
+<span class="material-symbols-outlined text-emerald">auto_awesome</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider text-emerald bg-emerald/10 px-2 py-1 rounded">Active</span>
+</div>
+<p class="text-slate-400 text-sm mb-1">Total Emerald Balance</p>
+<h3 class="text-2xl font-bold">$42,850.00</h3>
+<div class="mt-4 flex items-center gap-2 text-emerald text-xs font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                    +4.2% APY Yielding
+                </div>
+</div>
+<div class="glass-card rounded-2xl p-6 sapphire-glow border-sapphire/20">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-sapphire/10 rounded-xl">
+<span class="material-symbols-outlined text-sapphire">diamond</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider text-sapphire bg-sapphire/10 px-2 py-1 rounded">Active</span>
+</div>
+<p class="text-slate-400 text-sm mb-1">Total Sapphire Balance</p>
+<h3 class="text-2xl font-bold">$18,200.00</h3>
+<div class="mt-4 flex items-center gap-2 text-sapphire text-xs font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                    +5.1% APY Yielding
+                </div>
+</div>
+<div class="glass-card rounded-2xl p-6 border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-7xl">insights</span>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<p class="text-slate-400 text-sm mb-1">Monthly Contributions</p>
+<h3 class="text-2xl font-bold">$2,450.00</h3>
+</div>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline mt-4">
+                        View analytics <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-white/10 mb-8 gap-8 overflow-x-auto">
+<button class="border-b-2 border-primary pb-4 text-primary font-bold whitespace-nowrap">Active Goals</button>
+<button class="border-b-2 border-transparent pb-4 text-slate-400 font-medium hover:text-slate-200 transition-colors whitespace-nowrap">Completed</button>
+<button class="border-b-2 border-transparent pb-4 text-slate-400 font-medium hover:text-slate-200 transition-colors whitespace-nowrap">Vault Settings</button>
+</div>
+<!-- Savings Goals Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Goal Card 1: Emergency Fund -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col sm:flex-row group transition-all hover:bg-white/[0.05]">
+<div class="w-full sm:w-48 h-48 sm:h-auto relative">
+<img alt="Emergency Fund" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Stack of coins with a small green plant growing out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm3wAR0AJwgjUZDpKxGAkYO7ZLecPyOgTBzwuGtqDv7bFdCB6POeegSDHNcEgMP0YwcY62IvzQDt-vom6ABam7UvIcZ6ZGj0k3WMAs_KTDfIKcFc9z0mpYHLOTeOxLkQ93gUfVMdeaK74gq-5Ci04kxQEfitYKfFmkxt-C8ngIoCezHCDJQ1aqJnGuBlsJSy0GcTAJgiOZ4yfvBFKN-bsOmZooI5lW--ddR9RfDu93_ClRlWuc_0u68Qzb-m1C8cEJ3lOgIdzZkiE"/>
+<div class="absolute inset-0 bg-emerald/20 mix-blend-overlay"></div>
+<div class="absolute top-3 left-3">
+<span class="bg-emerald text-background-dark text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Emerald</span>
+</div>
+</div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-lg font-bold">Emergency Fund</h4>
+<span class="text-emerald text-sm font-bold">75%</span>
+</div>
+<p class="text-slate-400 text-xs mb-4">Target: $10,000.00</p>
+<div class="w-full bg-white/10 h-2 rounded-full mb-6 overflow-hidden">
+<div class="bg-emerald h-full rounded-full emerald-glow" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 font-medium">Saved so far</span>
+<span class="text-lg font-bold text-emerald">$7,500.00</span>
+</div>
+<button class="bg-white/5 hover:bg-emerald/20 hover:text-emerald p-2 rounded-lg transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Goal Card 2: Xmas Savings -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col sm:flex-row group transition-all hover:bg-white/[0.05]">
+<div class="w-full sm:w-48 h-48 sm:h-auto relative">
+<img alt="Xmas Savings" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Festive holiday decorations and gifts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCutwrEsfhF7G5mN6Ly2JFPNvF0Pem-_A1uq0GWvSdrTI3VsJLH8NjEdkxhg1yOgXraxKY1qZaWo_86JlTE9L-NyKTSBs2MQPepP_L_vh33KODzjlvoCi0BzFgdQeXHOuB2Q9UjF1CE_OYGum5New1eyqRMT8ZnFywbLhTOL5A4ORVC7UIRSzIrnOIojH4vwK_uW2ywyiG2cY7qrywPmsXOginYj9zj0pC7YQCN4LbkoPubEVJalhstNCQVEUEuZ99T20vg4v8Xxg"/>
+<div class="absolute inset-0 bg-sapphire/20 mix-blend-overlay"></div>
+<div class="absolute top-3 left-3">
+<span class="bg-sapphire text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Sapphire</span>
+</div>
+</div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-lg font-bold">Xmas Savings</h4>
+<span class="text-sapphire text-sm font-bold">40%</span>
+</div>
+<p class="text-slate-400 text-xs mb-4">Target: $3,000.00</p>
+<div class="w-full bg-white/10 h-2 rounded-full mb-6 overflow-hidden">
+<div class="bg-sapphire h-full rounded-full sapphire-glow" style="width: 40%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 font-medium">Saved so far</span>
+<span class="text-lg font-bold text-sapphire">$1,200.00</span>
+</div>
+<button class="bg-white/5 hover:bg-sapphire/20 hover:text-sapphire p-2 rounded-lg transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Goal Card 3: School Fees -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col sm:flex-row group transition-all hover:bg-white/[0.05]">
+<div class="w-full sm:w-48 h-48 sm:h-auto relative">
+<img alt="School Fees" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Graduation cap and stacked books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfkq0Xb7LMsM7ZSAfbNCHMIxcO6vdq-c2BYbHveBFd2Uks9oZN_OM__9I2b3qYa3HlZio6_PnxhuykaiUYPH5EEyCNEm4vWmWNHvV48fX-jF0JTGVLLd1ERKw0sey4JjmSQHl9CVfgowbxsGFcewsZ-P1grLvgaVKHErXVX2rBLoJ0-DiccBHvaL8sozav-bfUSbJlfmJKT50u62q09Q75WGyZPG7cW53mCpxmbP0WoJmPBWGeR8Mx33eO2KtsqdvEtFcF6uJ_m8k"/>
+<div class="absolute inset-0 bg-emerald/20 mix-blend-overlay"></div>
+<div class="absolute top-3 left-3">
+<span class="bg-emerald text-background-dark text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Emerald</span>
+</div>
+</div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-lg font-bold">School Fees</h4>
+<span class="text-emerald text-sm font-bold">92%</span>
+</div>
+<p class="text-slate-400 text-xs mb-4">Target: $15,000.00</p>
+<div class="w-full bg-white/10 h-2 rounded-full mb-6 overflow-hidden">
+<div class="bg-emerald h-full rounded-full emerald-glow" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 font-medium">Saved so far</span>
+<span class="text-lg font-bold text-emerald">$13,800.00</span>
+</div>
+<button class="bg-white/5 hover:bg-emerald/20 hover:text-emerald p-2 rounded-lg transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Goal Card 4: New Car Fund -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col sm:flex-row group transition-all hover:bg-white/[0.05]">
+<div class="w-full sm:w-48 h-48 sm:h-auto relative">
+<img alt="New Car" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close up of a luxury car headlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgg1SQUV9Hhyo0K8i8POAD-dNvFOSsKfy16sUp_ZwLyE1MdX_MYukD67aS1C9IgpnKknRGFa_CqzcSWuSvUgdagfyo6NedcuBTm-BouJHN_pGzizSWPzEzfe6c84v_HkG07uh1c-2Tna7P-EJK57pWFU0AxwZXH19DGjwvWb1MiVptQa3NTAROTfe9WgXjF6jWTC--AedZts_S3Mss7Bp71_SbsgdUpI3mghe5E5gOc88KLMeT0e9e3nz7iitw03-iu0X1X864Ouw"/>
+<div class="absolute inset-0 bg-sapphire/20 mix-blend-overlay"></div>
+<div class="absolute top-3 left-3">
+<span class="bg-sapphire text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Sapphire</span>
+</div>
+</div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="text-lg font-bold">European Road Trip</h4>
+<span class="text-sapphire text-sm font-bold">15%</span>
+</div>
+<p class="text-slate-400 text-xs mb-4">Target: $5,000.00</p>
+<div class="w-full bg-white/10 h-2 rounded-full mb-6 overflow-hidden">
+<div class="bg-sapphire h-full rounded-full sapphire-glow" style="width: 15%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 font-medium">Saved so far</span>
+<span class="text-lg font-bold text-sapphire">$750.00</span>
+</div>
+<button class="bg-white/5 hover:bg-sapphire/20 hover:text-sapphire p-2 rounded-lg transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="mt-12">
+<h3 class="text-xl font-bold mb-6">Recent Contributions</h3>
+<div class="glass-card rounded-2xl overflow-hidden overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-white/10">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Date</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Goal</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400">Method</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400 text-right">Amount</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-400 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4 text-sm">Oct 24, 2023</td>
+<td class="px-6 py-4 font-medium">Emergency Fund</td>
+<td class="px-6 py-4 text-sm text-slate-400">Auto-Deposit</td>
+<td class="px-6 py-4 text-right font-bold text-emerald">+$500.00</td>
+<td class="px-6 py-4 text-center">
+<span class="bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4 text-sm">Oct 21, 2023</td>
+<td class="px-6 py-4 font-medium">Xmas Savings</td>
+<td class="px-6 py-4 text-sm text-slate-400">Manual Transfer</td>
+<td class="px-6 py-4 text-right font-bold text-sapphire">+$150.00</td>
+<td class="px-6 py-4 text-center">
+<span class="bg-emerald/10 text-emerald text-[10px] font-bold px-2 py-1 rounded">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors">
+<td class="px-6 py-4 text-sm">Oct 18, 2023</td>
+<td class="px-6 py-4 font-medium">School Fees</td>
+<td class="px-6 py-4 text-sm text-slate-400">External Bank</td>
+<td class="px-6 py-4 text-right font-bold text-emerald">+$2,000.00</td>
+<td class="px-6 py-4 text-center">
+<span class="bg-yellow-500/10 text-yellow-500 text-[10px] font-bold px-2 py-1 rounded">Pending</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Sidebar / Nav Overlay Mock -->
+<nav class="fixed left-0 top-0 bottom-0 w-20 hidden xl:flex flex-col items-center py-10 bg-background-dark/50 backdrop-blur-xl border-r border-white/10">
+<div class="mb-10 text-primary">
+<span class="material-symbols-outlined text-3xl">shield_with_heart</span>
+</div>
+<div class="flex flex-col gap-8 flex-1">
+<button class="text-primary bg-primary/10 p-3 rounded-xl">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="text-slate-500 hover:text-slate-100 p-3 transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</button>
+<button class="text-slate-500 hover:text-slate-100 p-3 transition-colors">
+<span class="material-symbols-outlined">analytics</span>
+</button>
+<button class="text-slate-500 hover:text-slate-100 p-3 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="text-slate-500 hover:text-red-400 p-3 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(72, 66, 35, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.2);
+        }
+        .confetti-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(238, 205, 43, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Main Container -->
+<div class="layout-container flex h-full grow flex-col items-center">
+<!-- Header -->
+<header class="flex w-full max-w-[960px] items-center justify-between border-b border-primary/20 px-6 py-4 md:px-10">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">star_half</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">SusuPay</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full border-2 border-primary/30 p-0.5">
+<div class="size-full rounded-full bg-cover bg-center" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDW_GtFSM_ZOyjaNZ2-TRFxAOxN-HV8zEmc3x_9La2CnWHDgGRt8paoTWx_LoEgWMvCbEyycuI3smm5lVbpGRtCSPZZM_y9IIrzEXIPdjEqjPilBfuU0FYOSCu3iBrxiatpz90Cf_2xj0B9tD7MYl0mZGVwhZrC1Ldl09lS2ehlfAcbW3QGtmNoAJkU0Br77N80XUfx5uDTNWDH5TGUmTz1YaGzrUN6tLWZdVtZ8WtJIq5f5ock6gZbRxYagkWuybd5pLz1IMp41xM");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="layout-content-container flex flex-col max-w-[960px] w-full flex-1 px-4 md:px-10 py-10 relative">
+<!-- Confetti Background Effect -->
+<div class="absolute inset-0 confetti-gradient pointer-events-none -z-10"></div>
+<!-- Success Hero Section -->
+<div class="flex flex-col items-center text-center mb-10">
+<div class="mb-6 relative">
+<div class="absolute -inset-4 bg-primary/20 blur-2xl rounded-full"></div>
+<div class="relative size-32 md:size-40 rounded-full border-4 border-primary flex items-center justify-center bg-background-dark/50">
+<span class="material-symbols-outlined text-6xl md:text-7xl text-primary">home</span>
+<!-- 100% Indicator Overlay -->
+<div class="absolute -bottom-2 -right-2 bg-primary text-background-dark font-bold text-xs px-3 py-1 rounded-full shadow-lg">100% DONE</div>
+</div>
+</div>
+<h1 class="text-4xl md:text-5xl font-bold mb-2 text-slate-100">Goal Achieved! 🏆</h1>
+<p class="text-xl text-primary font-medium">Congratulations, Alex!</p>
+<p class="text-slate-400 mt-2 max-w-md">Your discipline has paid off. You've successfully completed your "House Fund" savings goal ahead of schedule.</p>
+</div>
+<!-- Summary Card -->
+<div class="glass-card rounded-xl p-6 md:p-8 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-primary/20">
+<div class="flex flex-col items-center md:items-start pb-6 md:pb-0 md:pr-4">
+<p class="text-slate-400 text-sm uppercase tracking-wider mb-1">Total Saved</p>
+<h3 class="text-3xl font-bold text-slate-100">GHS 20,000.00</h3>
+<div class="flex items-center gap-1 mt-2 text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            + 4.5% APY Earned
+                        </div>
+</div>
+<div class="flex flex-col items-center md:items-start py-6 md:py-0 md:px-8">
+<p class="text-slate-400 text-sm uppercase tracking-wider mb-1">Time Elapsed</p>
+<h3 class="text-3xl font-bold text-slate-100">14 Months</h3>
+<p class="text-primary text-xs font-semibold mt-2">Started Oct 2022</p>
+</div>
+<div class="flex flex-col items-center md:items-start pt-6 md:pt-0 md:pl-8">
+<p class="text-slate-400 text-sm uppercase tracking-wider mb-1">Badge Earned</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-100 leading-tight">Elite Consistency</h3>
+<p class="text-xs text-primary">Top 5% of Savers</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-4 max-w-md mx-auto w-full mb-12">
+<button class="w-full bg-primary text-background-dark font-bold py-4 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                    Withdraw Funds
+                </button>
+<button class="w-full border-2 border-primary/50 text-primary font-bold py-4 rounded-xl hover:bg-primary/10 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                    Start New Goal
+                </button>
+<button class="w-full text-slate-400 font-medium py-3 rounded-xl hover:text-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">analytics</span>
+                    View Savings Analytics
+                </button>
+</div>
+<!-- Footer Message -->
+<!-- Social Sharing Section -->
+<div class="glass-card rounded-xl p-6 md:p-8 mb-12 flex flex-col items-center text-center">
+<div class="mb-8 relative">
+<div class="absolute -inset-10 bg-primary/10 blur-3xl rounded-full"></div>
+<div class="relative">
+<img alt="Goal Achievement Trophy" class="w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-[0_0_30px_rgba(238,205,43,0.3)] mx-auto filter brightness-110 contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjDZljR7vzgpWAdxncKLHJAWMdABtDnk9yECejBeCA45DxqaxfI7dEWbCfLWnwIlDvsocb9dOm49GoTZUKDk5v-sdTCW_jDzQuoSc1MEBPaKsnNkYB-QWX8t6LAoZnCkErHM9YQKE2NWYz6az06bvljTsmwzqT_jMUo4lgP3ipH3sR9f4lm6UGZRfNBeG4n12PUyHM6yaJ7eQuGTF-YUfNDRJm09a1z6rtYT6BOTSHiFt2-zOYpc7JOiYZFj5cyQQyhepLvRj0_1U"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-t from-background-dark/20 to-transparent pointer-events-none"></div>
+</div>
+</div><h4 class="text-lg font-bold text-slate-100 mb-4">Share your achievement</h4>
+<div class="bg-background-dark/40 rounded-lg mb-6 border border-primary/10 max-w-sm">
+<p class="text-sm text-slate-400 italic italic">"I just hit my savings goal on SusuPay! 🎯 One step closer to my dreams. #SusuPay #SavingsGoals #FinancialIndependence"</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 mb-6">
+<button class="flex flex-col items-center gap-2 group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-2xl">chat</span>
+</div>
+<span class="text-xs text-slate-400 group-hover:text-primary transition-colors">WhatsApp</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-2xl">close</span>
+</div>
+<span class="text-xs text-slate-400 group-hover:text-primary transition-colors">Twitter / X</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+<span class="material-symbols-outlined text-2xl">facebook</span>
+</div>
+<span class="text-xs text-slate-400 group-hover:text-primary transition-colors">Facebook</span>
+</button>
+</div>
+<button class="flex items-center gap-2 text-primary text-sm font-semibold hover:underline">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+        Copy Link
+    </button>
+</div><footer class="mt-auto pt-10 border-t border-primary/10 text-center">
+<div class="flex items-center justify-center gap-2 text-slate-500 mb-2">
+<span class="material-symbols-outlined text-primary/60">security</span>
+<span class="text-sm">Secure Savings • SusuPay Platinum</span>
+</div>
+<p class="text-slate-400 italic">"You're one step closer to your financial freedom."</p>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

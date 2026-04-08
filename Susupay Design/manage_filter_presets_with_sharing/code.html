@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Emerald - Filter Presets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(25, 51, 43, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 183, 127, 0.1);
+        }
+        .glass-nav {
+            background: rgba(16, 34, 28, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(16, 183, 127, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="glass-nav sticky top-0 z-50 px-6 lg:px-40 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">filter_vintage</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold tracking-tight">Filter Presets</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-primary/10 hover:bg-primary/20 text-primary transition-colors border border-primary/20">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 overflow-hidden">
+<img alt="User Profile" class="object-cover w-full h-full" data-alt="Close up portrait of a professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqsMFNqDgPab_wTKEUtYMKomTSQCK9Dul6EF9siPZRCW0Pbk4IAB6miTG9jXpvxKaLU7ZIA7wjZnvFu8IxqhDqSnDkyFBT-Kou6uKmyPaoVkiiRCVmcTLI0FARvF_NuJaDsVxa4c7uAK03xXbSrkpu1SbGFSjAaoVVjUrZ17pM6jjQ3GnOyweN_8PKHRlHM7Tcq0GVxfBpc2JV2GSfd1VV3jeNjB5fg3fWp0qDBurzKokJg_pl_Vq8zt6ut085HwgjNIR1YFm0knA"/>
+</div>
+</div>
+</header>
+<main class="px-6 lg:px-40 py-8 flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-64 flex flex-col gap-6">
+<div class="glass-card p-4 rounded-xl flex items-center gap-4">
+<div class="size-12 rounded-full overflow-hidden border-2 border-primary">
+<img alt="SusuPay Emerald Profile" class="object-cover w-full h-full" data-alt="Elegant professional profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9SmCerjmsuMrHIx2d5T8b0bRxn9-JDjRWTMKiwtAwZWio43OWntR_ekE4IVv3MHtAlptLy-XO0uC3xPS4JGgji6seHIQE1l-wDZ7aq3XC7jMF2A2cyxa1QPKX1Ckvcp1r-Ho0jNKZ2Q_MYBlFy4V6uBg1eP9ykGxyugDrDRiqOOsvjX7M78w01sUZ8eWX6qBYwsPJQXblmcbTCXKcGV7J8viFE_iQg4N0DWoo9hCuH-8Lqux6jedai8dHOIbntOdw5_hNAtsr98o"/>
+</div>
+<div>
+<h3 class="font-bold text-sm">SusuPay Emerald</h3>
+<p class="text-primary text-xs font-medium">Premium Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/20 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined fill-1">transition_fade</span>
+<span class="text-sm font-bold">Presets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">monitoring</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</aside>
+<section class="flex-1 flex flex-col gap-6">
+<div class="flex border-b border-primary/10 mb-2 overflow-x-auto whitespace-nowrap">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-bold text-sm">My Presets</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-300 font-medium text-sm transition-colors">Shared with Me</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-300 font-medium text-sm transition-colors">Community</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-primary/20 hover:border-primary/40 transition-all group">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Emerald Clarity" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Lush green forest with mystical light rays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkR7LUhRs8VKkRX5VC2mZeFOreKm3p4fQdxB_9Nph4oeBIa50rOH55Ivd0Q1tvjmUQ9dXXC2Gnr8vYN5_yd5ZAN8R4ARmcT-QUbgTzFHCyb0DRtF17kU28dt_g7g_ZAXzjnyA9RygKOqkqZLzHdHnOwTxagr1LlR1FX9xo7WJOEsedw75aB1klGaHg-GZamQJw7QEzFT6OeXOJ_N4sbndJ6BWqtMCu70JKTtphj3KRlnYws8f5RpHEKzu8FFQKTQUkWkcAAzDRfvE"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold text-background-dark uppercase tracking-wider">Active</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-bold">Emerald Clarity</h4>
+<p class="text-slate-400 text-sm mt-1">High contrast, deep emerald tones</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-4 border-t border-primary/10">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-background-dark font-bold text-sm hover:opacity-90 transition-opacity">
+                                        Apply
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-primary/20 hover:border-primary/40 transition-all group">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Sapphire Deep" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Deep blue ocean waves at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPmERlHdHzy1qEy_yqOmuq-E1RuYJYe2gqHrV2RCT4x79yGjn6m97ye4LCGUEj_AopYDaz_Dmggwg8wv0fwVojQ6Ie6Yyj42osGoUSbs448jaDNHlxmI3E0q4tn7VDE7gpgLteNnxzJRsirth52yqP11x0SrDZanHeQvOY5kwD8vCqwYLw9uyLkekqsRAENVlMJhdl21dscMwo490jnhe5AGWa1NbSzWIWMwXcKXxPHkeov5aPnRRU3QRPJ2OmmsT7ESuFZAfflcM"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-blue-500 px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">Shared</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-bold">Sapphire Deep</h4>
+<p class="text-slate-400 text-sm mt-1">Cool blues and cinematic deep shadows</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-4 border-t border-primary/10">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full overflow-hidden border border-primary/40">
+<img class="w-full h-full object-cover" data-alt="Male portrait profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrbkK3APj9Q7HhFoDrw4xlqCQ0QGi7zKNtG0QxIlGC9Fk3Vh48Q1y_OWdZgaPXMOjzGw5ucdyc8JAixBWbMLpvL9dpLOFXnvCC96Ph-ozg49bFhdbP8mxGr91R80bGbsAL5EOqZPYGnxoUQ-Vxiin3CpQm719Cw1pzu2fRqPj_04Bl5nP9waArYPGnLOfUZ9oCXQgtGeys50VN5CHqKSExfJ7ead11fHhK-sShd_iM7Ugl5R1CHgQKhyrvBi-pafq6--HlMwoA1Uk"/>
+</div>
+<span class="text-xs text-slate-400">by Alex Rivera</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-primary/20 text-primary font-bold text-sm hover:bg-primary/30 transition-colors">
+                                        View
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-primary/20 hover:border-primary/40 transition-all group">
+<div class="relative aspect-video overflow-hidden">
+<img alt="Jade Mist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Mountain range covered in green misty clouds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMnUAoQAX91smj46kpWAjkVRZ6xCB16rW13c3grQ7XKEQN2-0nd9W1JX-7oB7cnxzoy7TOnkYO2DehsD4RK31XU1GO-sxU8f9sSyt917ONa2K4cAgP2U33LWOpKmxre9ukXwYm0jdx5_GvFYBOvOfO24q-1R6CGRTFKsTA0sPYogEOE4Sc3OgKHxycPa_q6uHpZ3tjF8qAQPf0RP0P7KeX4sBaDP_fAY1hgWH7x1VhJurfpOFvEcz4KScTMB4igjtv1nY_7dGOFTs"/>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-bold">Jade Mist</h4>
+<p class="text-slate-400 text-sm mt-1">Soft greens with hazy atmospheric glow</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-4 border-t border-primary/10">
+<span class="text-xs text-slate-500 uppercase font-bold tracking-widest italic">Draft</span>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="px-4 py-2 rounded-lg border border-primary/40 text-primary font-bold text-sm hover:bg-primary/10 transition-colors">
+                                        Edit
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-2 border-dashed border-primary/20 rounded-2xl flex flex-col items-center justify-center p-8 gap-4 hover:border-primary/40 transition-all cursor-pointer group bg-primary/5">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl font-bold">add</span>
+</div>
+<div class="text-center">
+<p class="font-bold text-primary">Create New Preset</p>
+<p class="text-xs text-slate-500 mt-1">Start from a blank canvas</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="mt-auto px-6 lg:px-40 py-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span>Secure connection via SusuPay Core</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</div>
+</body></html>

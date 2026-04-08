@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Link Expired - SusuPay</title>
+<!-- BEGIN: Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              DEFAULT: '#10b981',
+              dark: '#059669',
+              light: '#34d399',
+            },
+            sapphire: {
+              DEFAULT: '#0f172a',
+              accent: '#1e293b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Scripts -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="glassmorphism-effects">
+    .glass-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .bg-dashboard-blur {
+      background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Simulating a blurred dashboard background */
+    .dashboard-mockup-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(8px) brightness(0.4);
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="animations">
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-sapphire text-white min-h-screen flex items-center justify-center font-sans overflow-hidden">
+<!-- BEGIN: Dashboard Background Mockup -->
+<!-- This section simulates the blurred dashboard view mentioned in the requirements -->
+<div class="dashboard-mockup-bg">
+<div class="p-8 grid grid-cols-12 gap-6 h-full">
+<div class="col-span-3 h-full bg-sapphire-accent opacity-50 rounded-lg"></div>
+<div class="col-span-9 space-y-6">
+<div class="h-16 bg-sapphire-accent opacity-50 rounded-lg"></div>
+<div class="grid grid-cols-3 gap-4">
+<div class="h-32 bg-sapphire-accent opacity-50 rounded-lg"></div>
+<div class="h-32 bg-sapphire-accent opacity-50 rounded-lg"></div>
+<div class="h-32 bg-sapphire-accent opacity-50 rounded-lg"></div>
+</div>
+<div class="h-96 bg-sapphire-accent opacity-50 rounded-lg"></div>
+</div>
+</div>
+</div>
+<!-- END: Dashboard Background Mockup -->
+<!-- BEGIN: Expired Link Overlay -->
+<main class="relative z-10 w-full max-w-md px-4" data-purpose="notification-overlay">
+<div class="glass-card rounded-2xl p-8 text-center animate-fade-in">
+<!-- BEGIN: Icon Section -->
+<div class="flex justify-center mb-6" data-purpose="status-icon">
+<div class="relative">
+<div class="bg-emerald/10 p-5 rounded-full ring-1 ring-emerald/30">
+<!-- Clock with Slash Icon (SVG) -->
+<svg class="w-12 h-12 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<line stroke="currentColor" stroke-linecap="round" stroke-width="2" x1="3" x2="21" y1="3" y2="21"></line>
+</svg>
+</div>
+<!-- Small Lock Indicator -->
+<div class="absolute -bottom-1 -right-1 bg-sapphire border border-white/10 p-1.5 rounded-full shadow-lg">
+<svg class="w-4 h-4 text-emerald" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- END: Icon Section -->
+<!-- BEGIN: Content Section -->
+<div data-purpose="text-content">
+<h1 class="text-2xl font-bold mb-2">Link Expired</h1>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">
+          The secure download link for your export has expired for security reasons.
+        </p>
+<!-- File Details Card -->
+<div class="bg-sapphire-accent/50 rounded-lg p-4 mb-8 border border-white/5 flex items-center justify-between text-left" data-purpose="file-details">
+<div class="flex items-center space-x-3">
+<svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<div class="overflow-hidden">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Expired File</p>
+<p class="text-sm font-semibold truncate text-slate-200">Audit_History_Q4.csv</p>
+</div>
+</div>
+<span class="text-[10px] font-bold text-red-400/80 bg-red-400/10 px-2 py-1 rounded uppercase tracking-tighter">Expired</span>
+</div>
+</div>
+<!-- END: Content Section -->
+<!-- BEGIN: Action Buttons -->
+<div class="flex flex-col space-y-3" data-purpose="action-buttons">
+<button class="w-full bg-emerald hover:bg-emerald-dark text-sapphire font-bold py-3 px-6 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-[0.98]">
+          Re-generate Export
+        </button>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 border border-white/10">
+          Dismiss
+        </button>
+</div>
+<!-- END: Action Buttons -->
+<!-- BEGIN: Security Note -->
+<div class="mt-8 pt-6 border-t border-white/5" data-purpose="security-footer">
+<div class="flex items-start space-x-2 text-left">
+<svg class="w-4 h-4 text-emerald mt-0.5 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<p class="text-[11px] text-slate-500 leading-snug">
+            For your protection, secure links are automatically deactivated after their expiration time. You can generate a new link at any time from your dashboard.
+          </p>
+</div>
+</div>
+<!-- END: Security Note -->
+</div>
+</main>
+<!-- END: Expired Link Overlay -->
+</body></html>

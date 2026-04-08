@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Collector Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#1a180e",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sidebar-item-active {
+            background: rgba(238, 205, 43, 0.15);
+            border-right: 3px solid #eecd2b;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-slate-200 dark:border-white/10 bg-background-light dark:bg-background-dark hidden lg:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary text-background-dark p-2 rounded-lg">
+<span class="material-symbols-outlined font-bold">payments</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">SusuPay</h2>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg sidebar-item-active text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">account_balance_wallet</span>
+<span class="font-medium text-slate-400">Collections</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">percent</span>
+<span class="font-medium text-slate-400">Commissions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500">group</span>
+<span class="font-medium text-slate-400">Customers</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<div class="glass-card rounded-xl p-4 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Kwame Mensah</p>
+<p class="text-xs text-slate-500">Collector ID: SP-4492</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-white/10 flex items-center justify-between px-8 bg-background-light/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary" placeholder="Search transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Welcome & Summary -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="text-3xl font-black tracking-tight">Collector Dashboard</h1>
+<p class="text-slate-500 mt-1">Real-time performance metrics and commission tracking.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-background-dark px-4 py-2 rounded-lg font-bold flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                            New Collection
+                        </button>
+</div>
+</div>
+<!-- Large Metrics -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl text-primary">payments</span>
+</div>
+<p class="text-slate-400 font-medium mb-2">Total Commissions Earned</p>
+<div class="flex items-baseline gap-3">
+<h2 class="text-5xl font-black text-white">GHS 4,250.00</h2>
+<span class="text-emerald-400 font-bold flex items-center text-sm bg-emerald-400/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12.5%
+                            </span>
+</div>
+<div class="mt-6 flex gap-4">
+<div class="text-xs text-slate-500 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Monthly Target: 85% Achieved
+                            </div>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl text-primary">leaderboard</span>
+</div>
+<p class="text-slate-400 font-medium mb-2">Collections this Month</p>
+<div class="flex items-baseline gap-3">
+<h2 class="text-5xl font-black text-white">GHS 128,400.00</h2>
+<span class="text-rose-400 font-bold flex items-center text-sm bg-rose-400/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 2.4%
+                            </span>
+</div>
+<div class="mt-6 h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%]"></div>
+</div>
+</div>
+</div>
+<!-- Trends & Tier Breakdown -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Line Chart Section -->
+<div class="xl:col-span-2 glass-card rounded-xl p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold">Daily Collection Trends</h3>
+<p class="text-sm text-slate-500">Last 7 days performance</p>
+</div>
+<select class="bg-white/5 border-none text-xs rounded-lg focus:ring-primary py-1">
+<option>Weekly</option>
+<option>Monthly</option>
+</select>
+</div>
+<!-- Abstract Visual Representation of Line Chart -->
+<div class="h-64 relative flex items-end justify-between px-2 gap-4">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-5">
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+</div>
+<!-- Mock Bars representing trend points -->
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group transition-all hover:bg-primary/40" style="height: 60%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">12k</div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group transition-all hover:bg-primary/40" style="height: 45%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">9k</div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group transition-all hover:bg-primary/40" style="height: 80%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">18k</div>
+</div>
+<div class="flex-1 bg-primary/30 rounded-t-lg relative group transition-all hover:bg-primary/50" style="height: 55%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">11k</div>
+</div>
+<div class="flex-1 bg-primary/40 rounded-t-lg relative group transition-all hover:bg-primary/60" style="height: 90%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">22k</div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group transition-all hover:bg-primary/40" style="height: 65%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block">14k</div>
+</div>
+<div class="flex-1 bg-primary rounded-t-lg relative group transition-all hover:opacity-80" style="height: 100%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-[10px] px-2 py-1 rounded hidden group-hover:block text-primary font-bold">Today: 25k</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] text-slate-500 font-medium px-1">
+<span>MON</span>
+<span>TUE</span>
+<span>WED</span>
+<span>THU</span>
+<span>FRI</span>
+<span>SAT</span>
+<span>SUN</span>
+</div>
+</div>
+<!-- Customer Tier Breakdown -->
+<div class="glass-card rounded-xl p-6">
+<h3 class="text-lg font-bold mb-6">Commission Breakdown</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Platinum Tier (1.5%)</span>
+<span class="font-bold">GHS 2,125.00</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[50%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Gold Tier (1.0%)</span>
+<span class="font-bold">GHS 1,480.00</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary/60 w-[35%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Silver Tier (0.5%)</span>
+<span class="font-bold">GHS 645.00</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary/30 w-[15%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-slate-400">Platinum customers contributed to 50% of your earnings this month. Aim for more high-tier conversions.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-6 border-b border-white/10 flex items-center justify-between">
+<h3 class="text-lg font-bold">Recent Collections</h3>
+<button class="text-sm text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-white/5 text-xs text-slate-500 uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Tier</th>
+<th class="px-6 py-4">Commission</th>
+<th class="px-6 py-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold border border-white/10">EO</div>
+<div>
+<p class="text-sm font-medium">Emmanuel Osei</p>
+<p class="text-[10px] text-slate-500">2 mins ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold">GHS 1,500.00</td>
+<td class="px-6 py-4">
+<span class="text-[10px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-bold">PLATINUM</span>
+</td>
+<td class="px-6 py-4 text-sm text-emerald-400 font-bold">+ GHS 22.50</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-xs text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                            Verified
+                                        </div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold border border-white/10">AB</div>
+<div>
+<p class="text-sm font-medium">Akua Boateng</p>
+<p class="text-[10px] text-slate-500">1 hour ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold">GHS 450.00</td>
+<td class="px-6 py-4">
+<span class="text-[10px] bg-amber-600/20 text-amber-500 px-2 py-0.5 rounded font-bold border border-amber-500/30">GOLD</span>
+</td>
+<td class="px-6 py-4 text-sm text-emerald-400 font-bold">+ GHS 4.50</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-xs text-emerald-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                            Verified
+                                        </div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold border border-white/10">SA</div>
+<div>
+<p class="text-sm font-medium">Samuel Adjei</p>
+<p class="text-[10px] text-slate-500">4 hours ago</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold">GHS 120.00</td>
+<td class="px-6 py-4">
+<span class="text-[10px] bg-slate-500/20 text-slate-400 px-2 py-0.5 rounded font-bold border border-slate-500/30">SILVER</span>
+</td>
+<td class="px-6 py-4 text-sm text-emerald-400 font-bold">+ GHS 0.60</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-xs text-amber-400">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                            Pending
+                                        </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

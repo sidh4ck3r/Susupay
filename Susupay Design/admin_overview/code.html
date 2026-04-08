@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay Admin - Financial Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#12110a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .glass-card {
+            background: rgba(238, 205, 43, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(238, 205, 43, 0.15);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #12110a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #484223;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 glass-panel border-r border-primary/10 hidden lg:flex flex-col p-6 gap-8">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined font-bold">account_balance_wallet</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-primary">SusuPay</h1>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-medium text-sm">Liquidity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="font-medium text-sm">Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">User Registry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-medium text-sm">Analytics</span>
+</a>
+</nav>
+<div class="glass-card rounded-xl p-4">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">System Health</span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex justify-between">
+<span class="text-slate-500">Node Status</span>
+<span class="text-green-500 font-medium">Stable</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-500">Latencies</span>
+<span class="text-slate-100 font-medium">14ms</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-4 lg:p-8">
+<!-- Header -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight">System Overview</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Real-time performance metrics and treasury operations.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2 focus:ring-primary focus:border-primary outline-none transition-all w-64 text-sm" placeholder="Search accounts..." type="text"/>
+</div>
+<button class="size-10 flex items-center justify-center rounded-full glass-card hover:bg-primary/20 transition-all text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-white/10">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold">Admin User</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Tier 1 Access</p>
+</div>
+<img class="size-10 rounded-full border border-primary/30 p-0.5" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX1_t6S0q-17xSJdsejHRe2Fpw4R6H0Iyo_NhcG6yoCHruf_VUZ6pVdCrA9_QCmw32rFqIRGuv0H_qh6SU9SmB2O1-Y5NN6MiebufseTloqtaBANI_tMZ_shGsCcQ2Sf1taZl7_jBfdMgoWCPwFANMOohxR3lyIBYdiYATQKfjp9g_UK94YuNe9K8PCsLSItL0RGarIbZ1wBUCFLRssKY0GKvbgSObddmgvsGbftfD1O_icvgHgp3rMdRN_fmzFw4VijddnyRPuPk"/>
+</div>
+</div>
+</header>
+<!-- Top Statistics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full group-hover:scale-125 transition-transform"></div>
+<p class="text-slate-400 text-sm font-medium mb-1">Total System Liquidity</p>
+<h3 class="text-2xl font-bold">$4,250,900.50</h3>
+<div class="mt-4 flex items-center gap-2 text-green-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.4% from last month</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full group-hover:scale-125 transition-transform"></div>
+<p class="text-slate-400 text-sm font-medium mb-1">Active Collectors</p>
+<h3 class="text-2xl font-bold">8,432</h3>
+<div class="mt-4 flex items-center gap-2 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">group_add</span>
+<span>+215 today</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full group-hover:scale-125 transition-transform"></div>
+<p class="text-slate-400 text-sm font-medium mb-1">Pending Withdrawals</p>
+<h3 class="text-2xl font-bold">24</h3>
+<div class="mt-4 flex items-center gap-2 text-amber-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Avg delay: 2.4 mins</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full group-hover:scale-125 transition-transform"></div>
+<p class="text-slate-400 text-sm font-medium mb-1">System Revenue</p>
+<h3 class="text-2xl font-bold">$124,560.00</h3>
+<div class="mt-4 flex items-center gap-2 text-green-500 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span>Fee capture optimized</span>
+</div>
+</div>
+</div>
+<!-- Middle Section: Main Chart & Leaderboard -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Liquidity Chart -->
+<div class="lg:col-span-2 glass-panel rounded-3xl p-6 border border-white/5">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold">Liquidity Trends</h4>
+<p class="text-xs text-slate-500">Historical asset performance over 30 days</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider">Line</button>
+<button class="px-3 py-1.5 rounded-lg bg-white/5 text-slate-500 text-[10px] font-bold uppercase tracking-wider">Area</button>
+</div>
+</div>
+<div class="h-64 flex items-end gap-2 px-2">
+<div class="w-full bg-primary/10 rounded-t-lg h-1/2 relative group transition-all hover:bg-primary/30">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 glass-card px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">$1.2M</div>
+</div>
+<div class="w-full bg-primary/10 rounded-t-lg h-2/3 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-3/4 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-1/2 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-5/6 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/20 rounded-t-lg h-full relative group transition-all hover:bg-primary/40 border-t-2 border-primary"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-2/3 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-3/4 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-4/5 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-1/2 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/10 rounded-t-lg h-3/4 relative group transition-all hover:bg-primary/30"></div>
+<div class="w-full bg-primary/20 rounded-t-lg h-[90%] relative group transition-all hover:bg-primary/40 border-t-2 border-primary"></div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] text-slate-500 font-medium uppercase tracking-widest">
+<span>Day 01</span>
+<span>Day 10</span>
+<span>Day 20</span>
+<span>Current</span>
+</div>
+</div>
+<!-- Top Collectors Leaderboard -->
+<div class="glass-panel rounded-3xl p-6 border border-white/5">
+<h4 class="text-lg font-bold mb-6">Top Collectors</h4>
+<div class="space-y-5">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">A</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Abena Serwaa</p>
+<p class="text-[10px] text-slate-500">Accra South Node</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold">$12,400</p>
+<p class="text-[9px] text-green-500">8.2% cap</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-primary/10 flex items-center justify-center text-slate-100 font-bold text-xs">K</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Kofi Mensah</p>
+<p class="text-[10px] text-slate-500">Kumasi Central</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold">$10,150</p>
+<p class="text-[9px] text-green-500">6.1% cap</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-primary/10 flex items-center justify-center text-slate-100 font-bold text-xs">S</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Sarah Boateng</p>
+<p class="text-[10px] text-slate-500">Tamale Hub</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold">$9,820</p>
+<p class="text-[9px] text-green-500">5.9% cap</p>
+</div>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-primary/10 flex items-center justify-center text-slate-100 font-bold text-xs">E</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Emmanuel Osei</p>
+<p class="text-[10px] text-slate-500">Cape Coast</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold">$8,400</p>
+<p class="text-[9px] text-slate-500">4.2% cap</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 rounded-xl border border-primary/20 text-primary text-xs font-bold hover:bg-primary/5 transition-all">View Full Leaderboard</button>
+</div>
+</div>
+<!-- Bottom Section: Withdrawal Requests -->
+<div class="glass-panel rounded-3xl p-6 border border-white/5">
+<div class="flex items-center justify-between mb-8">
+<h4 class="text-lg font-bold">Pending Withdrawal Requests</h4>
+<button class="text-primary text-sm font-semibold flex items-center gap-1 hover:underline">
+                        History <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-white/5">
+<tr>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2">Request ID</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2">Collector / Node</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2">Amount</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2">Time Elapsed</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2">Stability Score</th>
+<th class="pb-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 px-2 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="group hover:bg-white/[0.02] transition-colors">
+<td class="py-4 px-2 font-mono text-xs text-primary">#SP-9821</td>
+<td class="py-4 px-2">
+<p class="text-sm font-bold">Johnnie Doe</p>
+<p class="text-[10px] text-slate-500">Accra Node-4</p>
+</td>
+<td class="py-4 px-2 font-bold text-sm">$4,200.00</td>
+<td class="py-4 px-2 text-xs text-slate-400">14m ago</td>
+<td class="py-4 px-2">
+<div class="flex items-center gap-2">
+<div class="h-1.5 w-16 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[92%]"></div>
+</div>
+<span class="text-[10px] font-bold text-green-500">92%</span>
+</div>
+</td>
+<td class="py-4 px-2 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded-lg bg-green-500/20 text-green-500 hover:bg-green-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+<button class="size-8 rounded-lg bg-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-white/[0.02] transition-colors">
+<td class="py-4 px-2 font-mono text-xs text-primary">#SP-9822</td>
+<td class="py-4 px-2">
+<p class="text-sm font-bold">Mary Adjapong</p>
+<p class="text-[10px] text-slate-500">Kumasi Node-1</p>
+</td>
+<td class="py-4 px-2 font-bold text-sm">$1,150.00</td>
+<td class="py-4 px-2 text-xs text-slate-400">22m ago</td>
+<td class="py-4 px-2">
+<div class="flex items-center gap-2">
+<div class="h-1.5 w-16 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[74%]"></div>
+</div>
+<span class="text-[10px] font-bold text-primary">74%</span>
+</div>
+</td>
+<td class="py-4 px-2 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded-lg bg-green-500/20 text-green-500 hover:bg-green-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+<button class="size-8 rounded-lg bg-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-white/[0.02] transition-colors">
+<td class="py-4 px-2 font-mono text-xs text-primary">#SP-9823</td>
+<td class="py-4 px-2">
+<p class="text-sm font-bold">Felix Owusu</p>
+<p class="text-[10px] text-slate-500">Tamale Node-2</p>
+</td>
+<td class="py-4 px-2 font-bold text-sm">$12,900.00</td>
+<td class="py-4 px-2 text-xs text-slate-400">45m ago</td>
+<td class="py-4 px-2">
+<div class="flex items-center gap-2">
+<div class="h-1.5 w-16 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[41%]"></div>
+</div>
+<span class="text-[10px] font-bold text-red-500">41%</span>
+</div>
+</td>
+<td class="py-4 px-2 text-right">
+<div class="flex justify-end gap-2">
+<button class="size-8 rounded-lg bg-green-500/20 text-green-500 hover:bg-green-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+<button class="size-8 rounded-lg bg-red-500/20 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Stats -->
+<footer class="mt-12 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex items-center gap-4 glass-panel p-4 rounded-2xl border border-white/5">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-bold uppercase tracking-wider">User Growth</p>
+<p class="text-xl font-bold">+18.2% <span class="text-xs font-medium text-slate-400 ml-1">last 7d</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4 glass-panel p-4 rounded-2xl border border-white/5">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Process Velocity</p>
+<p class="text-xl font-bold">1.2s <span class="text-xs font-medium text-slate-400 ml-1">avg. tx time</span></p>
+</div>
+</div>
+<div class="flex items-center gap-4 glass-panel p-4 rounded-2xl border border-white/5">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Security Integrity</p>
+<p class="text-xl font-bold">99.9% <span class="text-xs font-medium text-slate-400 ml-1">verified</span></p>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

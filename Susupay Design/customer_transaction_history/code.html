@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SusuPay | Transaction History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eecd2b",
+                        "background-light": "#f8f8f6",
+                        "background-dark": "#221f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(72, 66, 35, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(238, 205, 43, 0.1);
+        }
+        .glass-nav {
+            background: rgba(34, 31, 16, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(238, 205, 43, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<nav class="glass-nav sticky top-0 z-50 px-4 md:px-10 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">account_balance_wallet</span>
+<h2 class="text-xl font-bold tracking-tight">SusuPay</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-1" href="#">Transactions</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Wallets</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center glass-card rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-500 w-40" placeholder="Global search..." type="text"/>
+</div>
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 overflow-hidden" data-alt="User profile avatar with golden accents">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Vkf-2MpOtppbu6tbNLC6VEm3pOKxrkrXqIlq_L92Ay2135weRsPnGNkkEQKiRUXcBqRxw7akOTjcWRgNNW2Lft2TLbp6n7_2su_wPPvi2PJDIu6a4r1dAaXMV3NXFoF1fYj8lyNB0z0e6NcBlJfV3ig2eW0iiAp0M8ZvpHUOYtfvLXhfrp3ZUz7AoyqZ7NH5wsyCS6bYzsDv8QFK19iRqyv5On3w5Voea1_b0KJfjqzq04jXuQRliabHYp0mjakmXKQmPlBNR-4"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-background-dark rounded-full"></div>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 md:px-10 py-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h1 class="text-4xl font-black tracking-tight text-slate-100 mb-2">Transaction History</h1>
+<p class="text-slate-400">View and manage your SusuPay cash flows and deposits.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-primary text-background-dark px-4 py-2.5 rounded-lg font-bold hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Export CSV
+                </button>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden mb-6">
+<div class="p-4 border-b border-primary/10 flex flex-wrap gap-4 items-center justify-between">
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-background-dark text-sm font-bold">
+                        All Transactions
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-slate-300 text-sm font-medium hover:bg-primary/20">
+                        MoMo Deposit
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-slate-300 text-sm font-medium hover:bg-primary/20">
+                        Cash Collection
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-slate-300 text-sm font-medium hover:bg-primary/20">
+                        Withdrawal
+                    </button>
+</div>
+<div class="flex-1 min-w-[280px] max-w-md relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">filter_list</span>
+<input class="w-full bg-primary/5 border border-primary/20 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-primary focus:border-primary text-slate-100" placeholder="Search by ID, recipient or amount..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary/5 text-slate-400 text-xs uppercase tracking-wider">
+<th class="px-6 py-4 font-semibold">Date &amp; Time</th>
+<th class="px-6 py-4 font-semibold">Transaction ID</th>
+<th class="px-6 py-4 font-semibold">Type</th>
+<th class="px-6 py-4 font-semibold">Amount</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm text-slate-100 font-medium">Oct 24, 2023</div>
+<div class="text-xs text-slate-500 font-normal">14:22 PM</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-primary/80">#TXN-94021</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+<span class="material-symbols-outlined text-sm">smartphone</span>
+</div>
+<span class="text-sm text-slate-100">MoMo Deposit</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100">GH₵ 1,200.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                                    Completed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm text-slate-100 font-medium">Oct 23, 2023</div>
+<div class="text-xs text-slate-500 font-normal">09:15 AM</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-primary/80">#TXN-88123</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-orange-500/10 text-orange-400">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<span class="text-sm text-slate-100">Cash Collection</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100">GH₵ 450.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm text-slate-100 font-medium">Oct 22, 2023</div>
+<div class="text-xs text-slate-500 font-normal">18:40 PM</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-primary/80">#TXN-76510</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-red-500/10 text-red-400">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+</div>
+<span class="text-sm text-slate-100">Withdrawal</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100">GH₵ 2,000.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                                    Completed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm text-slate-100 font-medium">Oct 21, 2023</div>
+<div class="text-xs text-slate-500 font-normal">11:10 AM</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-primary/80">#TXN-65492</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+<span class="material-symbols-outlined text-sm">smartphone</span>
+</div>
+<span class="text-sm text-slate-100">MoMo Deposit</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100">GH₵ 75.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                                    Completed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="text-sm text-slate-100 font-medium">Oct 20, 2023</div>
+<div class="text-xs text-slate-500 font-normal">08:05 AM</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-primary/80">#TXN-54321</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-lg bg-red-500/10 text-red-400">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+</div>
+<span class="text-sm text-slate-100">Withdrawal</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-100">GH₵ 3,500.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-primary/10 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="text-slate-100 font-medium">1-5</span> of <span class="text-slate-100 font-medium">128</span> transactions</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-primary/10 text-slate-400 hover:bg-primary/20 hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 rounded-lg bg-primary text-background-dark font-bold">1</button>
+<button class="px-3 py-1 rounded-lg bg-primary/10 text-slate-300 hover:bg-primary/20">2</button>
+<button class="px-3 py-1 rounded-lg bg-primary/10 text-slate-300 hover:bg-primary/20">3</button>
+<button class="p-2 rounded-lg bg-primary/10 text-slate-400 hover:bg-primary/20 hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="glass-card p-6 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-400 text-sm font-medium">Total Deposits</h3>
+<div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+</div>
+<div class="text-2xl font-black text-slate-100">GH₵ 42,900.00</div>
+<div class="mt-2 text-xs text-green-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+                    12% increase from last month
+                </div>
+</div>
+<div class="glass-card p-6 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-400 text-sm font-medium">Total Withdrawals</h3>
+<div class="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+</div>
+</div>
+<div class="text-2xl font-black text-slate-100">GH₵ 18,250.00</div>
+<div class="mt-2 text-xs text-red-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+                    5% decrease from last month
+                </div>
+</div>
+<div class="glass-card p-6 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-400 text-sm font-medium">Net Savings</h3>
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">savings</span>
+</div>
+</div>
+<div class="text-2xl font-black text-slate-100">GH₵ 24,650.00</div>
+<div class="mt-2 text-xs text-slate-500">Available across 3 wallets</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-primary/10 py-8 px-4 mt-auto">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">stars</span>
+<span>Powered by SusuPay Glassmorphism Edition</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Help Center</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+</div>
+<p>© 2023 SusuPay. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
