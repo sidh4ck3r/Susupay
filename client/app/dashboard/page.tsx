@@ -8,6 +8,7 @@ import MomoDeposit from "@/components/MomoDeposit";
 import CreateGoalModal from "@/components/CreateGoalModal";
 import WithdrawalModal from "@/components/WithdrawalModal";
 import NotificationBell from "@/components/NotificationBell";
+import KYCModal from "@/components/KYCModal";
 import { LucideWallet, LucideTrendingUp, LucideHistory, LucideBell, LucideLoader, LucidePlus, LucideArrowUpRight, LucideCheckCircle, LucideClock, LucideXCircle, LucideUsers, LucideLayoutGrid, LucideLogOut } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -21,6 +22,7 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
+  const [isKYCModalOpen, setIsKYCModalOpen] = useState(false);
 
   const fetchData = async () => {
     const storedUser = localStorage.getItem("susupay_user");
@@ -321,6 +323,13 @@ export default function Dashboard() {
       <CreateGoalModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
+        onSuccess={fetchData}
+        userId={user?.id}
+      />
+
+      <KYCModal 
+        isOpen={isKYCModalOpen} 
+        onClose={() => setIsKYCModalOpen(false)} 
         onSuccess={fetchData}
         userId={user?.id}
       />
