@@ -31,7 +31,23 @@ export default function MomoDeposit({ onSuccess, initialAmount, initialProvider,
     const reference = params.get("reference") || params.get("trxref");
     
     if (reference) {
-      setStep(3); // Land directly on Success Step
+      setStep(2); // Show processing
+      setIsLoading(true);
+      
+      // Verify the transaction with our backend
+      axios.get(`${API_BASE_URL}/api/transactions/verify/${reference}`)
+        .then(res => {
+          console.log("✅ Transaction verified:", res.data);
+          setStep(3); // Success
+        })
+        .catch(err => {
+          console.error("❌ Verification failed:", err);
+          setError("We couldn't verify your transaction automatically. Please contact support if your balance hasn't updated.");
+          setStep(1);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, []);
 
@@ -44,6 +60,14 @@ export default function MomoDeposit({ onSuccess, initialAmount, initialProvider,
       if (!storedUser) throw new Error("Please log in to make a deposit.");
       
       const user = JSON.parse(storedUser);
+
+      // 1. KYC Check (Frontend enforcement)
+      if (user.kycStatus !== 'VERIFIED') {
+        setError("KYC Verification Required: Please complete your identity verification in the KYC section before making a deposit.");
+        setIsLoading(false);
+        return;
+      }
+
       const reference = `TRX-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
       // Visually move to step 2 (Processing)

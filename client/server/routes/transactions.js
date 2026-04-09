@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const { Transaction, User, WithdrawalRequest, sequelize } = require('../models');
+const { Transaction, User, WithdrawalRequest, GroupMember, sequelize } = require('../models');
 
 // Request a Withdrawal
 router.post('/withdraw', async (req, res) => {
@@ -69,19 +69,38 @@ router.post('/deposit', async (req, res) => {
   try {
     const { userId, amount, provider, momoNumber, reference, groupId } = req.body;
 
-    // 1. Check if User Exists
+    // 1. Check if User Exists & KYC Status
     const user = await User.findByPk(userId);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
+    if (user.kycStatus !== 'VERIFIED') {
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'You must complete KYC verification before making a deposit.',
+        kycStatus: user.kycStatus
+      });
+    }
+
     // 2. Initialize Paystack Transaction
     const merchantNumber = process.env.MERCHANT_NUMBER || '0246814468';
+    
+    // Dynamic Callback URL based on environment
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? 'https://susupay.vercel.app' 
+      : (process.env.CLIENT_URL || 'http://localhost:3030');
+      
+    const callbackUrl = `${baseUrl}/dashboard`;
+
+    console.log(`🚀 Initializing Deposit: ${amount} GHS for ${user.email}. Callback: ${callbackUrl}`);
+
     const paystackResponse = await axios.post(
       'https://api.paystack.co/transaction/initialize',
       {
         email: user.email,
         amount: Math.round(parseFloat(amount) * 100), // convert to pesewas
         reference: reference,
-        callback_url: `${process.env.CLIENT_URL || 'http://localhost:3030'}/dashboard`,
+        callback_url: callbackUrl,
+        channels: ['mobile_money', 'card'], // Ensure MoMo is explicitly included
         metadata: {
           userId: user.id,
           momoNumber: momoNumber,
@@ -103,13 +122,13 @@ router.post('/deposit', async (req, res) => {
     }
 
     // 3. Create the Transaction Record (PENDING)
-    const transaction = await Transaction.create({
+    await Transaction.create({
       type: 'DEPOSIT',
       amount,
       provider,
       reference,
       status: 'PENDING',
-      metadata: { momoNumber, merchantNumber, groupId },
+      metadata: { momoNumber, merchantNumber, groupId, initiateTimestamp: new Date().toISOString() },
       UserId: userId
     });
 

@@ -25,8 +25,12 @@ export default function RootLayout({
       setIsAuditor(user.role === 'AUDITOR');
 
       // KYC Redirect Guard
-      const isRestrictedRoute = pathname?.startsWith("/admin") || pathname?.startsWith("/collector");
-      if (user.kycStatus === 'UNVERIFIED' && isRestrictedRoute) {
+      const isDashboardRoute = pathname?.startsWith("/dashboard");
+      const isRestrictedRoute = pathname?.startsWith("/admin") || pathname?.startsWith("/collector") || isDashboardRoute;
+      const isAuthOrKycPage = pathname === "/" || pathname?.startsWith("/auth") || pathname === "/kyc";
+
+      if (user.kycStatus === 'UNVERIFIED' && isRestrictedRoute && !isAuthOrKycPage) {
+        console.log("🔒 KYC Required: Redirecting to verification.");
         router.push("/kyc");
       }
     } else {

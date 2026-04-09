@@ -110,7 +110,7 @@ export default function CollectorTerminal() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-20 flex items-center justify-between pt-8 pb-6 border-b border-white/5 pl-16 lg:pl-0">
+      <header className="max-w-7xl mx-auto w-full relative z-[30] flex items-center justify-between pt-8 pb-6 border-b border-white/5 pl-16 lg:pl-0">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-500">

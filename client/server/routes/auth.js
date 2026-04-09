@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
       { expiresIn: '24h' }
     );
 
-    res.json({ token, user: { id: user.id, fullName: user.fullName, role: user.role, balance: user.balance } });
+    res.json({ token, user: { id: user.id, fullName: user.fullName, role: user.role, balance: user.balance, kycStatus: user.kycStatus } });
   } catch (error) {
     res.status(500).json({ message: 'Login failed', error: error.message });
   }
@@ -142,6 +142,7 @@ router.post('/google', async (req, res) => {
         fullName: user.fullName, 
         role: user.role, 
         balance: user.balance,
+        kycStatus: user.kycStatus,
         picture // Optional: UI can use this
       } 
     });

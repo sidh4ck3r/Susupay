@@ -31,6 +31,7 @@ export default function AdminCommandCenter() {
   const [overview, setOverview] = useState<any>(null);
   const [users, setUsers] = useState<any[]>([]);
   const [withdrawals, setWithdrawals] = useState<any[]>([]);
+  const [recentTransactions, setRecentTransactions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [reportType, setReportType] = useState("DEPOSIT");
   
@@ -128,14 +129,16 @@ export default function AdminCommandCenter() {
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
     try {
-      const [overviewRes, usersRes, withdrawalsRes] = await Promise.all([
+      const [overviewRes, usersRes, withdrawalsRes, recentTrxRes] = await Promise.all([
         axios.get(`${API_BASE_URL}/api/admin/overview`, config),
         axios.get(`${API_BASE_URL}/api/admin/users`, config),
-        axios.get(`${API_BASE_URL}/api/admin/withdrawals`, config)
+        axios.get(`${API_BASE_URL}/api/admin/withdrawals`, config),
+        axios.get(`${API_BASE_URL}/api/admin/recent-transactions`, config)
       ]);
       setOverview(overviewRes.data);
       setUsers(usersRes.data);
       setWithdrawals(withdrawalsRes.data);
+      setRecentTransactions(recentTrxRes.data);
     } catch (err) {
       console.error("Admin fetch error:", err);
       if (err.response?.status === 401 || err.response?.status === 403) {
@@ -258,7 +261,7 @@ export default function AdminCommandCenter() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-10 flex flex-col md:flex-row items-center justify-between pt-6 md:pt-8 pb-8 pl-14 lg:pl-0">
+      <header className="max-w-7xl mx-auto w-full relative z-[30] flex flex-col md:flex-row items-center justify-between pt-6 md:pt-8 pb-8 pl-14 lg:pl-0">
         <div className="text-center md:text-left mb-6 md:mb-0">
           <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
             {getUserRole() === 'AUDITOR' ? 'Auditor Terminal' : 'Admin Command Center'}
@@ -403,6 +406,66 @@ export default function AdminCommandCenter() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -z-0 translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-500/10 transition-colors" />
           </Link>
 
+        </div>
+      </div>
+
+      {/* Recent Transaction Activity */}
+      <div className="max-w-7xl mx-auto w-full relative z-10 mt-12">
+        <div className="flex items-center justify-between mb-6 ml-2">
+          <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Live Transaction Stream</h2>
+          <Link href="/admin/reports" className="text-[10px] font-black uppercase tracking-widest text-emerald-500 hover:underline">View All Records</Link>
+        </div>
+        
+        <div className="glass-card overflow-hidden border-white/5 shadow-2xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-white/[0.02] border-b border-white/5">
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Reference</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Customer</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Type</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Amount</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Provider</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Status</th>
+                  <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 text-right">Date</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {recentTransactions.map((trx) => (
+                  <tr key={trx.id} className="hover:bg-white/[0.01] transition-colors group">
+                    <td className="px-6 py-4 font-mono text-[11px] text-slate-400 group-hover:text-white transition-colors uppercase">{trx.reference || 'N/A'}</td>
+                    <td className="px-6 py-4">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-white leading-none">{trx.User?.fullName}</span>
+                        <span className="text-[10px] text-slate-500 font-medium mt-1 leading-none">{trx.User?.email}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={`text-[10px] font-black px-2 py-0.5 rounded ${trx.type === 'DEPOSIT' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-red-500/10 text-red-500'}`}>
+                        {trx.type}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 font-mono text-sm font-bold text-white">₵{trx.amount}</td>
+                    <td className="px-6 py-4 text-xs font-medium text-slate-400">{trx.provider}</td>
+                    <td className="px-6 py-4 text-xs">
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <span className={`w-1.5 h-1.5 rounded-full ${trx.status === 'SUCCESS' ? 'bg-emerald-500 animate-pulse' : trx.status === 'PENDING' ? 'bg-yellow-500' : 'bg-red-500'}`} />
+                        <span className={trx.status === 'SUCCESS' ? 'text-emerald-500' : trx.status === 'PENDING' ? 'text-yellow-500' : 'text-red-500'}>
+                          {trx.status}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-xs font-medium text-slate-500 text-right">{new Date(trx.createdAt).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+                {recentTransactions.length === 0 && (
+                  <tr>
+                    <td colSpan={7} className="px-6 py-12 text-center text-slate-500 text-sm font-medium italic">No recent activity detected in the system stream.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

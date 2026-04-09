@@ -95,7 +95,7 @@ export default function Dashboard() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Header */}
-      <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 relative z-10">
+      <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 relative z-[30]">
         <div className="animate-in fade-in slide-in-from-left-4 duration-700">
           <h1 className="text-3xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
             Vault <span className="text-emerald-500">Overview</span>
@@ -105,14 +105,16 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="flex items-center gap-4 animate-in fade-in slide-in-from-right-4 duration-700">
-           <NotificationBell notifications={history.slice(0, 5).map(trx => ({
-             id: trx.id,
-             title: trx.status === 'SUCCESS' ? 'Deposit Received' : 'Transaction Alert',
-             description: `₵${trx.amount} deposited via ${trx.reference.slice(0, 8)}...`,
-             type: trx.status === 'SUCCESS' ? 'SUCCESS' : 'INFO',
-             time: new Date(trx.createdAt).toLocaleTimeString(),
-             link: '/dashboard/transactions'
-           }))} />
+           {(user?.role === 'ADMIN' || user?.role === 'AUDITOR' || user?.kycStatus === 'VERIFIED') && (
+             <NotificationBell notifications={history.slice(0, 5).map(trx => ({
+               id: trx.id,
+               title: trx.status === 'SUCCESS' ? 'Deposit Received' : 'Transaction Alert',
+               description: `₵${trx.amount} deposited via ${trx.reference.slice(0, 8)}...`,
+               type: trx.status === 'SUCCESS' ? 'SUCCESS' : 'INFO',
+               time: new Date(trx.createdAt).toLocaleTimeString(),
+               link: '/dashboard/transactions'
+             }))} />
+           )}
            
            <button 
              onClick={() => {

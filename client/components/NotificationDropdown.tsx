@@ -35,8 +35,8 @@ export default function NotificationDropdown({
 
   return (
     <>
-      <div className="fixed inset-0 z-40" onClick={onClose} />
-      <div className="absolute right-0 mt-2 w-80 glass-card bg-[#0f172a] border border-white/10 shadow-2xl rounded-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right">
+      <div className="fixed inset-0 z-[60]" onClick={onClose} />
+      <div className="absolute right-0 mt-2 w-80 max-md:fixed max-md:top-20 max-md:left-4 max-md:right-4 max-md:w-auto glass-card bg-[#0f172a] border border-white/10 shadow-2xl rounded-2xl z-[100] overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right">
         <div className="p-4 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
           <h3 className="font-bold text-sm">System Alerts</h3>
           <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded">

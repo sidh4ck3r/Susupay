@@ -144,6 +144,20 @@ router.get('/overview', async (req, res) => {
   }
 });
 
+// Get Recent Transactions (Last 10)
+router.get('/recent-transactions', async (req, res) => {
+  try {
+    const transactions = await Transaction.findAll({
+      limit: 10,
+      include: [{ model: User, attributes: ['fullName', 'email'] }],
+      order: [['createdAt', 'DESC']]
+    });
+    res.json(transactions);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch recent transactions' });
+  }
+});
+
 // Get All Users
 router.get('/users', async (req, res) => {
   try {

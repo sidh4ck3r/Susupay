@@ -12,15 +12,22 @@ router.post('/webhook', async (req, res) => {
                        .digest('hex');
     
     if (hash !== req.headers['x-paystack-signature']) {
+      console.warn('⚠️ Webhook blocked: Invalid Paystack Signature');
       return res.status(401).send('Invalid signature');
     }
 
     const event = req.body;
+    console.log(`🔔 Paystack Webhook Received: ${event.event} [Ref: ${event.data?.reference || 'N/A'}]`);
 
     // 2. Handle successful charges
     if (event.event === 'charge.success') {
-      const { reference, amount, metadata, customer } = event.data;
+      const { reference, amount, metadata, customer, status, channel } = event.data;
       const actualAmount = amount / 100; // Paystack sends in pesewas
+
+      if (status !== 'success') {
+        console.warn(`⚠️ Ignoring charge.success event with data status: ${status} for ${reference}`);
+        return res.sendStatus(200);
+      }
 
       const t = await sequelize.transaction();
       try {
@@ -39,12 +46,11 @@ router.post('/webhook', async (req, res) => {
         let user;
         
         if (userId) {
-          user = await User.findByPk(userId);
+          user = await User.findByPk(userId, { transaction: t });
         }
 
         if (!user && customer?.email) {
-          // Fallback to customer email
-          user = await User.findOne({ where: { email: customer.email } });
+          user = await User.findOne({ where: { email: customer.email }, transaction: t });
         }
 
         if (user) {
@@ -59,22 +65,24 @@ router.post('/webhook', async (req, res) => {
             UserId: user.id,
             metadata: { 
               ...parsedMetadata, 
-              merchantNumber: merchantNumber 
+              merchantNumber: merchantNumber,
+              channel: channel
             }
           }, { transaction: t });
 
           // Update Balance
-          const newBalance = parseFloat(user.balance) + actualAmount;
+          const oldBalance = parseFloat(user.balance || 0);
+          const newBalance = oldBalance + actualAmount;
           await user.update({ balance: newBalance }, { transaction: t });
-          console.log(`✅ Success: Deposited ₵${actualAmount} to ${user.email}`);
+          console.log(`✅ Webhook Success: Deposited ₵${actualAmount} to ${user.email} (Ref: ${reference})`);
         } else {
-          console.error(`❌ User not found for transaction ${reference}. Email: ${customer?.email}`);
+          console.error(`❌ Webhook Error: User not found for transaction ${reference}. Email: ${customer?.email}, Metadata:`, parsedMetadata);
         }
 
         await t.commit();
       } catch (err) {
         await t.rollback();
-        console.error('Webhook processing error:', err);
+        console.error('❌ Webhook processing error:', err);
       }
     }
 

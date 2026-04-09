@@ -155,7 +155,12 @@ export default function Sidebar() {
             {/* Separator if admin/collector/auditor links were present */}
             {(isCollector || isAdmin || isAuditor) && <div className="border-t border-white/5 my-4 pt-4" />}
 
-            {menuItems.map((item) => {
+            {menuItems.filter(item => {
+              if (item.name === "Notifications") {
+                return isAdmin || isAuditor || user?.kycStatus === 'VERIFIED';
+              }
+              return true;
+            }).map((item) => {
               const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname?.startsWith(item.href + "/"));
               return (
                 <Link 

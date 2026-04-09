@@ -71,19 +71,23 @@ export default function KYCPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0f1a] text-slate-100 flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0f1a] text-slate-100 flex flex-col items-center justify-center p-6 relative overflow-x-hidden overflow-y-auto">
       {/* Decorative Background */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[150px] -z-0" />
+      <div className="fixed top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[150px] -z-0 pointer-events-none" />
       
-      <button 
-        onClick={handleLogout}
-        className="fixed top-8 right-8 flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-red-500/10 text-slate-400 hover:text-red-400 rounded-xl transition-all border border-white/5 font-bold text-xs uppercase tracking-widest z-50"
-      >
-        <LucideLogOut size={16} />
-        Sign Out
-      </button>
+      {/* Fixed Header with Sign-Out */}
+      <div className="fixed top-0 left-0 right-0 p-6 flex justify-end z-[60] pointer-events-none">
+        <button 
+          onClick={handleLogout}
+          className="pointer-events-auto flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md hover:bg-red-500/10 text-slate-400 hover:text-red-400 rounded-xl transition-all border border-white/5 font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-2xl"
+        >
+          <LucideLogOut size={16} />
+          <span className="hidden sm:inline">Sign Out</span>
+          <span className="sm:hidden">Exit</span>
+        </button>
+      </div>
 
-      <div className="w-full max-w-2xl relative z-10">
+      <div className="w-full max-w-2xl relative z-10 py-12">
         <div className="text-center mb-12">
           <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-500 mx-auto mb-6 shadow-2xl shadow-emerald-500/10 border border-emerald-500/20">
             <LucideShieldCheck size={36} />

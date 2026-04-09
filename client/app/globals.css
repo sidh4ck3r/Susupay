@@ -9,8 +9,11 @@
 }
 
 @layer base {
-  body {
+  html, body {
     @apply bg-[#0a0f1a] text-slate-100;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
   }
 }
 

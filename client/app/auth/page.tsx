@@ -28,16 +28,31 @@ export default function Login() {
     setIsLoading(true);
     setError("");
     try {
+      console.log("Initializing Google OAuth with Supabase...");
       const { data, error: signInError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`
+          redirectTo: `${window.location.origin}/auth/callback`,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
         }
       });
       
-      if (signInError) throw signInError;
-      // Supabase automatically redirects to Google here
+      if (signInError) {
+        console.error("Supabase OAuth Error:", signInError);
+        throw signInError;
+      }
+
+      if (data?.url) {
+        console.log("Redirecting to Google via Supabase:", data.url);
+        window.location.href = data.url;
+      } else {
+        throw new Error("No redirect URL returned from Supabase. Ensure Google Provider is enabled in Dashboard.");
+      }
     } catch (err: any) {
+      console.error("Google Login Catch:", err);
       setError(err.message || "Supabase Google Login initialization failed.");
       setIsLoading(false);
     }
@@ -87,7 +102,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#0a0f1a] flex items-start md:items-center justify-center p-6 pt-20 md:pt-0 relative overflow-y-auto text-slate-100">
+    <div className="min-h-[100dvh] bg-[#0a0f1a] flex items-start md:items-center justify-center p-6 pt-20 md:pt-0 relative overflow-y-auto overflow-x-hidden text-slate-100">
       <button 
         onClick={() => router.push("/")}
         className="fixed top-6 right-6 p-2 text-slate-400 hover:text-white transition-all bg-white/5 hover:bg-white/10 rounded-full z-[100] group border border-white/5 hover:border-white/20 shadow-2xl"
