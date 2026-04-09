@@ -17,6 +17,13 @@ router.post('/collect', auth(['COLLECTOR', 'ADMIN']), async (req, res) => {
     const customer = await User.findByPk(customerId);
     if (!customer) return res.status(404).json({ message: 'Customer not found' });
 
+    if (customer.kycStatus !== 'VERIFIED') {
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'The customer must complete KYC verification before receiving cash deposits.' 
+      });
+    }
+
     // 1. Create Transaction (Type: DEPOSIT, Provider: CASH)
     const transaction = await Transaction.create({
       type: 'DEPOSIT',

@@ -21,6 +21,14 @@ router.post('/withdraw', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    if (user.kycStatus !== 'VERIFIED') {
+      await t.rollback();
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'You must complete KYC verification before making a withdrawal.' 
+      });
+    }
+
     if (parseFloat(user.balance) < withdrawAmount) {
       await t.rollback();
       return res.status(400).json({ message: 'Insufficient balance' });

@@ -6,6 +6,16 @@ const { SavingsGoal, User } = require('../models');
 router.post('/', async (req, res) => {
   try {
     const { userId, title, targetAmount, deadline, category } = req.body;
+    
+    const user = await User.findByPk(userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    
+    if (user.kycStatus !== 'VERIFIED') {
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'You must complete KYC verification before creating a savings goal.' 
+      });
+    }
 
     const goal = await SavingsGoal.create({
       title,

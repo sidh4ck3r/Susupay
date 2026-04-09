@@ -6,6 +6,16 @@ const { GroupSusu, GroupMember, User, sequelize } = require('../models');
 router.post('/', async (req, res) => {
   try {
     const { userId, name, description, contributionAmount, frequency } = req.body;
+    
+    const user = await User.findByPk(userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    if (user.kycStatus !== 'VERIFIED') {
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'You must complete KYC verification before forming a new group.' 
+      });
+    }
 
     const group = await GroupSusu.create({
       name,
@@ -33,6 +43,16 @@ router.post('/', async (req, res) => {
 router.post('/join', async (req, res) => {
   try {
     const { userId, groupId } = req.body;
+
+    const user = await User.findByPk(userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    if (user.kycStatus !== 'VERIFIED') {
+      return res.status(403).json({ 
+        message: 'KYC Verification Required', 
+        details: 'You must complete KYC verification before joining a group.' 
+      });
+    }
 
     const group = await GroupSusu.findByPk(groupId);
     if (!group) return res.status(404).json({ message: 'Group not found' });
