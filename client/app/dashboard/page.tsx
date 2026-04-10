@@ -134,41 +134,47 @@ export default function Dashboard() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[150px] -z-0 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      {/* Header */}
-      <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 relative z-[100]">
-        <div className="animate-in fade-in slide-in-from-left-4 duration-700">
-          <h1 className="text-3xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
-            Vault <span className="text-emerald-500">Overview</span>
-          </h1>
-          <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mt-1">
-            System status: <span className="text-emerald-500/80 underline decoration-emerald-500/20 underline-offset-4">Operational</span>
-          </p>
-        </div>
-        <div className="flex items-center gap-4 animate-in fade-in slide-in-from-right-4 duration-700">
-           {(user?.role === 'ADMIN' || user?.role === 'AUDITOR' || user?.kycStatus === 'VERIFIED') && (
-             <NotificationBell notifications={history.slice(0, 5).map(trx => ({
-               id: trx.id,
-               title: trx.status === 'SUCCESS' ? 'Deposit Received' : 'Transaction Alert',
-               description: `₵${trx.amount} deposited via ${trx.reference.slice(0, 8)}...`,
-               type: trx.status === 'SUCCESS' ? 'SUCCESS' : 'INFO',
-               time: new Date(trx.createdAt).toLocaleTimeString(),
-               link: '/dashboard/transactions'
-             }))} />
-           )}
-           
-           <button 
-             onClick={() => {
-               localStorage.removeItem("susupay_user");
-               localStorage.removeItem("susupay_token");
-               router.push("/auth");
-             }}
-             className="w-10 h-10 flex items-center justify-center rounded-xl text-red-500 hover:text-white hover:bg-red-500/20 transition-all border border-red-500/10 group shadow-lg shadow-red-500/5"
-             title="Terminate Session"
-           >
-             <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
-           </button>
-        </div>
-      </header>
+      {/* Sticky Header Hub */}
+      <div className="sticky top-0 z-[150] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
+        <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0">
+          <div>
+            <h1 className="text-2xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
+              Vault <span className="text-emerald-500">Overview</span>
+            </h1>
+            <p className="text-slate-500 text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">
+              Secure Terminal <span className="text-emerald-500 opacity-50 ml-2">• Operational</span>
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+             {(user?.role === 'ADMIN' || user?.role === 'AUDITOR' || user?.kycStatus === 'VERIFIED') && (
+               <div className="relative group">
+                 {/* Aura effect for visibility */}
+                 <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                 <NotificationBell notifications={history.slice(0, 5).map(trx => ({
+                   id: trx.id,
+                   title: trx.status === 'SUCCESS' ? 'Deposit Received' : 'Transaction Alert',
+                   description: `₵${trx.amount} deposited via ${trx.reference.slice(0, 8)}...`,
+                   type: trx.status === 'SUCCESS' ? 'SUCCESS' : 'INFO',
+                   time: new Date(trx.createdAt).toLocaleTimeString(),
+                   link: '/dashboard/transactions'
+                 }))} />
+               </div>
+             )}
+             
+             <button 
+               onClick={() => {
+                 localStorage.removeItem("susupay_user");
+                 localStorage.removeItem("susupay_token");
+                 router.push("/auth");
+               }}
+               className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-red-500 hover:text-white hover:bg-red-500/20 transition-all border border-white/5 group shadow-lg"
+               title="Terminate Session"
+             >
+               <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
+             </button>
+          </div>
+        </header>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto w-full relative z-10">
         {/* Left Column: Financial Pulse */}

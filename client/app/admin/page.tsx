@@ -261,31 +261,34 @@ export default function AdminCommandCenter() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-[100] flex flex-col md:flex-row items-center justify-between pt-6 md:pt-8 pb-8 pl-14 lg:pl-0">
-        <div className="text-center md:text-left mb-6 md:mb-0">
-          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
-            {getUserRole() === 'AUDITOR' ? 'Auditor Terminal' : 'Admin Command Center'}
-          </h1>
-          <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-1">SusuPay Financial Oversight Hub</p>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex flex-col items-end mr-4">
-            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">System Status</span>
-            <span className="text-xs font-bold text-white flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              Operational
-            </span>
+      {/* Sticky Header Hub */}
+      <div className="sticky top-0 z-[150] -mx-4 md:-mx-6 lg:-mx-10 px-4 md:px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
+        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-14 lg:pl-0">
+          <div className="text-left">
+            <h1 className="text-xl md:text-2xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
+              {getUserRole() === 'AUDITOR' ? 'Auditor Terminal' : 'Admin Command Center'}
+            </h1>
+            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mt-0.5">SusuPay Oversight <span className="text-emerald-500/50 ml-2">• Secure Cycle</span></p>
           </div>
-          <button 
-            onClick={handleLogout}
-            className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-red-500/10 rounded-xl transition-all text-slate-400 hover:text-red-400 border border-white/5 hover:border-red-500/20 group shadow-lg shadow-red-500/5"
-            title="Secure Sign Out"
-          >
-            <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
-          </button>
-        </div>
-      </header>
+          
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex flex-col items-end mr-2">
+              <span className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">Auth Level 3</span>
+              <span className="text-[10px] font-bold text-white flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                Active
+              </span>
+            </div>
+            <button 
+              onClick={handleLogout}
+              className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-red-500/10 rounded-xl transition-all text-slate-400 hover:text-red-400 border border-white/5 hover:border-red-500/20 group shadow-lg"
+              title="Secure Sign Out"
+            >
+              <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
+        </header>
+      </div>
 
       {/* Overview Stats Grid */}
       <div className="max-w-7xl mx-auto w-full relative z-10 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

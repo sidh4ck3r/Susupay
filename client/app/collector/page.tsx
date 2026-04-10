@@ -110,27 +110,30 @@ export default function CollectorTerminal() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-[100] flex items-center justify-between pt-8 pb-6 border-b border-white/5 pl-16 lg:pl-0">
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-500">
-               <LucideSmartphone size={18} />
+      {/* Sticky Terminal Header */}
+      <div className="sticky top-0 z-[150] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
+        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-16 lg:pl-0">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-500">
+                <LucideSmartphone size={18} />
+              </div>
+              <h1 className="text-sm font-black tracking-widest text-white uppercase">
+                Field Terminal
+              </h1>
             </div>
-            <h1 className="text-sm font-black tracking-widest text-white uppercase">
-              Field Terminal
-            </h1>
+            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1 ml-10">Operational Cycle <span className="text-emerald-500/50 ml-1">Active</span></p>
           </div>
-          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1 ml-10">Operational Cycle Active</p>
-        </div>
 
-        <button 
-          onClick={handleLogout}
-          className="w-10 h-10 flex items-center justify-center bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-xl transition-all border border-white/5 hover:border-red-500/20 group shadow-lg shadow-red-500/5"
-          title="Exit Terminal"
-        >
-          <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
-        </button>
-      </header>
+          <button 
+            onClick={handleLogout}
+            className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-red-500/10 rounded-xl transition-all text-slate-400 hover:text-red-400 border border-white/5 group shadow-lg"
+            title="Exit Terminal"
+          >
+            <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </header>
+      </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
