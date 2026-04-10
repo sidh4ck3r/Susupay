@@ -53,6 +53,46 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    const checkUserAndKYC = async () => {
+      const storedUser = localStorage.getItem("susupay_user");
+      if (!storedUser) {
+        router.push("/auth");
+        return;
+      }
+
+      const { id } = JSON.parse(storedUser);
+      
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/auth/profile/${id}`);
+        const freshUser = response.data;
+        setUser(freshUser);
+        
+        // STRICT KYC GUARD: 
+        // Force unverified users to complete KYC before accessing the dashboard pulse
+        if (freshUser.kycStatus === 'UNVERIFIED' || freshUser.kycStatus === 'REJECTED') {
+          router.push("/kyc");
+          return;
+        }
+
+        // Fetch other data if verified
+        const [historyRes, goalsRes, withdrawalsRes, groupsRes] = await Promise.all([
+          axios.get(`${API_BASE_URL}/api/transactions/history/${id}`),
+          axios.get(`${API_BASE_URL}/api/savings/${id}`),
+          axios.get(`${API_BASE_URL}/api/transactions/withdrawals/${id}`),
+          axios.get(`${API_BASE_URL}/api/groups/user/${id}`)
+        ]);
+        
+        setHistory(historyRes.data);
+        setGoals(goalsRes.data);
+        setWithdrawals(withdrawalsRes.data);
+        setGroups(groupsRes.data);
+      } catch (err) {
+        console.error("Dashboard fetch error:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       const reference = url.searchParams.get("reference") || url.searchParams.get("trxref");
@@ -63,18 +103,18 @@ export default function Dashboard() {
            .then(() => {
               alert("Payment Successful! Your deposit has been securely added to your vault.");
               window.history.replaceState({}, document.title, window.location.pathname);
-              fetchData();
+              checkUserAndKYC();
            })
            .catch((err) => {
               alert("Payment verification failed or was already processed.");
               window.history.replaceState({}, document.title, window.location.pathname);
-              fetchData();
+              checkUserAndKYC();
            });
-         return; // fetchData will be called after verification
+         return;
       }
     }
     
-    fetchData();
+    checkUserAndKYC();
   }, []);
 
   const chartData = history.slice(0, 7).reverse().map(trx => ({

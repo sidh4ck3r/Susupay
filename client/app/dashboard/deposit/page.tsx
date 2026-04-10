@@ -20,7 +20,22 @@ function DepositContent() {
       router.push("/auth");
       return;
     }
-    setIsLoading(false);
+
+    const { id } = JSON.parse(storedUser);
+    
+    // Fetch fresh profile to ensure KYC status is accurate
+    axios.get(`${API_BASE_URL}/api/auth/profile/${id}`)
+      .then(res => {
+        if (res.data.kycStatus !== 'VERIFIED') {
+          router.push("/kyc");
+        } else {
+          setIsLoading(false);
+        }
+      })
+      .catch(err => {
+        console.error("KYC check failed:", err);
+        router.push("/dashboard");
+      });
   }, [router]);
 
   if (isLoading) return (

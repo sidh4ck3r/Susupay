@@ -36,15 +36,20 @@ export default function AuthCallback() {
           picture
         });
 
-        localStorage.setItem("susupay_token", response.data.token);
-        localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
+        const freshUser = response.data.user;
+        const kycStatus = freshUser.kycStatus;
         
-        // Redirect logic managed by layout/auth flow (Check KYC status, etc)
-        const userData = response.data.user;
-        if (userData.role === 'ADMIN' || userData.role === 'AUDITOR') {
+        localStorage.setItem("susupay_user", JSON.stringify(freshUser));
+        localStorage.setItem("susupay_token", response.data.token);
+
+        console.log("✅ Authenticated. KYC Status:", kycStatus);
+
+        if (freshUser.role === 'ADMIN' || freshUser.role === 'AUDITOR') {
           router.push("/admin");
-        } else if (userData.role === 'COLLECTOR') {
+        } else if (freshUser.role === 'COLLECTOR') {
           router.push("/collector");
+        } else if (kycStatus === 'UNVERIFIED' || kycStatus === 'REJECTED') {
+          router.push("/kyc");
         } else {
           router.push("/dashboard");
         }

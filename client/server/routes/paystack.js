@@ -17,7 +17,10 @@ router.post('/webhook', async (req, res) => {
     }
 
     const event = req.body;
-    console.log(`🔔 Paystack Webhook Received: ${event.event} [Ref: ${event.data?.reference || 'N/A'}]`);
+    console.log(`\n🔔 Paystack Webhook Received: ${event.event} [Ref: ${event.data?.reference || 'N/A'}]`);
+    console.log(`   Customer Email: ${event.data?.customer?.email || 'N/A'}`);
+    console.log(`   Amount: ${event.data?.amount / 100} GHS`);
+    console.log(`   Metadata:`, JSON.stringify(event.data?.metadata || {}));
 
     // 2. Handle successful charges
     if (event.event === 'charge.success') {

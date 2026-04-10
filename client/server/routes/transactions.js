@@ -93,11 +93,12 @@ router.post('/deposit', async (req, res) => {
     const merchantNumber = process.env.MERCHANT_NUMBER || '0246814468';
     
     // Dynamic Callback URL based on environment
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://susupay.vercel.app' 
-      : (process.env.CLIENT_URL || 'http://localhost:3030');
+    const baseUrl = process.env.CLIENT_URL || 
+      (process.env.NODE_ENV === 'production' 
+        ? 'https://susupay.vercel.app' 
+        : (process.env.NEXT_PUBLIC_CLIENT_URL || 'http://localhost:3030'));
       
-    const callbackUrl = `${baseUrl}/dashboard`;
+    const callbackUrl = `${baseUrl.replace(/\/$/, '')}/dashboard`;
 
     console.log(`🚀 Initializing Deposit: ${amount} GHS for ${user.email}. Callback: ${callbackUrl}`);
 
