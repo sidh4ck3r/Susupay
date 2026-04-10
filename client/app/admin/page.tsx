@@ -257,12 +257,12 @@ export default function AdminCommandCenter() {
   }
 
   return (
-    <div className="min-h-screen px-4 md:px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative">
+    <div className="min-h-screen px-4 md:px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative flex flex-col items-center">
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Sticky Header Hub */}
-      <div className="sticky top-0 z-[150] -mx-4 md:-mx-6 lg:-mx-10 px-4 md:px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
+      <div className="sticky top-0 z-[500] -mx-4 md:-mx-6 lg:-mx-10 px-4 md:px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700 w-full">
         <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-14 lg:pl-0">
           <div className="text-left">
             <h1 className="text-xl md:text-2xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
@@ -291,7 +291,7 @@ export default function AdminCommandCenter() {
       </div>
 
       {/* Overview Stats Grid */}
-      <div className="max-w-7xl mx-auto w-full relative z-10 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto w-full relative z-[0] mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="glass-card p-6 border-white/5 hover:border-emerald-500/30 transition-all shadow-xl group">
           <LucidePieChart className="text-emerald-400 mb-4 group-hover:scale-110 transition-transform" size={24} />
           <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Total Liquidity</p>

@@ -113,7 +113,7 @@ export default function CollectorTerminal() {
   }
 
   return (
-    <div className="min-h-screen px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative overflow-hidden">
+    <div className="min-h-screen px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative">
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
@@ -142,7 +142,7 @@ export default function CollectorTerminal() {
         </header>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 mt-10">
+      <div className="max-w-7xl mx-auto w-full relative z-[0] mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
           {/* Main Collection Form - Spans 2 columns on large screens */}

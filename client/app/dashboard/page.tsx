@@ -129,13 +129,13 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0f1a] p-6 lg:p-10 space-y-10 text-slate-100 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0f1a] p-6 lg:p-10 space-y-10 text-slate-100 relative">
       {/* Decorative Background */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[150px] -z-0 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Sticky Header Hub */}
-      <div className="sticky top-0 z-[150] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
+      <div className="sticky top-0 z-[500] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
         <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0">
           <div>
             <h1 className="text-2xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
@@ -176,7 +176,7 @@ export default function Dashboard() {
         </header>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto w-full relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto w-full relative z-[0]">
         {/* Left Column: Financial Pulse */}
         <div className="lg:col-span-8 space-y-8">
            {/* Primary Capital Card */}
