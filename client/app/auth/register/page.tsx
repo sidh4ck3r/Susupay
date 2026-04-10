@@ -60,10 +60,10 @@ export default function Register() {
       <div className="min-h-[100dvh] bg-[#0a0f1a] flex items-center justify-center p-6 text-slate-100">
         <div className="glass-card p-10 glow-border text-center max-w-sm w-full animate-in zoom-in duration-500">
           <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500 mx-auto mb-6 shadow-2xl shadow-emerald-500/20 border border-emerald-500/20">
-            <LucideCheckCircle size={40} />
+            <LucideShieldCheck size={40} />
           </div>
-          <h3 className="text-xl font-black text-white uppercase tracking-wider mb-3">Account Created!</h3>
-          <p className="text-slate-400 text-sm font-medium">Redirecting you to login...</p>
+          <h3 className="text-xl font-black text-white uppercase tracking-wider mb-3">Vault Created!</h3>
+          <p className="text-slate-400 text-sm font-medium italic">Redirecting to Identity Verification...</p>
           <div className="mt-6 w-8 h-8 border-3 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto"></div>
         </div>
       </div>

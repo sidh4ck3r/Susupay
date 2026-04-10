@@ -38,7 +38,13 @@ export default function CollectorLogin() {
 
       localStorage.setItem("susupay_token", response.data.token);
       localStorage.setItem("susupay_user", JSON.stringify(user));
-      router.push("/collector");
+
+      if (user.kycStatus === 'UNVERIFIED' || user.kycStatus === 'REJECTED') {
+        console.log("🔒 KYC Required: Redirecting agent to verification.");
+        router.push("/kyc");
+      } else {
+        router.push("/collector");
+      }
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed. Please check your collector credentials.");
     } finally {

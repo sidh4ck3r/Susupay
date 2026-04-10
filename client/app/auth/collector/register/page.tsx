@@ -10,6 +10,7 @@ export default function CollectorRegister() {
   const [formData, setFormData] = useState({ fullName: "", email: "", password: "", role: "COLLECTOR" });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("susupay_user");
@@ -27,14 +28,35 @@ export default function CollectorRegister() {
     setError("");
 
     try {
-      await axios.post(`${API_BASE_URL}/api/auth/register`, formData);
-      router.push("/auth/collector?registered=true");
+      const response = await axios.post(`${API_BASE_URL}/api/auth/register`, formData);
+      
+      // Auto-login and Mandatory KYC Redirect
+      localStorage.setItem("susupay_token", response.data.token);
+      localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
+
+      setSuccess(true);
+      setTimeout(() => router.push("/kyc"), 1500);
     } catch (err: any) {
       setError(err.response?.data?.message || "Application failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
+
+  if (success) {
+    return (
+      <div className="min-h-screen bg-[#0a0f1a] flex items-center justify-center p-6 text-slate-100">
+        <div className="glass-card p-10 glow-border text-center max-w-sm w-full animate-in zoom-in duration-500">
+          <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-500 mx-auto mb-6 shadow-2xl shadow-emerald-500/20 border border-emerald-500/20">
+            <LucideShieldCheck size={40} />
+          </div>
+          <h3 className="text-xl font-black text-white uppercase tracking-wider mb-3">Agent Enrolled!</h3>
+          <p className="text-slate-400 text-sm font-medium italic">Identity Verification Required...</p>
+          <div className="mt-6 w-8 h-8 border-3 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] flex items-center justify-center p-6 relative overflow-hidden text-slate-100">
