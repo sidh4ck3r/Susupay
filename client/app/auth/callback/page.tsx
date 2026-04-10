@@ -46,10 +46,11 @@ export default function AuthCallback() {
 
         if (freshUser.role === 'ADMIN' || freshUser.role === 'AUDITOR') {
           router.push("/admin");
+        } else if (kycStatus === 'UNVERIFIED' || kycStatus === 'REJECTED') {
+          console.log("🔒 Restricted: Redirecting to KYC verification.");
+          router.push("/kyc");
         } else if (freshUser.role === 'COLLECTOR') {
           router.push("/collector");
-        } else if (kycStatus === 'UNVERIFIED' || kycStatus === 'REJECTED') {
-          router.push("/kyc");
         } else {
           router.push("/dashboard");
         }

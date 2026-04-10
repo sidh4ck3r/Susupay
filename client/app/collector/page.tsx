@@ -64,6 +64,13 @@ export default function CollectorTerminal() {
         return;
       }
       
+      // KYC Guard for Collectors
+      if (parsedUser.kycStatus === 'UNVERIFIED' || parsedUser.kycStatus === 'REJECTED') {
+        console.log("🔒 KYC Required for Collector Terminal.");
+        router.push("/kyc");
+        return;
+      }
+      
       setUser(parsedUser);
       fetchData(parsedUser);
     } catch (e) {
