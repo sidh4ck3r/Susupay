@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { API_BASE_URL } from "@/app/constants";
+import { supabase } from "@/utils/supabase/client";
 import { LucideShieldCheck, LucideArrowRight, LucideUser, LucideMail, LucideLock, LucideSmartphone, LucideAlertCircle, LucideX, LucideEye, LucideEyeOff, LucideCheckCircle } from "lucide-react";
 
 export default function Register() {
