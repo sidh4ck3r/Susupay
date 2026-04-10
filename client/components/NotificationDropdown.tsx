@@ -1,5 +1,5 @@
 "use client";
-import { LucideClock, LucideCheckCircle, LucideXCircle, LucideInfo } from "lucide-react";
+import { LucideClock, LucideCheckCircle, LucideXCircle, LucideInfo, LucideX } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface Notification {
@@ -46,10 +46,19 @@ export default function NotificationDropdown({
         }}
       >
         <div className="p-4 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
-          <h3 className="font-bold text-sm">System Alerts</h3>
-          <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded">
-            {unreadCount} New
-          </span>
+          <div className="flex items-center gap-2">
+            <h3 className="font-bold text-sm">System Alerts</h3>
+            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded">
+              {unreadCount} New
+            </span>
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-1 hover:bg-white/5 rounded-lg text-slate-500 hover:text-white transition-colors"
+            title="Close Panel"
+          >
+            <LucideX size={18} />
+          </button>
         </div>
         
         <div className="max-h-[400px] overflow-y-auto">
