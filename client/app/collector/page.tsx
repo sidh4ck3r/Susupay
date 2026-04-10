@@ -113,7 +113,7 @@ export default function CollectorTerminal() {
   }
 
   return (
-    <div className="min-h-screen px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative">
+    <div className="min-h-screen px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a] relative isolate">
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 

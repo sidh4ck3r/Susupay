@@ -37,7 +37,10 @@ export default function NotificationDropdown({
     <>
       <div className="fixed inset-0 z-[900] bg-black/60 backdrop-blur-md md:hidden" onClick={onClose} />
       <div className="fixed inset-0 z-[180] hidden md:block" onClick={onClose} />
-      <div className="absolute right-0 mt-2 w-80 max-md:fixed max-md:top-1/2 max-md:left-1/2 max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[calc(100%-2rem)] max-md:max-w-md glass-card bg-[#0f172a] border border-white/10 shadow-2xl rounded-2xl z-[1000] overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right md:origin-top-right max-md:origin-center">
+      <div 
+        className="absolute right-0 mt-2 w-80 max-md:fixed max-md:top-1/2 max-md:left-1/2 max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:w-[calc(100%-2rem)] max-md:max-w-md glass-card bg-[#0f172a] border border-white/10 shadow-2xl rounded-2xl z-[9999] overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right md:origin-top-right max-md:origin-center"
+        style={{ transform: 'translate3d(0, 0, 9999px)' }}
+      >
         <div className="p-4 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
           <h3 className="font-bold text-sm">System Alerts</h3>
           <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-2 py-0.5 rounded">

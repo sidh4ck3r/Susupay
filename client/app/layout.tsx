@@ -58,7 +58,7 @@ export default function RootLayout({
       <body className="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-emerald-500/30">
         <div className="flex flex-col lg:flex-row min-h-screen">
           <Sidebar />
-          <main className={`flex-1 transition-all duration-300 relative z-[90] ${!hideSidebar && isReady ? "lg:pl-72" : ""}`}>
+          <main className={`flex-1 ${!hideSidebar && isReady ? "lg:pl-72" : ""}`}>
             {isReady ? (
               children
             ) : (

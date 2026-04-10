@@ -129,7 +129,7 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0f1a] p-6 lg:p-10 space-y-10 text-slate-100 relative">
+    <div className="min-h-screen bg-[#0a0f1a] p-6 lg:p-10 space-y-10 text-slate-100 relative isolate">
       {/* Decorative Background */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[150px] -z-0 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
