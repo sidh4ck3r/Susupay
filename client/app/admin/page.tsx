@@ -262,8 +262,8 @@ export default function AdminCommandCenter() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Sticky Header Hub */}
-      <div className="sticky top-0 z-[500] -mx-4 md:-mx-6 lg:-mx-10 px-4 md:px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700 w-full">
-        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-14 lg:pl-0">
+      <div className="sticky top-0 z-[500] -mx-4 md:-mx-6 lg:-mx-10 px-4 md:px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 w-full">
+        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-14 lg:pl-0 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="text-left">
             <h1 className="text-xl md:text-2xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
               {getUserRole() === 'AUDITOR' ? 'Auditor Terminal' : 'Admin Command Center'}

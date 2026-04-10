@@ -135,8 +135,8 @@ export default function Dashboard() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Sticky Header Hub */}
-      <div className="sticky top-0 z-[500] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
-        <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0">
+      <div className="sticky top-0 z-[500] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5">
+        <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 animate-in fade-in slide-in-from-top-4 duration-700">
           <div>
             <h1 className="text-2xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
               Vault <span className="text-emerald-500">Overview</span>

@@ -118,8 +118,8 @@ export default function CollectorTerminal() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Sticky Terminal Header */}
-      <div className="sticky top-0 z-[150] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5 animate-in fade-in slide-in-from-top-4 duration-700">
-        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-16 lg:pl-0">
+      <div className="sticky top-0 z-[500] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5">
+        <header className="max-w-7xl mx-auto w-full flex items-center justify-between pl-16 lg:pl-0 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-500">
