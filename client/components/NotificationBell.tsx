@@ -56,7 +56,7 @@ export default function NotificationBell({ notifications }: NotificationBellProp
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-[100]">
       <button 
         onClick={handleToggle}
         className={`w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-emerald-400 transition-all border border-white/5 ${animate && hasUnread && unreadCount > 0 ? 'animate-bounce text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : ''} ${isOpen ? 'text-emerald-400 bg-white/5' : ''}`}
