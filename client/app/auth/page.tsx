@@ -87,10 +87,13 @@ export default function Login() {
       localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
       
       const userData = response.data.user;
+      
       if (userData.role === 'ADMIN' || userData.role === 'AUDITOR') {
         router.push("/admin");
       } else if (userData.role === 'COLLECTOR') {
         router.push("/collector");
+      } else if (userData.kycStatus === 'UNVERIFIED' || userData.kycStatus === 'REJECTED') {
+        router.push("/kyc");
       } else {
         router.push("/dashboard");
       }

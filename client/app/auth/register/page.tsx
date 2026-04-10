@@ -34,7 +34,7 @@ export default function Register() {
       if (!supabaseUser) throw new Error("Registration failed in Supabase.");
 
       // 2. Sync with Backend (and pass extra MoMo data)
-      await axios.post(`${API_BASE_URL}/api/auth/supabase`, {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/supabase`, {
         googleId: supabaseUser.id,
         email: formData.email,
         name: formData.fullName,
@@ -42,8 +42,12 @@ export default function Register() {
         momoProvider: formData.momoProvider
       });
 
+      // 3. Auto-login and Mandatory KYC Redirect
+      localStorage.setItem("susupay_token", response.data.token);
+      localStorage.setItem("susupay_user", JSON.stringify(response.data.user));
+
       setSuccess(true);
-      setTimeout(() => router.push("/auth?registered=true"), 2000);
+      setTimeout(() => router.push("/kyc"), 1500);
     } catch (err: any) {
       setError(err.message || "Registration failed. Please try again.");
     } finally {
