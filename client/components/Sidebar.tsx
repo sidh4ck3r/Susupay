@@ -83,7 +83,7 @@ export default function Sidebar() {
       {/* Mobile Toggle */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-6 left-6 z-50 p-2 glass-card border-white/10 text-emerald-500 shadow-xl"
+        className="lg:hidden fixed top-6 left-6 z-[600] p-2 glass-card border-white/10 text-emerald-500 shadow-xl"
       >
         {isOpen ? <LucideX size={24} /> : <LucideMenu size={24} />}
       </button>
