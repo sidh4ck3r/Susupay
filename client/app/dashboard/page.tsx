@@ -135,7 +135,7 @@ export default function Dashboard() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
       {/* Header */}
-      <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 relative z-[70]">
+      <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 relative z-[100]">
         <div className="animate-in fade-in slide-in-from-left-4 duration-700">
           <h1 className="text-3xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
             Vault <span className="text-emerald-500">Overview</span>

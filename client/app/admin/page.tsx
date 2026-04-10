@@ -261,7 +261,7 @@ export default function AdminCommandCenter() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-[30] flex flex-col md:flex-row items-center justify-between pt-6 md:pt-8 pb-8 pl-14 lg:pl-0">
+      <header className="max-w-7xl mx-auto w-full relative z-[100] flex flex-col md:flex-row items-center justify-between pt-6 md:pt-8 pb-8 pl-14 lg:pl-0">
         <div className="text-center md:text-left mb-6 md:mb-0">
           <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase tracking-[0.15em]">
             {getUserRole() === 'AUDITOR' ? 'Auditor Terminal' : 'Admin Command Center'}

@@ -41,7 +41,7 @@ export default function TransactionsPage() {
       {/* Decorative Background Element - Subtle */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-[120px] -z-0 pointer-events-none" />
 
-      <header className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center justify-center text-center pt-8 pb-6">
+      <header className="max-w-7xl mx-auto w-full relative z-[100] flex flex-col items-center justify-center text-center pt-8 pb-6">
         <div className="flex items-center gap-3 mb-1">
           <LucideHistory className="text-emerald-500" size={20} />
           <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white uppercase tracking-wider">

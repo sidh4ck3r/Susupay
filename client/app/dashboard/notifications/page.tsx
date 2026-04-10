@@ -26,7 +26,7 @@ export default function NotificationsPage() {
 
   return (
     <div className="min-h-screen px-6 lg:px-10 pb-10 text-slate-100 bg-[#0a0f1a]">
-      <header className="max-w-4xl mx-auto w-full pt-12 pb-10">
+      <header className="max-w-4xl mx-auto w-full pt-12 pb-10 relative z-[100]">
         <div className="flex items-center gap-3 mb-2">
           <LucideBell className="text-emerald-500" size={24} />
           <h1 className="text-2xl font-bold tracking-tight text-white uppercase tracking-wider">
