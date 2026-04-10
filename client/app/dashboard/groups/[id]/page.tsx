@@ -12,40 +12,61 @@ import {
   LucideClock, 
   LucideCheckCircle2, 
   LucideAlertCircle,
-  LucideLayoutGrid
+  LucideLayoutGrid,
+  LucideLogOut
 } from "lucide-react";
+import NotificationBell from "@/components/NotificationBell";
 
 export default function GroupDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const router = useRouter();
   const [group, setGroup] = useState<any>(null);
   const [userMember, setUserMember] = useState<any>(null);
+  const [history, setHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const storedUser = localStorage.getItem("susupay_user");
-      if (!storedUser) {
-        router.push("/auth");
-        return;
-      }
-      const currentUser = JSON.parse(storedUser);
+  const fetchData = async () => {
+    const storedUser = localStorage.getItem("susupay_user");
+    if (!storedUser) {
+      router.push("/auth");
+      return;
+    }
+    const currentUser = JSON.parse(storedUser);
+    
+    try {
+      const [groupRes, historyRes] = await Promise.all([
+        axios.get(`${API_BASE_URL}/api/groups/${resolvedParams.id}`),
+        axios.get(`${API_BASE_URL}/api/transactions/history/${currentUser.id}`)
+      ]);
+      setGroup(groupRes.data);
+      setHistory(historyRes.data);
       
-      try {
-        const res = await axios.get(`${API_BASE_URL}/api/groups/${resolvedParams.id}`);
-        setGroup(res.data);
-        
-        // Find current user's membership data
-        const member = res.data.GroupMembers.find((m: any) => m.UserId === currentUser.id);
-        setUserMember(member);
-      } catch (err) {
-        console.error("Group details fetch error:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      // Find current user's membership data
+      const member = groupRes.data.GroupMembers.find((m: any) => m.UserId === currentUser.id);
+      setUserMember(member);
+    } catch (err) {
+      console.error("Group details fetch error:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, [resolvedParams.id, router]);
+
+  const handleContribute = () => {
+    const storedUser = localStorage.getItem("susupay_user");
+    const currentUser = storedUser ? JSON.parse(storedUser) : null;
+    
+    if (currentUser?.kycStatus !== 'VERIFIED') {
+      alert("Identity Verification Required: Please complete your KYC verification to contribute to Susu circles.");
+      router.push("/kyc");
+      return;
+    }
+
+    router.push(`/dashboard/deposit?amount=${group.contributionAmount}&groupId=${group.id}&groupName=${encodeURIComponent(group.name)}&provider=${userMember?.User?.momoProvider || ''}`);
+  };
 
   if (isLoading) return (
     <div className="min-h-screen flex items-center justify-center text-emerald-500 bg-[#0a0f1a]">
@@ -72,17 +93,56 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ id: str
   const userProgress = (userContributed / userTarget) * 100;
 
   return (
-    <div className="min-h-screen px-6 lg:px-10 pb-20 text-slate-100 bg-[#0a0f1a] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0f1a] p-6 lg:p-10 space-y-10 text-slate-100 relative isolate pb-20">
       {/* Dynamic Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-emerald-500/[0.03] to-transparent pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto w-full relative z-10 pt-8">
+      {/* Sticky Header Hub */}
+      <div className="sticky top-0 z-[500] -mx-6 lg:-mx-10 px-6 lg:px-10 py-4 mb-4 bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5">
+        <header className="flex justify-between items-center max-w-7xl mx-auto w-full pl-16 lg:pl-0 animate-in fade-in slide-in-from-top-4 duration-700">
+          <div>
+            <h1 className="text-2xl font-black tracking-tight text-white uppercase italic tracking-[0.1em]">
+               Circle <span className="text-emerald-500">Intel</span>
+            </h1>
+            <p className="text-slate-500 text-[8px] font-black uppercase tracking-[0.2em] mt-0.5">
+               Active Protocol <span className="text-emerald-500 opacity-50 ml-2">• Secure</span>
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+             <div className="relative group">
+               <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+               <NotificationBell notifications={history.slice(0, 5).map(trx => ({
+                 id: trx.id,
+                 title: trx.status === 'SUCCESS' ? 'Deposit Confirmed' : 'Transaction Update',
+                 description: `₵${trx.amount} logged via ${trx.reference.slice(0, 8)}...`,
+                 type: trx.status === 'SUCCESS' ? 'SUCCESS' : 'INFO',
+                 time: new Date(trx.createdAt).toLocaleTimeString(),
+                 link: '/dashboard/transactions'
+               }))} />
+             </div>
+             
+             <button 
+               onClick={() => {
+                 localStorage.removeItem("susupay_user");
+                 localStorage.removeItem("susupay_token");
+                 router.push("/auth");
+               }}
+               className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 text-red-500 hover:text-white hover:bg-red-500/20 transition-all border border-white/5 group shadow-lg"
+               title="Terminate Session"
+             >
+               <LucideLogOut size={18} className="group-hover:translate-x-0.5 transition-transform" />
+             </button>
+          </div>
+        </header>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full relative z-10 pt-4">
         <button 
-          onClick={() => router.back()}
-          className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 group"
+          onClick={() => router.push('/dashboard/groups')}
+          className="flex items-center gap-2 text-slate-500 hover:text-white transition-colors mb-8 group"
         >
-          <LucideArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="text-xs font-bold uppercase tracking-widest">Back to Circles</span>
+          <LucideArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+          <span className="text-[10px] font-black uppercase tracking-[0.2em]">Return To Protocol Index</span>
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -99,15 +159,15 @@ export default function GroupDetailsPage({ params }: { params: Promise<{ id: str
                     {group.name}
                   </h1>
                 </div>
-                <p className="text-slate-400 max-w-xl text-sm leading-relaxed">
+                <p className="text-slate-500 max-w-xl text-xs font-medium leading-relaxed uppercase tracking-tight opacity-80 mt-2">
                   {group.description}
                 </p>
               </div>
               <div className="flex items-center gap-4">
                  <div className="glass-card px-4 py-2 border-white/5 bg-white/[0.02] rounded-xl flex items-center gap-3">
-                    <LucideClock size={16} className="text-slate-500" />
+                    <LucideClock size={16} className="text-emerald-500 opacity-50" />
                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                      Freq: <span className="text-white">{group.frequency}</span>
+                      FREQ: <span className="text-white">{group.frequency}</span>
                     </span>
                  </div>
               </div>
