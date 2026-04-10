@@ -195,18 +195,30 @@ export default function Dashboard() {
                 </div>
                  <div className="flex gap-3 w-full md:w-auto">
                     <button 
-                      onClick={() => router.push('/dashboard/deposit')}
-                      disabled={user?.kycStatus !== 'VERIFIED'}
-                      className="flex-1 md:flex-none px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xl shadow-emerald-900/10 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                      onClick={() => {
+                        if (user?.kycStatus !== 'VERIFIED') {
+                          alert("Identity Verification Required: Please complete your KYC verification to enable financial transactions.");
+                          router.push("/kyc");
+                        } else {
+                          router.push('/dashboard/deposit');
+                        }
+                      }}
+                      className="flex-1 md:flex-none px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xl shadow-emerald-900/10 flex items-center justify-center gap-2 group"
                       title={user?.kycStatus !== 'VERIFIED' ? "KYC Verification Required" : "Deposit Funds"}
                     >
                       Deposit
                       <LucidePlus size={14} className="group-hover:rotate-90 transition-transform" />
                     </button>
                     <button 
-                      onClick={() => setIsWithdrawModalOpen(true)}
-                      disabled={user?.kycStatus !== 'VERIFIED'}
-                      className="flex-1 md:flex-none px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                      onClick={() => {
+                        if (user?.kycStatus !== 'VERIFIED') {
+                          alert("Identity Verification Required: Please complete your KYC verification to enable financial transactions.");
+                          router.push("/kyc");
+                        } else {
+                          setIsWithdrawModalOpen(true);
+                        }
+                      }}
+                      className="flex-1 md:flex-none px-6 py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 transition-all flex items-center justify-center gap-2 group"
                       title={user?.kycStatus !== 'VERIFIED' ? "KYC Verification Required" : "Withdraw Funds"}
                     >
                       Withdraw
@@ -349,7 +361,16 @@ export default function Dashboard() {
               </div>
            </div>
 
-           <div className="glass-card p-6 border-emerald-500/10 bg-emerald-500/[0.05] relative overflow-hidden group cursor-pointer" onClick={() => router.push('/dashboard/deposit')}>
+           <div className="glass-card p-6 border-emerald-500/10 bg-emerald-500/[0.05] relative overflow-hidden group cursor-pointer" 
+             onClick={() => {
+               if (user?.kycStatus !== 'VERIFIED') {
+                 alert("Identity Verification Required: Please complete your KYC verification to enable financial transactions.");
+                 router.push("/kyc");
+               } else {
+                 router.push('/dashboard/deposit');
+               }
+             }}
+           >
               <div className="relative z-10 flex items-center gap-4">
                  <div className="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
                     <LucideHistory size={24} />

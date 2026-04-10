@@ -27,6 +27,7 @@ function DepositContent() {
     axios.get(`${API_BASE_URL}/api/auth/profile/${id}`)
       .then(res => {
         if (res.data.kycStatus !== 'VERIFIED') {
+          alert("Identity Verification Required: Please complete your KYC verification to enable financial transactions.");
           router.push("/kyc");
         } else {
           setIsLoading(false);
