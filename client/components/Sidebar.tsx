@@ -157,7 +157,9 @@ export default function Sidebar() {
 
             {menuItems.filter(item => {
               if (item.name === "Notifications") {
-                return isAdmin || isAuditor || user?.kycStatus === 'VERIFIED';
+                // Return true ONLY for verified users or core staff
+                const status = user?.kycStatus;
+                return (isAdmin || isAuditor) || (status === 'VERIFIED');
               }
               return true;
             }).map((item) => {
