@@ -128,11 +128,11 @@ export default function KYCPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Account Holder</label>
-                  <input readOnly disabled value={user?.fullName} className="w-full bg-slate-950/50 border border-white/5 rounded-xl py-4 px-5 text-slate-400 font-bold" />
+                  <input readOnly disabled value={user?.fullName || ""} className="w-full bg-slate-950/50 border border-white/5 rounded-xl py-4 px-5 text-slate-400 font-bold" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Momo Provider</label>
-                  <input readOnly disabled value={user?.momoProvider} className="w-full bg-slate-950/50 border border-white/5 rounded-xl py-4 px-5 text-slate-400 font-bold" />
+                  <input readOnly disabled value={user?.momoProvider || ""} className="w-full bg-slate-950/50 border border-white/5 rounded-xl py-4 px-5 text-slate-400 font-bold" />
                 </div>
               </div>
 

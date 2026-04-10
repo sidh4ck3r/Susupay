@@ -1,3 +1,20 @@
+const fs = require('fs');
+const path = require('path');
+
+// Error logging for diagnostic - MOVE TO TOP
+process.on('uncaughtException', (err) => {
+  const errorLog = `\n[${new Date().toISOString()}] ❌ UNCAUGHT EXCEPTION:\n${err.stack}\n`;
+  console.error(errorLog);
+  fs.appendFileSync(path.join(__dirname, 'crash.log'), errorLog);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  const errorLog = `\n[${new Date().toISOString()}] ❌ UNHANDLED REJECTION at: ${promise}, reason: ${reason}\n`;
+  console.error(errorLog);
+  fs.appendFileSync(path.join(__dirname, 'crash.log'), errorLog);
+});
+
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');

@@ -23,10 +23,15 @@ const nextConfig = {
     ];
   },
   async rewrites() {
+    // In development, proxy to local backend.
+    // In production, fallback to Render API if NEXT_PUBLIC_API_URL isn't set.
+    const isDev = process.env.NODE_ENV === 'development';
+    const apiBase = isDev ? 'http://127.0.0.1:5050' : 'https://susupay-api.onrender.com';
+
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5050/api/:path*',
+        destination: `${apiBase}/api/:path*`,
       },
     ];
   },

@@ -27,7 +27,9 @@ export default function AuthCallback() {
         const picture = user.user_metadata?.avatar_url;
 
         // Send to backend to log them in or create an account
-        const response = await axios.post(`${API_BASE_URL}/api/auth/supabase`, {
+        const syncUrl = `${API_BASE_URL}/api/auth/supabase`;
+        console.log("Syncing with backend at:", syncUrl);
+        const response = await axios.post(syncUrl, {
           googleId, // Mapping supabase UUID as googleId in our existing system
           email,
           name: fullName,
@@ -48,8 +50,9 @@ export default function AuthCallback() {
         }
       } catch (err: any) {
         console.error("Auth callback error:", err);
-        setError("Failed to sync authentication. Redirecting to login...");
-        setTimeout(() => router.push("/auth"), 3000);
+        const errorMsg = err.response?.data?.message || err.message || "Failed to sync authentication.";
+        setError(`${errorMsg} Redirecting...`);
+        setTimeout(() => router.push("/auth"), 5000);
       }
     };
 
